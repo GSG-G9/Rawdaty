@@ -1,4 +1,4 @@
-const boomify = require('../../utils/boomify');
+const { boomify } = require('../../utils');
 
 // eslint-disable-next-line no-unused-vars
 const serverError = (err, req, res, next) => {
