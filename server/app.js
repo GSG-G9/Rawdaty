@@ -20,9 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/v1/', routes);
 
-app.use(express.static(join(__dirname, '..', 'client', 'build')));
-
 if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(join(__dirname, '..', 'client', 'build')));
   app.get('*', (req, res) => {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));
   });
