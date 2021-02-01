@@ -1,11 +1,4 @@
-## **Team Lead** 
-* Muhammad Abdulhadi
-
-## **Team Members** 
-* Alaa Sahloub
-* Alaa AlSer
-* Israa Al Jamal
-* Osama Younis
+# Rawdaty
 ## **Main Problem** :no_entry_sign:
 Parents find it’s hard to get a good kindergarten for their children that appropriates with their location and financial capabilities for the parents, and it should have good reviews and rates.
 
@@ -54,6 +47,14 @@ Create an application that allows parents to find the appropriate kindergarten a
 * Styling: **CSS**
 * Libraries: **AntDesign**
 
+## **Lead Mentor** 
+* Muhammad Abdulhadi
+
+## **Team Members** 
+* Alaa Sahloub
+* Alaa AlSer
+* Israa Al Jamal
+* Osama Younis
 ## **Resources**
 * [Node Js](https://nodejs.org/en/)
 * [React Js](https://reactjs.org/)
