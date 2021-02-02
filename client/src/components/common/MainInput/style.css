@@ -1,5 +1,19 @@
 /* Input Style */
-.ant-input {
+.Input {
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-input,
+.ant-picker {
   border: var(--input-border);
   border-radius: var(--border-radius);
+}
+
+.ant-slider-track {
+  background-color: var(--main-color);
+}
+
+.ant-slider-handle {
+  border-color: var(--main-color);
 }
