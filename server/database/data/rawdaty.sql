@@ -4,12 +4,12 @@ DROP TABLE IF EXISTS kindergarten,user, location, comments CASCADE;
 
 CREATE TABLE kindergarten(
 id SERIAL PRIMARY KEY,
-kindergarten_name VARCHAR(50)	not null,
+kindergarten_name VARCHAR(50)	NOT NULL,
 user_id	SERIAL	REFERENCES user(id),
-cover_image	TEXT not null,
-description	TEXT not null,
+cover_image	TEXT NOT NULL,
+description	TEXT NOT NULL,
 location_id	SERIAL	REFERENCES location(id),
-phone_number INTEGER not null,
+phone_number INTEGER NOT NULL,
 latitude INTEGER,
 longitude INTEGER,
 min_price INTEGER,	
@@ -23,14 +23,14 @@ create_at	TIMESTAMP SET DEFAULT now()
 
 CREATE TABLE location(
 id SERIAL PRIMARY KEY,
-location_name TEXT not null
+location_name TEXT NOT NULL
 );
 
 CREATE TABLE user(
 id SERIAL PRIMARY KEY,
-user_name VARCHAR(50) not null,
-email VARCHAR(255) not null,
-password VARCHAR(50) not null,
+user_name VARCHAR(50) NOT NULL,
+email VARCHAR(255) NOT NULL,
+password VARCHAR(50) NOT NULL,
 is_admin BOOLEAN SET DEFAULT false,
 create_at TIMESTAMP	SET DEFAULT now()
 );
@@ -38,9 +38,9 @@ create_at TIMESTAMP	SET DEFAULT now()
 CREATE TABLE comment(
 id SERIAL PRIMARY KEY,
 kindergarten_id	INTEGER REFERENCES Kindergarten(id),
-user_name VARCHAR(50)	not null,
-comment	TEXT not null,
-rating DECIMAL	not null,
+user_name VARCHAR(50)	NOT NULL,
+comment	TEXT NOT NULL,
+rating DECIMAL	NOT NULL,
 create_at TIMESTAMP	SET DEFAULT now()
 );
 
