@@ -1,7 +1,7 @@
 {
   "name": "rawdaty",
   "version": "1.0.0",
-  "description": "",
+  "description": "Parents find it’s hard to get a good kindergarten for their children that appropriates with their location and financial capabilities for the parents, and it should have good reviews and rates.",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node server/index.js",
@@ -52,5 +52,8 @@
     "test",
     "lint",
     "lint-react"
-  ]
+  ],
+  "directories": {
+    "test": "test"
+  }
 }
