@@ -1,18 +1,21 @@
-const { Pool } = require('pg');
 require('dotenv').config()
+const { Pool } = require('pg');
 
-let DB_URL = '';
-switch (process.env.NODE_ENV) {
+let dbUrl = '';
+const {
+    env: { NODE_ENV, TEST_DB_URL, DATABASE_URL, DEV_DB_URL },
+  } = process;
+switch (NODE_ENV) {
   case 'production':
-    DB_URL = process.env.DATABASE_URL;
+    dbUrl = DATABASE_URL;
     break;
 
   case 'development':
-    DB_URL = process.env.DB_URL_DEV;
+    dbUrl = DEV_DB_URL;
     break;
 
   case 'test':
-    DB_URL = process.env.DB_URL_TEST;
+    dbUrl = TEST_DB_URL;
     break;
 
   default:
@@ -21,7 +24,9 @@ switch (process.env.NODE_ENV) {
 
 const option = {
   connectionString: DB_URL,
-  ssl: process.env.NODE_ENV === 'production',
+  ssl: {
+    rejectUnauthorized: false,
+  }
 };
 
 module.exports = new Pool(option);

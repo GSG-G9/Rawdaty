@@ -2,9 +2,11 @@ const { readFileSync } = require('fs');
 const { join } = require('path');
 const connection = require('./connection');
 
-const bulidDb = () => {
-  const sql = readFileSync(join(__dirname, 'rawdaty.sql')).toString();
-  return connection.query(sql);
+const dbBuild  = () => {
+    let sql = readFileSync(join(__dirname, 'rawdaty.sql')).toString();
+    if (process.env.NODE_ENV === 'test') {
+      sql += readFileSync(join(__dirname, 'rawdatyFake.sql')).toString();
+    }
 };
-module.exports = bulidDb;
+module.exports = dbBuild ;
 

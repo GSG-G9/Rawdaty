@@ -1,8 +1,8 @@
 const connection = require('./connection');
-const bulidDb = require('./build');
+const dbBuild  = require('./build');
 
 module.exports = {
     connection,
-    bulidDb
+    dbBuild 
   };
   
