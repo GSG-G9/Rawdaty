@@ -1,32 +1,32 @@
-require('dotenv').config()
-const { Pool } = require('pg');
+require("dotenv").config();
+const { Pool } = require("pg");
 
-let dbUrl = '';
+let dbUrl = "";
 const {
-    env: { NODE_ENV, TEST_DB_URL, DATABASE_URL, DEV_DB_URL },
-  } = process;
+  env: { NODE_ENV, TEST_DB_URL, DATABASE_URL, DEV_DB_URL },
+} = process;
 switch (NODE_ENV) {
-  case 'production':
+  case "production":
     dbUrl = DATABASE_URL;
     break;
 
-  case 'development':
+  case "development":
     dbUrl = DEV_DB_URL;
     break;
 
-  case 'test':
+  case "test":
     dbUrl = TEST_DB_URL;
     break;
 
   default:
-    throw new Error('There is no Database url !!!');
+    throw new Error("There is no Database url !!!");
 }
 
 const option = {
-  connectionString: DB_URL,
+  connectionString: dbUrl,
   ssl: {
     rejectUnauthorized: false,
-  }
+  },
 };
 
 module.exports = new Pool(option);
