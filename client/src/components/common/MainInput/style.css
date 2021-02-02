@@ -1,7 +1,26 @@
-/* Input Style */
 .Input {
   display: flex;
   flex-direction: column;
+  font-size: 5px;
+}
+
+.input-label {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.Slider {
+  display: flex;
+  flex-direction: row;
+}
+
+.slider-label {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 32px;
+  margin-right: 13px;
 }
 
 .ant-input,
