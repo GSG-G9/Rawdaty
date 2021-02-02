@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS kindergarten , users, locations, comments CASCADE;
+DROP TABLE IF EXISTS kindergartens , users, locations, comments CASCADE;
 
 CREATE TABLE users(
 id SERIAL PRIMARY KEY,
