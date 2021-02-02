@@ -16,8 +16,6 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
-    //  allow .js extensions for JSX
-    "react/state-in-constructor": [0, "always"],
     "react/jsx-filename-extension": [
       1,
       {
