@@ -4,11 +4,7 @@
     "es2021": true,
     "node": true
   },
-  "extends": [
-    "airbnb",
-    "prettier",
-    "prettier/react"
-  ],
+  "extends": ["airbnb", "prettier", "prettier/react"],
   "root": true,
   "parser": "babel-eslint",
   "parserOptions": {
@@ -18,28 +14,17 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "prettier"
-  ],
+  "plugins": ["react", "prettier"],
   "rules": {
     //  allow .js extensions for JSX
-    "react/state-in-constructor": [
-      0,
-      "always"
-    ],
+    "react/state-in-constructor": [0, "always"],
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx"]
       }
     ],
-    "react/jsx-props-no-spreading": [
-      0
-    ],
+    "react/jsx-props-no-spreading": [0],
     // configure the prettier plugin
     "prettier/prettier": [
       "error",
