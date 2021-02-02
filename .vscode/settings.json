@@ -11,5 +11,12 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "files.eol": "\n",
-  "cSpell.words": ["Rawdaty"]
+  "cSpell.words": [
+    "Rawdaty",
+    "antd",
+    "رائع",
+    "رهيب",
+    "روضتي",
+    "عادي"
+  ]
 }
