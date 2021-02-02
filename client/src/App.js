@@ -13,6 +13,7 @@ const App = () => (
         border="3px solid #69938f"
         color="#fff"
         padding="9px 15px"
+        Buttontext="Submit"
       />
     </div>
   </Router>
