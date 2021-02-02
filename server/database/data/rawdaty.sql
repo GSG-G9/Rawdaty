@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS kindergarten,user, location, comments CASCADE;
+DROP TABLE IF EXISTS kindergarten , user, location, comments CASCADE;
 
 CREATE TABLE kindergarten(
 id SERIAL PRIMARY KEY,
@@ -17,8 +17,7 @@ max_price FLOAT,
 periods	TEXT,	
 images_gallery TEXT,	
 request_status VARCHAR(50),	
-is_enable VARCHAR(50) SET DEFAULT 'false',
-create_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+is_enable VARCHAR(50) SET DEFAULT 'false',locationENT_TIMESTAMP
 );
 
 CREATE TABLE location(
@@ -35,7 +34,7 @@ is_admin VARCHAR(50) SET DEFAULT 'false',
 create_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE comment(
+CREATE TABLE comments(
 id SERIAL PRIMARY KEY,
 kindergarten_id	INTEGER REFERENCES Kindergarten(id)ON UPDATE CASCADE ON DELETE CASCADE,
 user_name VARCHAR(50) NOT NULL,
