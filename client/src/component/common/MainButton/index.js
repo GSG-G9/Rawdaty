@@ -3,23 +3,17 @@ import './style.css';
 import { Button } from 'antd';
 import PropTypes from 'prop-types';
 
-const MainButton = (props) => {
-  const { backgroundColor } = props;
-  const { border } = props;
-  const { color } = props;
-  const { padding } = props;
-  return (
-    <div>
-      <Button
-        type="primary"
-        size="large"
-        style={{ backgroundColor, border, color, padding }}
-      >
-        Primary
-      </Button>
-    </div>
-  );
-};
+const MainButton = ({ backgroundColor, border, color, padding }) => (
+  <div>
+    <Button
+      type="primary"
+      size="large"
+      style={{ backgroundColor, border, color, padding }}
+    >
+      Primary
+    </Button>
+  </div>
+);
 MainButton.propTypes = {
   backgroundColor: PropTypes.string.isRequired,
   border: PropTypes.string.isRequired,
