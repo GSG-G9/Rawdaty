@@ -5,7 +5,7 @@ const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const { join } = require('path');
 
-const routes = require('./routes');
+const router = require('./router');
 const { clientError, serverError } = require('./controllers/errorHandle');
 
 const app = express();
@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(compression());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/v1/', routes);
+app.use('/api/v1/', router);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));
