@@ -1,13 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import DropList from './Components/DorpList';
+import DropList from './Components/DropList';
 
 import './App.css';
 
 const App = () => (
   <Router>
     <div className="App">روضتي هنا</div>
-    <DropList />
+    <DropList
+      options={[
+        { label: 'جميع المناطق', value: 1 },
+        { label: 'غزة', value: 2 },
+        { label: 'خانيونس', value: 3 },
+        { label: 'رفح', value: 4 },
+        { label: 'نصيرات', value: 5 },
+        { label: 'البريج', value: 6 },
+        { label: 'القرارة', value: 7 },
+        { label: 'المغازي', value: 8 },
+        { label: 'المصدر', value: 9 },
+      ]}
+    />
   </Router>
 );
 
