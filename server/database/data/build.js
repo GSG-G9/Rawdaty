@@ -7,3 +7,4 @@ const bulidDb = () => {
   return connection.query(sql);
 };
 module.exports = bulidDb;
+
