@@ -1,0 +1,5 @@
+/* Input Style */
+.ant-input {
+  border: var(--input-border);
+  border-radius: var(--border-radius);
+}
