@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - lts/*
+services:
+  - postgresql
+before_script:
+  - psql -c "CREATE DATABASE rawdaty;" -U postgres
+  - psql -c "CREATE USER rawdatyuser WITH PASSWORD '123456';" -U postgres
+  - 'npm run build-db'
+env:
+  global:
+    - PGPORT=5432
+test:
+  adapter: postgresql
+  database: rawdaty
