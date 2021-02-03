@@ -1,0 +1,18 @@
+.location-price{
+    display: flex;
+    justify-content: space-between;
+    color:#707472 ;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.card-title{
+    font-weight: bold;
+    font-size: 20px;
+    color: #707472;
+}
+
+.reviewers{
+padding: 10px;
+color:#707472 ;
+}
