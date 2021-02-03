@@ -9,15 +9,14 @@ const MainInput = ({
   type,
   width,
   height,
-  placeholder,
-  min,
-  max,
-  value,
-  onChange,
   textLabel,
   borderColor,
   fontColor,
   dateValue,
+  min,
+  max,
+  onSliderChange,
+  ...otherInputProps
 }) => {
   const [sliderValue, setSliderValue] = useState([min, max]);
   const { TextArea } = Input;
@@ -27,7 +26,7 @@ const MainInput = ({
 
   const sliderOnChange = (val) => {
     setSliderValue(val);
-    onChange(val);
+    onSliderChange(val);
   };
 
   const inputLabel = textLabel && (
@@ -38,45 +37,29 @@ const MainInput = ({
 
   switch (type) {
     case 'text':
-      input = (
-        <Input
-          placeholder={placeholder}
-          style={style}
-          defaultValue={value}
-          onChange={onChange}
-        />
-      );
+      input = <Input style={style} {...otherInputProps} />;
       break;
     case 'textArea':
       input = (
         <TextArea
-          placeholder={placeholder}
           style={{ ...style, minHeight: height, maxHeight: height }}
-          defaultValue={value}
-          onChange={onChange}
+          {...otherInputProps}
         />
       );
       break;
     case 'date':
-      input = (
-        <RangePicker
-          style={style}
-          defaultValue={dateValue}
-          onChange={onChange}
-        />
-      );
+      input = <RangePicker style={style} {...otherInputProps} />;
       break;
     case 'rangeSlider':
       input = (
         <div className="slider">
           <Slider
+            onChange={sliderOnChange}
             range
-            min={min}
-            max={max}
             value={sliderValue}
             style={{ width }}
-            defaultValue={value}
-            onChange={sliderOnChange}
+            min={min}
+            max={max}
           />
           <span className="slider-label">{`${sliderValue[0]} - ${sliderValue[1]} ₪`}</span>
         </div>
@@ -86,11 +69,9 @@ const MainInput = ({
       input = (
         <Input
           className="search-input"
-          placeholder={placeholder}
           style={style}
-          defaultValue={value}
-          onChange={onChange}
           prefix={<SearchOutlined />}
+          {...otherInputProps}
         />
       );
       break;
@@ -109,30 +90,26 @@ const MainInput = ({
 MainInput.defaultProps = {
   width: '',
   height: '',
-  placeholder: '',
-  min: 0,
-  max: 900,
-  value: '',
-  onChange: () => {},
   textLabel: '',
   borderColor: '',
+  min: 0,
+  max: 900,
   fontColor: '',
   dateValue: [],
+  onSliderChange: () => {},
 };
 
 MainInput.propTypes = {
   type: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
   width: PropTypes.string,
   height: PropTypes.string,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
   textLabel: PropTypes.string,
   borderColor: PropTypes.string,
   fontColor: PropTypes.string,
   dateValue: PropTypes.arrayOf(PropTypes.object),
+  min: PropTypes.number,
+  max: PropTypes.number,
+  onSliderChange: PropTypes.func,
 };
 
 export default MainInput;
