@@ -36,6 +36,7 @@ const CardComponent = ({
     />
   </Card>
 );
+
 CardComponent.propTypes = {
   title: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
@@ -44,4 +45,5 @@ CardComponent.propTypes = {
   price: PropTypes.string.isRequired,
   cover: PropTypes.string.isRequired,
 };
+
 export default CardComponent;
