@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import 'antd/dist/antd.css';
 import { Rate } from 'antd';
 
-import './style.css';
-
 const Rating = ({ rateValue }) => {
   const [value, setValue] = useState(0);
   const desc = ['رهيب', 'سيء', 'عادي', 'جيد', 'رائع'];
