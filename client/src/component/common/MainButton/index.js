@@ -1,5 +1,4 @@
 import React from 'react';
-import './style.css';
 import { Button } from 'antd';
 import PropTypes from 'prop-types';
 
