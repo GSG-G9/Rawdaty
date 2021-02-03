@@ -12,7 +12,6 @@ const MainInput = ({
   textLabel,
   borderColor,
   fontColor,
-  dateValue,
   min,
   max,
   onSliderChange,
@@ -95,7 +94,6 @@ MainInput.defaultProps = {
   min: 0,
   max: 900,
   fontColor: '',
-  dateValue: [],
   onSliderChange: () => {},
 };
 
@@ -106,7 +104,6 @@ MainInput.propTypes = {
   textLabel: PropTypes.string,
   borderColor: PropTypes.string,
   fontColor: PropTypes.string,
-  dateValue: PropTypes.arrayOf(PropTypes.object),
   min: PropTypes.number,
   max: PropTypes.number,
   onSliderChange: PropTypes.func,
