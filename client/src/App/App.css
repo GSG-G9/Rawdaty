@@ -1,12 +1,15 @@
-.App {
-  text-align: center;
+@import '~antd/dist/antd.css';
+
+* {
+  font-family: 'Tajawal';
+  font-size: 15px;
 }
 
 :root {
   --main-color: #739c98;
   --main-white: #ffffff;
   --main-gray: #c4c4c4;
-  --input-border: 1.6px solid #c4c4c4;
+  --input-border: 1.6px solid var(--main-gray);
   --border-radius: 5px;
   --input-shadow: 0px 0px 9px 1px rgba(21, 19, 19, 0.37);
   --card-shadow: 0px 1px 13px rgba(0, 0, 0, 0.32);

@@ -5,7 +5,7 @@ import './App.css';
 
 const App = () => (
   <Router>
-    <div className="App">روضتي هنا</div>
+    <div className="App" />
   </Router>
 );
 
