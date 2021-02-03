@@ -1,0 +1,21 @@
+
+#avatar{
+  text-align: center 
+}
+
+#comment-date{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #757575;
+  margin-right:10px ;
+}
+
+#Comment-des{
+  font-size: 18px;
+  color: #525252;
+}
+
+#deleteBtn{
+  margin-right:10px;
+}
