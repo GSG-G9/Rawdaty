@@ -17,12 +17,11 @@ MainButton.defaultProps = {
   backgroundColor: 'var(--main-color)',
   border: 'var(--button-border)',
   color: 'var(--main-white)',
-  onClick: () => {},
   isDelete: false,
 };
 
 MainButton.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   children: PropTypes.string.isRequired,
   isDelete: PropTypes.bool,
   backgroundColor: PropTypes.string,
