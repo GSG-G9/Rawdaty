@@ -1,7 +1,8 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import 'antd/dist/antd.css';
-import { Card, Avatar } from 'antd';
+import { Card } from 'antd';
+import Rating from '../Rating';
 
 const { Meta } = Card;
 const CardComponent = () => (
@@ -15,16 +16,16 @@ const CardComponent = () => (
     }
   >
     <Meta
-      avatar={
-        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-      }
       title="روضة الفجر النموذجية"
       description={
-        <span>
-          <span> غزة-فلسطين</span>
-          <span />
-          <span>200-500 شيكل</span>
-        </span>
+        <div>
+          <Rating rateValue={3} />
+          <div>
+            <span> غزة-فلسطين</span>
+            <span />
+            <span>200-500 شيكل</span>
+          </div>
+        </div>
       }
     />
   </Card>
