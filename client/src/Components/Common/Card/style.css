@@ -16,3 +16,7 @@
 padding: 10px;
 color:#707472 ;
 }
+
+.card{
+    box-shadow:var(--card-shadow) ;
+}
