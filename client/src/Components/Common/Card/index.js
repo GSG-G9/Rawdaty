@@ -1,33 +1,45 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-import 'antd/dist/antd.css';
+import PropTypes from 'prop-types';
 import { Card } from 'antd';
 import Rating from '../Rating';
 
 const { Meta } = Card;
-const CardComponent = () => (
+
+const CardComponent = ({
+  title,
+  rating,
+  reviewersNo,
+  location,
+  price,
+  cover,
+}) => (
   <Card
+    hoverable
     style={{ width: 300 }}
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
+    cover={<img alt={title} src={cover} />}
   >
     <Meta
-      title="روضة الفجر النموذجية"
+      title={title}
       description={
         <div>
-          <Rating rateValue={3} />
+          <Rating rateValue={rating} />
+          <span> {reviewersNo} مراجعين </span>
           <div>
-            <span> غزة-فلسطين</span>
+            <span> {location}</span>
             <span />
-            <span>200-500 شيكل</span>
+            <span>{price}</span>
           </div>
         </div>
       }
     />
   </Card>
 );
+CardComponent.propTypes = {
+  title: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  reviewersNo: PropTypes.number.isRequired,
+  location: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  cover: PropTypes.string.isRequired,
+};
 export default CardComponent;
