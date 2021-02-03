@@ -2,19 +2,12 @@ import React from 'react';
 import { Button } from 'antd';
 import PropTypes from 'prop-types';
 
-const MainButton = ({
-  onClick,
-  children,
-  backgroundColor,
-  border,
-  color,
-  padding,
-}) => (
+const MainButton = ({ onClick, children, ...otherStyleProps }) => (
   <Button
     type="primary"
     size="large"
     onClick={onClick}
-    style={{ backgroundColor, border, color, padding }}
+    style={{ ...otherStyleProps }}
   >
     {children}
   </Button>
