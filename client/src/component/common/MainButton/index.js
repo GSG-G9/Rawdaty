@@ -19,12 +19,20 @@ const MainButton = ({
     {children}
   </Button>
 );
+MainButton.defaultProps = {
+  backgroundColor: '#739C98',
+  border: '3px solid #69938F',
+  color: '#fff',
+  padding: '0px 15px',
+  onClick: () => {},
+};
+
 MainButton.propTypes = {
-  onClick: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
   children: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string.isRequired,
-  border: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  padding: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string,
+  border: PropTypes.string,
+  color: PropTypes.string,
+  padding: PropTypes.string,
 };
 export default MainButton;
