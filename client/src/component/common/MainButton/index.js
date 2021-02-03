@@ -10,16 +10,14 @@ const MainButton = ({
   color,
   padding,
 }) => (
-  <div>
-    <Button
-      type="primary"
-      size="large"
-      onClick={onClick}
-      style={{ backgroundColor, border, color, padding }}
-    >
-      {children}
-    </Button>
-  </div>
+  <Button
+    type="primary"
+    size="large"
+    onClick={onClick}
+    style={{ backgroundColor, border, color, padding }}
+  >
+    {children}
+  </Button>
 );
 MainButton.propTypes = {
   onClick: PropTypes.string.isRequired,
