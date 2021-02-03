@@ -2,6 +2,7 @@
 .slider{
   display: flex;
 }
+    
 .input{
   flex-direction: column;
 }
