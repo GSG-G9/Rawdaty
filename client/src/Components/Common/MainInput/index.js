@@ -68,19 +68,17 @@ const MainInput = ({
       break;
     case 'rangeSlider':
       input = (
-        <div className="slider-contener">
-          <div className="slider">
-            <Slider
-              range
-              min={min}
-              max={max}
-              value={sliderValue}
-              style={{ width }}
-              defaultValue={value}
-              onChange={sliderOnChange}
-            />
-            <span className="slider-label">{`${sliderValue[0]} - ${sliderValue[1]} ₪`}</span>
-          </div>
+        <div className="slider">
+          <Slider
+            range
+            min={min}
+            max={max}
+            value={sliderValue}
+            style={{ width }}
+            defaultValue={value}
+            onChange={sliderOnChange}
+          />
+          <span className="slider-label">{`${sliderValue[0]} - ${sliderValue[1]} ₪`}</span>
         </div>
       );
       break;
