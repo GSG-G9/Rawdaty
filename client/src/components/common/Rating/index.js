@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import 'antd/dist/antd.css';
 import { Rate } from 'antd';
 
 const Rating = ({ rateValue }) => {
