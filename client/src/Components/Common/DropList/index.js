@@ -19,13 +19,9 @@ const DropList = ({ options, onChange }) => (
   </Select>
 );
 
-DropList.defaultProps = {
-  onChange: () => {},
-};
-
 DropList.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default DropList;
