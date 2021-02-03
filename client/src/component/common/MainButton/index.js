@@ -3,27 +3,30 @@ import { Button } from 'antd';
 import PropTypes from 'prop-types';
 
 const MainButton = ({
+  onClick,
+  children,
   backgroundColor,
   border,
   color,
   padding,
-  Buttontext,
 }) => (
   <div>
     <Button
       type="primary"
       size="large"
+      onClick={onClick}
       style={{ backgroundColor, border, color, padding }}
     >
-      {Buttontext}
+      {children}
     </Button>
   </div>
 );
 MainButton.propTypes = {
+  onClick: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string.isRequired,
   border: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   padding: PropTypes.string.isRequired,
-  Buttontext: PropTypes.string.isRequired,
 };
 export default MainButton;
