@@ -1,7 +1,7 @@
 import React from 'react';
 import { Select } from 'antd';
 import PropTypes from 'prop-types';
-import locationIcon from './Vector.svg';
+import locationIcon from '../../../assets/icons/location.svg';
 
 const { Option } = Select;
 
