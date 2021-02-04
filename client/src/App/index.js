@@ -7,11 +7,12 @@ const App = () => (
   <Router>
     <div className="App">روضتي هنا</div>
     <CardComponent
-      title="روضة الامل المشرق"
+      title=" النموذجية الخاصة روضة الامل المشرق"
       rating={4}
       reviewersNo={10}
       location="غزة-فلسطين"
-      price="200-500 شيكل"
+      minPrice={200}
+      maxPrice={600}
       cover="https://thumbs.dreamstime.com/b/group-preschool-children-engaged-handcrafts-group-preschool-kids-engaged-handcrafts-children-teacher-classroom-148143087.jpg"
       kindergartenId={1}
     />

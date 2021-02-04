@@ -12,7 +12,8 @@ const CardComponent = ({
   rating,
   reviewersNo,
   location,
-  price,
+  minPrice,
+  maxPrice,
   cover,
 }) => (
   <Card
@@ -33,7 +34,8 @@ const CardComponent = ({
           <span className="reviewers"> {reviewersNo} مراجعين </span>
           <div className="location-price">
             <span> {location}</span>
-            <span>{price}</span>
+
+            <span>{`${minPrice}-${maxPrice}`} شيكل </span>
           </div>
         </div>
       }
@@ -46,7 +48,8 @@ CardComponent.propTypes = {
   rating: PropTypes.number.isRequired,
   reviewersNo: PropTypes.number.isRequired,
   location: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  minPrice: PropTypes.number.isRequired,
+  maxPrice: PropTypes.number.isRequired,
   cover: PropTypes.string.isRequired,
 };
 
