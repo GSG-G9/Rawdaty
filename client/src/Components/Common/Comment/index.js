@@ -8,6 +8,7 @@ import UserImage from '../UserImage';
 import './style.css';
 
 const { Title, Text } = Typography;
+
 const Comment = ({
   id,
   isAdmin,
