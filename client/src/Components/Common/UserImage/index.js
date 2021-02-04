@@ -5,16 +5,14 @@ import PropTypes from 'prop-types';
 import './style.css';
 
 const UserImage = ({ userName, image, background, fontSize, color }) => (
-  <div>
-    <Avatar
-      size={45}
-      className="user-image"
-      style={{ background, fontSize, color }}
-      src={image || ' '}
-    >
-      {image && userName.charAt(0)}
-    </Avatar>
-  </div>
+  <Avatar
+    size={45}
+    className="user-image"
+    style={{ background, fontSize, color }}
+    src={image || ' '}
+  >
+    {image && userName.charAt(0)}
+  </Avatar>
 );
 
 UserImage.defaultProps = {

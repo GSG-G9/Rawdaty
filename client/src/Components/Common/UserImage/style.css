@@ -1,4 +1,5 @@
 .user-image .ant-avatar-string{
-    line-height: 56px !important;
+    line-height: 50px !important;
     font-size: 29px;
+    font-weight: bold;
   }
