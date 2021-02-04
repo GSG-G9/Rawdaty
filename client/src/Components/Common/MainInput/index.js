@@ -5,6 +5,9 @@ import { SearchOutlined } from '@ant-design/icons';
 
 import './style.css';
 
+const { TextArea } = Input;
+const { RangePicker } = TimePicker;
+
 const MainInput = ({
   type,
   width,
@@ -18,8 +21,6 @@ const MainInput = ({
   ...otherInputProps
 }) => {
   const [sliderValue, setSliderValue] = useState([min, max]);
-  const { TextArea } = Input;
-  const { RangePicker } = TimePicker;
 
   const style = { width, height, borderColor, fontColor };
 
@@ -53,8 +54,8 @@ const MainInput = ({
       input = (
         <div className="slider">
           <Slider
-            onChange={sliderOnChange}
             range
+            onChange={sliderOnChange}
             value={sliderValue}
             style={{ width }}
             min={min}
