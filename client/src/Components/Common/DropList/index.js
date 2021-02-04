@@ -25,9 +25,13 @@ const DropList = ({ options, isSearch, ...otherSelectProps }) => (
   </div>
 );
 
+DropList.defaultProps = {
+  isSearch: false,
+};
+
 DropList.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
-  isSearch: PropTypes.bool.isRequired,
+  isSearch: PropTypes.bool,
 };
 
 export default DropList;
