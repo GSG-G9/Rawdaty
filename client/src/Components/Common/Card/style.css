@@ -2,17 +2,29 @@
   display: flex;
   justify-content: space-between;
   color: var(--main-color-font);
-  font-weight: bold;
   margin-top: 10px;
+}
+
+.bold-style{
+  font-weight: bold;
 }
 
 .card-title{
   font-weight: bold;
   font-size: 20px;
   color: var(--main-color-font);
+  margin: 0;
+}
+
+.location-price h3 {
+  display: inline;
+  margin: 0;
+  color: var(--main-color-font) ;
+  font-weight: bold;
 }
 
 .reviewers{
+  display: inline;
   padding: 10px;
   color: var(--main-color-font) ;
 }

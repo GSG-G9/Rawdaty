@@ -27,15 +27,14 @@ const CardComponent = ({
     }
   >
     <Meta
-      title={<div className="card-title">{title}</div>}
+      title={<h2 className="card-title">{title}</h2>}
       description={
         <div>
           <Rating rateValue={rating} />
-          <span className="reviewers"> {reviewersNo} مراجعات </span>
+          <h3 className="reviewers"> {reviewersNo} مراجعات </h3>
           <div className="location-price">
-            <span> {location}</span>
-
-            <span>{`${minPrice}-${maxPrice}`} شيكل </span>
+            <h3> {location}</h3>
+            <h3>{`${minPrice}-${maxPrice}`} شيكل </h3>
           </div>
         </div>
       }
