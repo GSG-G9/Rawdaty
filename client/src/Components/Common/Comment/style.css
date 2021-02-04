@@ -1,9 +1,18 @@
-
-#avatar{
-  text-align: center 
+#avatar {
+  margin: 4px auto;
 }
 
+#avatar .ant-typography {
+  text-align: center;
+  color: #757575;
+} 
+
+#avatar .ant-avatar {
+  margin: 0 auto;
+} 
+
 #comment-date{
+  line-height: 36px;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -12,10 +21,18 @@
 }
 
 #Comment-des{
-  font-size: 18px;
+  font-size: 17px;
   color: #525252;
 }
 
 #deleteBtn{
-  margin-right:10px;
+  margin: 3px 10px;
+}
+
+.top-container{
+  padding-top: 5px ;
+}
+
+.anticon-star > svg{
+  font-size: 18px;
 }

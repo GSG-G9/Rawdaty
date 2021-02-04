@@ -1,11 +1,13 @@
 import React from 'react';
-import { Avatar, Row, Col } from 'antd';
+import { Row, Col, Typography } from 'antd';
 import PropTypes from 'prop-types';
+
 import Rating from '../Rating';
 import MainButton from '../MainButton';
-
+import UserImage from '../UserImage';
 import './style.css';
 
+const { Title, Text } = Typography;
 const Comment = ({
   id,
   isAdmin,
@@ -18,14 +20,16 @@ const Comment = ({
 }) => (
   <div id={id} className="Comment" style={{ maxWidth }}>
     <Row justify="start">
-      <Col id="avatar" span={4}>
-        <Avatar size={64} name={userName} />
-        {/* <UserImage userName={userName} /> */}
+      <Col id="avatar" span={5}>
+        <Row>
+          <UserImage size={64} userName={userName} />
+        </Row>
+        <Title level={5}>{userName}</Title>
       </Col>
-      <Col span={20}>
-        <Col span={24}>
+      <Col span={19}>
+        <Row className="top-container">
           <Rating rateValue={rateValue} />
-          <span id="comment-date">{date}</span>
+          <div id="comment-date">{date}</div>
           {isAdmin && (
             <MainButton
               id="deleteBtn"
@@ -36,10 +40,10 @@ const Comment = ({
               حدف
             </MainButton>
           )}
-        </Col>
-        <Col span={24}>
-          <p id="Comment-des">{commentText}</p>
-        </Col>
+        </Row>
+        <Row>
+          <Text id="Comment-des">{commentText}</Text>
+        </Row>
       </Col>
     </Row>
   </div>
