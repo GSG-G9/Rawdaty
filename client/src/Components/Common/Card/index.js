@@ -31,7 +31,7 @@ const CardComponent = ({
       description={
         <div>
           <Rating rateValue={rating} />
-          <span className="reviewers"> {reviewersNo} مراجعين </span>
+          <span className="reviewers"> {reviewersNo} مراجعات </span>
           <div className="location-price">
             <span> {location}</span>
 
