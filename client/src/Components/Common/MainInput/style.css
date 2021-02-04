@@ -1,0 +1,67 @@
+.input,
+.slider{
+  display: flex;
+}
+    
+.input{
+  flex-direction: column;
+}
+
+.slider{
+  flex-direction: row;
+}
+
+.input .input-label{
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.input textarea.ant-input{
+  height: 70px;
+  min-height: 70px;
+  max-height: 70px;
+}
+
+.input .slider-label{
+  font-style: normal;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 32px;
+  margin-right: 13px;
+}
+
+.input .ant-input,
+.input .ant-picker,
+.input .ant-input-affix-wrapper{
+  border: var(--input-border);
+  border-radius: var(--border-radius);
+  width: 300px;
+  height: 40px;
+}
+
+.input .ant-input-affix-wrapper{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.input .ant-slider-track,
+.input .ant-slider-handle {
+  background-color: var(--main-color);
+}
+
+.input .ant-slider {
+  width: 300px;
+}
+
+.search-input .anticon-search {
+  color: var(--main-color);
+}
+
+.search-input {
+  box-shadow:var(--input-shadow) ;
+}
+
+.search-input .ant-input {
+  height: 100%;
+}
