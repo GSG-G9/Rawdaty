@@ -6,18 +6,21 @@ import locationIcon from './Vector.svg';
 const { Option } = Select;
 
 const DropList = ({ options, isSearch, ...otherSelectProps }) => (
-  <Select
-    labelInValue
-    style={{ width: 300, height: 19 }}
-    {...otherSelectProps}
-    suffixIcon={isSearch ? <img src={locationIcon} alt="location" /> : ''}
-  >
-    {options.map((option) => (
-      <Option key={option.id} value={option.value} disabled={option.disabled}>
-        {option.label}
-      </Option>
-    ))}
-  </Select>
+  <>
+    {isSearch ? <img src={locationIcon} alt="location" /> : null}
+    <Select
+      bordered={!isSearch}
+      labelInValue
+      style={isSearch ? { width: 110 } : { width: 150 }}
+      {...otherSelectProps}
+    >
+      {options.map((option) => (
+        <Option key={option.id} value={option.value} disabled={option.disabled}>
+          {option.label}
+        </Option>
+      ))}
+    </Select>
+  </>
 );
 
 DropList.propTypes = {
