@@ -60,6 +60,7 @@ const MainInput = ({
             style={{ width }}
             min={min}
             max={max}
+            step={otherInputProps.step || 5}
           />
           <span className="slider-label">{`${sliderValue[0]} - ${sliderValue[1]} ₪`}</span>
         </div>
