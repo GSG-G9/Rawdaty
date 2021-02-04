@@ -15,7 +15,8 @@ title | card title | string
 rating |  rating value | number 
 reviewersNo |  reviewers number | number 
 location | the location | string
-price | range of price from - to | string
+minPrice | range of price from - to | number
+maxPrice | range of price from - to | number
 cover | cover image url | string
 
 - Pass the props to the card component
@@ -25,16 +26,18 @@ cover | cover image url | string
 #### How to use
 This code snippet show an example of using card component
 ```
- <CardComponent
-      title="روضة الامل المشرق"
+  <CardComponent
+      title=" روضة الامل المشرق"
       rating={4}
       reviewersNo={10}
       location="غزة-فلسطين"
-      price="200-500 شيكل"
-      cover="https://thumbs.dreamstime.com/b/group-preschool-children-engaged-handcrafts-group-preschool-kids-engaged-handcrafts-children-teacher-classroom-148143087.jpg"
+      minPrice={200}
+      maxPrice={500}
+      cover="https://thumbs.dreamstime.com/b/group-preschool-children-engaged-handcrafts-group-preschool-kids-engaged-handcrafts-children-teacher-c6lassroom-148143087.jpg"
       kindergartenId={1}
     />
 ```
 #### This is a screenshot for the result
-![](https://i.imgur.com/F9boyUZ.png)
+![](https://i.imgur.com/CzA1N59.png)
+
 
