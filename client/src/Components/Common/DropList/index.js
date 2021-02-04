@@ -13,7 +13,7 @@ const DropList = ({ options, isSearch, ...otherSelectProps }) => (
       placeholder="المنطقة"
       bordered={!isSearch}
       labelInValue
-      style={isSearch ? { width: 110, height: 25 } : { width: 150, height: 25 }}
+      className={`${isSearch ? 'search-case' : 'request-case'}`}
       {...otherSelectProps}
     >
       {options.map((option) => (
