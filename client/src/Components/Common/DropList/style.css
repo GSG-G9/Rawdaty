@@ -1,0 +1,13 @@
+.drop-list .ant-select-selection-placeholder {
+  font-weight: bold;
+}
+
+.request-case {
+  width: 150px;
+  height: 25px;
+}
+
+.search-case {
+  width: 110px;
+  height: 25px;
+}

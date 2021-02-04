@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import FooterComponent from '../Components/Common/Footer';
-import './App.css';
+import './style.css';
 
 const App = () => (
   <Router>
