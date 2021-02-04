@@ -1,7 +1,7 @@
 .location-price{
   display: flex;
   justify-content: space-between;
-  color:var(--main-color-font);
+  color: var(--main-color-font);
   font-weight: bold;
   margin-top: 10px;
 }
@@ -9,22 +9,23 @@
 .card-title{
   font-weight: bold;
   font-size: 20px;
-  color:var(--main-color-font);
+  color: var(--main-color-font);
 }
 
 .reviewers{
   padding: 10px;
-  color:var(--main-color-font) ;
+  color: var(--main-color-font) ;
 }
 
 .card{
-  border-radius:var(--border-radius) !important;
-  box-shadow:var(--card-shadow) ;
+  width: 300px;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--card-shadow) ;
 }
 
 .card-cover{
   height: 250px;
-  border-radius:var(--border-radius);
+  border-radius: var(--border-radius);
   margin: 15px;
   background-repeat: no-repeat;
   width: auto !important;

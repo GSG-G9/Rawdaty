@@ -18,7 +18,6 @@ const CardComponent = ({
   <Card
     hoverable
     className="card"
-    style={{ width: 300 }}
     cover={
       <div
         className="card-cover"
