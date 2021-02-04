@@ -1,22 +1,36 @@
 .location-price{
-    display: flex;
-    justify-content: space-between;
-    color:#707472 ;
-    font-weight: bold;
-    margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  color:var(--main-color-font);
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 .card-title{
-    font-weight: bold;
-    font-size: 20px;
-    color: #707472;
+  font-weight: bold;
+  font-size: 20px;
+  color:var(--main-color-font);
 }
 
 .reviewers{
-padding: 10px;
-color:#707472 ;
+  padding: 10px;
+  color:var(--main-color-font) ;
 }
 
 .card{
-    box-shadow:var(--card-shadow) ;
+  border-radius:var(--border-radius) !important;
+  box-shadow:var(--card-shadow) ;
+}
+
+.card-cover{
+  height: 250px;
+  border-radius:var(--border-radius);
+  margin: 15px;
+  background-repeat: no-repeat;
+  width: auto !important;
+  background-size: cover;
+}
+
+.card .ant-card-body{
+  padding-top: 10px !important;
 }

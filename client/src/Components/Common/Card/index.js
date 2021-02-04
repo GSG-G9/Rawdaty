@@ -19,7 +19,12 @@ const CardComponent = ({
     hoverable
     className="card"
     style={{ width: 300 }}
-    cover={<img alt={title} src={cover} />}
+    cover={
+      <div
+        className="card-cover"
+        style={{ backgroundImage: `url(${cover})` }}
+      />
+    }
   >
     <Meta
       title={<div className="card-title">{title}</div>}
