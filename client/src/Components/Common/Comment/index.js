@@ -10,7 +10,6 @@ import './style.css';
 const { Title, Text } = Typography;
 
 const Comment = ({
-  id,
   isAdmin,
   userName,
   maxWidth,
@@ -18,8 +17,9 @@ const Comment = ({
   date,
   rateValue,
   onAdminClick,
+  ...otherProps
 }) => (
-  <div id={id} className="Comment" style={{ maxWidth }}>
+  <div className="Comment" style={{ maxWidth }} {...otherProps}>
     <Row justify="start">
       <Col id="avatar" span={5}>
         <Row>
@@ -57,7 +57,6 @@ Comment.defaultProps = {
 };
 
 Comment.propTypes = {
-  id: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
   commentText: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
