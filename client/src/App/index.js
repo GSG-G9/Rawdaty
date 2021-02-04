@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import './App.css';
 import NavTap from '../Components/Common/NavTap';
+import './style.css';
 
 const App = () => (
   <Router>
