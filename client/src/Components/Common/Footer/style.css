@@ -1,14 +1,28 @@
 .footer{
-background-color: var(--main-color);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--main-color) ;
+  height: 5vh;
+  font-weight: bold;
+  color: white;
 }
 
-.facebook-icon{
-    padding: 5px;
-    border: 3px solid black;
-    border-radius: 50%
+.icon  * {
+  color:white !important;
+  font-size: 2em;
+  margin-top:7px;
+  margin-left: 10px;
 }
 
-.instagram-icon{
-    color: brown;
-    border-radius: 50%;
+.icon :hover{
+  opacity:0.8;
+}
+
+.icons{
+  margin-right: -250px;
+}
+
+.copy-write{
+  margin-left: -250px;
 }

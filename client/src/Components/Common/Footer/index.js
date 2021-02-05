@@ -1,35 +1,28 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { Link } from 'react-router-dom';
 import {
-  FacebookOutlined,
-  TwitterCircleFilled,
+  FacebookFilled,
   InstagramFilled,
-  createFromIconfontCN,
+  TwitterSquareFilled,
 } from '@ant-design/icons';
-import facebook from './assests/icons/facebook.svg';
-import instagram from './assests/icons/instagram.svg';
-import twitter from './assests/icons/twitter.svg';
 
 import './style.css';
 
-const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js',
-});
-const { Footer } = Layout;
 const FooterComponent = () => (
-  <Footer className="footer">
-    <FacebookOutlined className="facebook-icon" />
-    <IconFont type="icon-facebook" />
-    <InstagramFilled />
-    <img src={facebook} alt="facebook" />
-    <div
-      className="instagram-icon"
-      style={{ backgroundImage: `url(${instagram})` }}
-    />
-    <img src={instagram} alt="facebook" className="instagram-icon" />
-    <img src={twitter} alt="facebook" />
-    <TwitterCircleFilled />
-  </Footer>
+  <div className="footer">
+    <span className="icons">
+      <Link to={{ pathname: 'https://www.instagram.com/' }} target="_blank">
+        <InstagramFilled className="icon" />
+      </Link>
+      <Link to={{ pathname: 'https://twitter.com/' }} target="_blank">
+        <TwitterSquareFilled className="icon" />{' '}
+      </Link>
+      <Link to={{ pathname: 'https://www.facebook.com/' }} target="_blank">
+        <FacebookFilled className="icon" />{' '}
+      </Link>
+    </span>
+    <span className="copy-write">جميع الحقوق محفوظة 2021Ⓒ</span>
+  </div>
 );
 
 export default FooterComponent;
