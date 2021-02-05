@@ -1,15 +1,16 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
+import './style.css';
 
 import { Radio } from 'antd';
 
 const NavTap = () => (
   <Radio.Group buttonStyle="solid">
     <Radio.Button
+      className="ant-radio-group-solid, ::selection "
       style={{
-        width: 120,
+        width: 110,
         textAlign: 'center',
-        marginRight: '5px',
       }}
       value={1}
     >

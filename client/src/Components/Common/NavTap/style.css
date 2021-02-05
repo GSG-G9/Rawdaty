@@ -1,4 +1,7 @@
-.site-button-ghost-wrapper {
-    padding: 26px 16px 16px;
-    background: #739C98;
-  }
+.ant-radio-group-solid
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  color: #fff;
+  background: #739c98 !important ;
+  border-color: #739c98 !important ;
+  background-color: #739c98 !important;
+}
