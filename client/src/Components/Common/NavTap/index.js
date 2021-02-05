@@ -1,23 +1,20 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import './style.css';
-
 import { Radio } from 'antd';
+import { ReactComponent as Home } from '../../../assets/icons/home.svg';
 
 const NavTap = () => (
   <Radio.Group buttonStyle="solid">
     <Radio.Button
-      className="ant-radio-group-solid, ::selection "
       style={{
         width: 110,
         textAlign: 'center',
       }}
-      value={1}
+      value="1"
     >
+      <Home className="home" />
       الرئيسية
     </Radio.Button>
   </Radio.Group>
 );
-// NavTap.propTypes = {};
-
 export default NavTap;
