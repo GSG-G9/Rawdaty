@@ -1,0 +1,26 @@
+.navbar{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    border-bottom: 5px solid #739c98;
+}
+.navbar-logo-div{
+    width: 42%;
+    padding-right: 100px;
+    padding-top: 14px;
+}
+.navbar-logo-div h1{
+    color: #739c98; 
+    font-weight: bold;
+    font-size: revert;
+}
+.navbar-taps-div{
+    width: 58%;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
