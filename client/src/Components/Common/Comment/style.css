@@ -18,6 +18,7 @@
   font-size: 16px;
   color: #757575;
   margin-right:10px ;
+  margin-bottom: 0;
 }
 
 #Comment-des{
@@ -27,6 +28,10 @@
 
 #deleteBtn{
   margin: 3px 10px;
+}
+
+.Comment{
+  max-width: 500px
 }
 
 .top-container{
