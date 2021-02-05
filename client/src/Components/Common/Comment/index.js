@@ -38,7 +38,7 @@ const Comment = ({
               size="small"
               onClick={onAdminClick}
             >
-              حدف
+              حذف
             </MainButton>
           )}
         </Row>
