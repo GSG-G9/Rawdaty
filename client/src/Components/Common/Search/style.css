@@ -7,7 +7,6 @@
   border: var(--input-border);
   display: flex;
   padding: 8px 15px ;
-
   border-radius:var(--border-radius);
   max-height: 52px;
 }
@@ -61,7 +60,6 @@
   border: var(--input-border);
   display: flex;
   padding: 8px 15px ;
-
   border-radius:var(--border-radius);
   max-height: 52px;
 }
@@ -104,4 +102,14 @@
 
 .search-input input{
   font-size: 17px;
+}
+
+.search-container .ant-btn{    
+  width: 95px;
+  border-radius:var(--border-radius);
+}
+
+.search-container .ant-btn span{   
+  font-weight: bold;
+  font-size: 25px;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from 'antd';
 
@@ -11,20 +11,50 @@ import './style.css';
 
 const { Title } = Typography;
 
-const Search = ({ options, onClick }) => {
+const Search = ({ options, onSearch }) => {
+  const [selectValue, setSelectValue] = useState({});
+  const [sliderValue, setSliderValue] = useState([]);
+  const [inputValue, setInputValue] = useState('');
   console.log(options);
+
+  const onClick = () => {
+    onSearch(selectValue, sliderValue, inputValue);
+  };
+
+  const onDorpListSelect = (val) => {
+    setSelectValue(val);
+  };
+
+  const onSliderChange = (val) => {
+    setSliderValue(val);
+  };
+
+  const onMainInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
   return (
     <div className="search-container">
       <div className="search-options">
-        <DorpList options={options} isSearch />
+        <DorpList options={options} isSearch onSelect={onDorpListSelect} />
         <img className="price-icon" src={price} alt="price" />
         <Title className="price-text" level={5}>
           السعر
         </Title>
-        <MainInput type="rangeSlider" width="200px" />
+        <MainInput
+          type="rangeSlider"
+          width="200px"
+          onSliderChange={onSliderChange}
+        />
       </div>
-      <MainInput type="search" height="52px" placeholder="أدخل إسم الروضة" />
+      <MainInput
+        type="search"
+        height="52px"
+        placeholder="أدخل إسم الروضة"
+        onChange={onMainInputChange}
+      />
       <MainButton
+        className="Search-btn"
         onClick={onClick}
         height="52px"
         border="1.6px solid var(--main-gray)"
@@ -37,6 +67,7 @@ const Search = ({ options, onClick }) => {
 
 Search.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onClick: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
 };
+
 export default Search;
