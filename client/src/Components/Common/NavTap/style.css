@@ -4,7 +4,6 @@
   background: #739c98 !important ;
   border-color: #739c98 !important ;
   background-color: #739c98 !important;
-  display: flex;
 }
 .ant-radio-button-wrapper {
   color: #739c98 !important;
@@ -17,8 +16,43 @@
 }
 
 .ant-radio-group-solid
-  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) .home {
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)
+  .home {
   fill: #fff;
   float: right;
   margin-left: 5px;
+}
+
+.ant-radio-group-solid .about {
+  fill: #739c98;
+  float: right;
+  margin-left: 5px;
+  padding-top: 5px;
+  transform: rotate(-90deg);
+}
+
+.ant-radio-group-solid
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)
+  .about {
+  fill: #fff;
+  float: right;
+  margin-left: 5px;
+  padding-top: 5px;
+  transform: rotate(-90deg);
+}
+
+.ant-radio-group-solid
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)
+  .search {
+  fill: #fff;
+  float: right;
+  margin-left: 5px;
+  padding-top: 5px;
+}
+
+.ant-radio-group-solid .search {
+  fill: #739c98;
+  float: right;
+  margin-left: 5px;
+  padding-top: 5px;
 }
