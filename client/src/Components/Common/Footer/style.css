@@ -1,28 +1,25 @@
-.footer{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.footer  *{
   background-color: var(--main-color) ;
-  height: 5vh;
-  font-weight: bold;
-  color: white;
 }
 
-.icon  * {
-  color:white !important;
-  font-size: 2em;
-  margin-top:7px;
+.icon{
   margin-left: 10px;
-}
+} 
 
-.icon :hover{
+.icon:hover{
   opacity:0.8;
 }
 
 .icons{
-  margin-right: -250px;
+  display: flex;
+  align-items: center;
+  padding:10px 350px  10px 0;
 }
 
 .copy-write{
-  margin-left: -250px;
+  font-weight: bold;
+  color: white;
+  font-size: 1.2em;
+  margin-right: 55%;
+  letter-spacing: 0.1em; 
 }
