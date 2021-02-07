@@ -13,7 +13,7 @@ import './style.css';
 
 const { Text } = Typography;
 
-function Navbar({ userName, isLogged, image }) {
+const Navbar = ({ userName, isLogged, image }) => {
   const menu = (
     <Menu id="drop-down">
       <Text className="user-name">{userName}</Text>
@@ -69,7 +69,7 @@ function Navbar({ userName, isLogged, image }) {
       </div>
     </div>
   );
-}
+};
 
 Navbar.defaultProps = {
   isLogged: false,
