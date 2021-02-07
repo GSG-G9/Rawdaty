@@ -5,17 +5,17 @@
   background-color: #739c98 !important;
   display: block;
 }
-.ant-menu.ant-menu-rtl{
+.ant-menu.ant-menu-rtl {
   font-weight: bold !important;
 }
-.ant-menu-horizontal > .ant-menu-item a{
+.ant-menu-horizontal > .ant-menu-item a {
   color: #739c98 !important;
 }
-.ant-menu-horizontal > .ant-menu-item-selected a{
+.ant-menu-horizontal > .ant-menu-item-selected a {
   color: #fff !important;
-  font-weight: bold!important;
+  font-weight: bold !important;
 }
-.ant-menu.ant-menu .ant-menu-item-selected:hover{
+.ant-menu.ant-menu .ant-menu-item-selected:hover {
   border-bottom: none;
 }
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item {
@@ -24,7 +24,8 @@
   margin-bottom: 0;
   padding: 0 20px;
 }
-.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu{
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu {
   margin-bottom: 0 !important;
   padding: 0 20px !important;
   margin: 0 !important;
@@ -45,14 +46,11 @@
   float: right;
 }
 
-
 .ant-menu.ant-menu .ant-menu-item-selected .icon {
   fill: #fff;
   padding-top: 3px;
   float: right;
 }
-
-
 
 .ant-menu.ant-menu .ant-menu-item-selected {
   background-color: #739c98 !important;
