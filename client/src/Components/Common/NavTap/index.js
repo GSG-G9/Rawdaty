@@ -1,27 +1,22 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import './style.css';
-import { Radio } from 'antd';
+import { Menu } from 'antd';
 import { ReactComponent as Home } from '../../../assets/icons/home.svg';
 import { ReactComponent as About } from '../../../assets/icons/about.svg';
 import { ReactComponent as Search } from '../../../assets/icons/search.svg';
 
 const NavTap = () => (
-  <Radio.Group buttonStyle="solid">
-    <Radio.Button value="1">
-      <Home className="home" />
+  <Menu mode="horizontal" defaultSelectedKeys={['1']}>
+    <Menu.Item key="1" icon={<Home className="icon" />}>
       الرئيسية
-    </Radio.Button>
-    <Radio.Button value="2">
-      <About className="about" />
+    </Menu.Item>
+    <Menu.Item key="2" icon={<About className="icon" />}>
       حول
-    </Radio.Button>
-    <Radio.Button value="3">
-      <Search className="search" />
+    </Menu.Item>
+    <Menu.Item key="3" icon={<Search className="icon" />}>
       البحث
-    </Radio.Button>
-  </Radio.Group>
+    </Menu.Item>
+  </Menu>
 );
-// NavTap.propTypes = { text: PropTypes.string.isRequired };
 
 export default NavTap;
