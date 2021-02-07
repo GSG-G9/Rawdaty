@@ -11,11 +11,10 @@ import './style.css';
 
 const { Title } = Typography;
 
-const Search = ({ options, onSearch }) => {
+const Search = ({ dorpListOptions, onSearch, isRed, sliderMin, sliderMax }) => {
   const [selectValue, setSelectValue] = useState({});
   const [sliderValue, setSliderValue] = useState([]);
   const [inputValue, setInputValue] = useState('');
-  console.log(options);
 
   const onClick = () => {
     onSearch(selectValue, sliderValue, inputValue);
@@ -36,7 +35,11 @@ const Search = ({ options, onSearch }) => {
   return (
     <div className="search-container">
       <div className="search-options">
-        <DorpList options={options} isSearch onSelect={onDorpListSelect} />
+        <DorpList
+          options={dorpListOptions}
+          isSearch
+          onSelect={onDorpListSelect}
+        />
         <img className="price-icon" src={price} alt="price" />
         <Title className="price-text" level={5}>
           السعر
@@ -45,6 +48,8 @@ const Search = ({ options, onSearch }) => {
           type="rangeSlider"
           width="200px"
           onSliderChange={onSliderChange}
+          min={sliderMin}
+          max={sliderMax}
         />
       </div>
       <MainInput
@@ -54,10 +59,11 @@ const Search = ({ options, onSearch }) => {
         onChange={onMainInputChange}
       />
       <MainButton
-        className="Search-btn"
+        className="Search-btn red-Search-btn"
         onClick={onClick}
         height="52px"
-        border="1.6px solid var(--main-gray)"
+        border="1.6px solid #69938F"
+        backgroundColor={isRed ? 'var(--main-red)' : 'var(--main-color)'}
       >
         بحث
       </MainButton>
@@ -65,9 +71,18 @@ const Search = ({ options, onSearch }) => {
   );
 };
 
+Search.defaultProps = {
+  isRed: false,
+  sliderMin: 500,
+  sliderMax: 2000,
+};
+
 Search.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.object).isRequired,
+  dorpListOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
   onSearch: PropTypes.func.isRequired,
+  isRed: PropTypes.bool,
+  sliderMin: PropTypes.number,
+  sliderMax: PropTypes.number,
 };
 
 export default Search;

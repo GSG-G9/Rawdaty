@@ -6,19 +6,20 @@
   box-shadow: var(--input-shadow);
   border: var(--input-border);
   display: flex;
-  padding: 8px 15px ;
+  padding: 8px 15px;
   border-radius:var(--border-radius);
   max-height: 52px;
 }
 
 .search-options,
 .search-input{
-  margin-left:20px ;
+  margin-left:20px;
 }
 
 .search-options .drop-list{
   border-left: solid 1px #C4C4C4;
   margin-left:20px;
+  min-width: 126px;
 }
 
 .search-options .drop-list img{
@@ -59,14 +60,14 @@
   box-shadow: var(--input-shadow);
   border: var(--input-border);
   display: flex;
-  padding: 8px 15px ;
+  padding: 8px 15px;
   border-radius:var(--border-radius);
   max-height: 52px;
 }
 
 .search-options,
 .search-input{
-  margin-left:20px ;
+  margin-left:20px;
 }
 
 .search-options .drop-list{
