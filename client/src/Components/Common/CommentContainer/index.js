@@ -4,17 +4,14 @@ import PropTypes from 'prop-types';
 import Comment from '../Comment';
 import MainButton from '../MainButton';
 
-const commentsPerPage = 5;
-let arrayForHoldingComments = [];
-
 const CommentContainer = ({ data }) => {
   const [commentsToShow, setCommentsToShow] = useState([]);
   const [next, setNext] = useState(5);
+  const commentsPerPage = 5;
 
   const loopWithSlice = (start, end) => {
     const slicedComments = data.slice(start, end);
-    arrayForHoldingComments = [...arrayForHoldingComments, ...slicedComments];
-    setCommentsToShow(arrayForHoldingComments);
+    setCommentsToShow([...commentsToShow, ...slicedComments]);
   };
 
   const handleShowMoreComments = () => {
@@ -43,18 +40,19 @@ const CommentContainer = ({ data }) => {
           </List.Item>
         )}
       />
-      {commentsToShow.length !== data.length ? (
+      {commentsToShow.length < data.length && (
         <MainButton onClick={handleShowMoreComments}>
-          عرض المزيد من التعليقات
-        </MainButton>
-      ) : (
-        <MainButton backgroundColor="#ABC4C1">
           عرض المزيد من التعليقات
         </MainButton>
       )}
     </div>
   );
 };
+
+CommentContainer.defaultProps = {
+  data: [],
+};
+
 CommentContainer.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
@@ -64,6 +62,7 @@ CommentContainer.propTypes = {
       date: PropTypes.string,
       rateValue: PropTypes.number,
     })
-  ).isRequired,
+  ),
 };
+
 export default CommentContainer;
