@@ -13,7 +13,7 @@ import './style.css';
 
 const { Text } = Typography;
 
-const Navbar = ({ userName, isLogged, image }) => {
+const NavBar = ({ userName, isLogged, image }) => {
   const menu = (
     <Menu id="drop-down">
       <Text className="user-name">{userName}</Text>
@@ -71,15 +71,15 @@ const Navbar = ({ userName, isLogged, image }) => {
   );
 };
 
-Navbar.defaultProps = {
+NavBar.defaultProps = {
   isLogged: false,
   image: ' ',
 };
 
-Navbar.propTypes = {
+NavBar.propTypes = {
   userName: PropTypes.string.isRequired,
   isLogged: PropTypes.bool,
   image: PropTypes.string,
 };
 
-export default Navbar;
+export default NavBar;
