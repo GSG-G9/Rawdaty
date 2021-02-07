@@ -1,5 +1,12 @@
 .search-container{
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.input-container{
+  display: flex;
+  flex-direction: row;
 }
 
 .search-options{
@@ -113,4 +120,10 @@
 .search-container .ant-btn span{   
   font-weight: bold;
   font-size: 25px;
+}
+
+@media screen and (max-width: 1042px) {
+  .input-container{ 
+    margin-top: 20px;
+  }
 }

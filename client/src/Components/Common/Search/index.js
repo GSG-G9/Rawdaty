@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from 'antd';
+import { Typography, Image } from 'antd';
 
 import DorpList from '../DropList';
 import MainInput from '../MainInput';
@@ -40,7 +40,7 @@ const Search = ({ dorpListOptions, onSearch, isRed, sliderMin, sliderMax }) => {
           isSearch
           onSelect={onDorpListSelect}
         />
-        <img className="price-icon" src={price} alt="price" />
+        <Image className="price-icon" src={price} alt="price" preview={false} />
         <Title className="price-text" level={5}>
           السعر
         </Title>
@@ -52,21 +52,23 @@ const Search = ({ dorpListOptions, onSearch, isRed, sliderMin, sliderMax }) => {
           max={sliderMax}
         />
       </div>
-      <MainInput
-        type="search"
-        height="52px"
-        placeholder="أدخل إسم الروضة"
-        onChange={onMainInputChange}
-      />
-      <MainButton
-        className="Search-btn red-Search-btn"
-        onClick={onClick}
-        height="52px"
-        border="1.6px solid #69938F"
-        backgroundColor={isRed ? 'var(--main-red)' : 'var(--main-color)'}
-      >
-        بحث
-      </MainButton>
+      <div className="input-container">
+        <MainInput
+          type="search"
+          height="52px"
+          placeholder="أدخل إسم الروضة"
+          onChange={onMainInputChange}
+        />
+        <MainButton
+          className="Search-btn red-Search-btn"
+          onClick={onClick}
+          height="52px"
+          border="1.6px solid #69938F"
+          backgroundColor={isRed ? 'var(--main-red)' : 'var(--main-color)'}
+        >
+          بحث
+        </MainButton>
+      </div>
     </div>
   );
 };
