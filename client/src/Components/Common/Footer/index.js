@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layout, Typography, Image } from 'antd';
 
-import facebook from './assets/icons/facebook.svg';
-import instagram from './assets/icons/instagram.svg';
-import twitter from './assets/icons/twitter.svg';
+import facebook from '../../../assets/icons/facebook.svg';
+import instagram from '../../../assets/icons/instagram.svg';
+import twitter from '../../../assets/icons/twitter.svg';
 
 import './style.css';
 
