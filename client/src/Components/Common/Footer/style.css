@@ -1,26 +1,32 @@
 #footer {
-  background-color: var(--main-color) ;
-  padding:0;
-}
-
-.icon{
-  padding-right: 10px;
-} 
-
-.icon:hover{
-  opacity:0.8;
-}
-
-.footer-contents{
+  background-color: var(--main-color);
+  width: 100%;
   display: flex;
   align-items: center;
-  padding:6px 350px  0px 0;
+  justify-content: space-between;
+  padding: 10px 160px 0 160px;
+  position: fixed;
+  bottom: 0;
 }
-
-.copy-write{
+@media only screen and (max-width: 720px) {
+  #footer {
+    flex-direction: column;
+    padding: 10px 10px 0 10px;
+  }
+}
+.icon {
+  padding-right: 10px;
+}
+.icon:hover {
+  opacity: 0.8;
+}
+.icons--container {
+  display: flex;
+  align-items: center;
+}
+.copy-write {
   font-weight: bold;
   color: white;
-  margin-right: 55%;
-  letter-spacing: 0.1em; 
-  margin-top: 5px;
+  letter-spacing: 0.1em;
+  margin-bottom: 0;
 }

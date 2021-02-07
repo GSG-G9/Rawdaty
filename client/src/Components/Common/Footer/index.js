@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Typography, Image } from 'antd';
+import { Typography, Image } from 'antd';
 
 import facebook from '../../../assets/icons/facebook.svg';
 import instagram from '../../../assets/icons/instagram.svg';
@@ -9,10 +9,9 @@ import twitter from '../../../assets/icons/twitter.svg';
 import './style.css';
 
 const { Title } = Typography;
-const { Footer } = Layout;
 const FooterComponent = () => (
-  <Footer id="footer">
-    <div className="footer-contents">
+  <div id="footer">
+    <div className="icons--container">
       <Link to={{ pathname: 'https://www.instagram.com/' }} target="_blank">
         <Image
           preview={false}
@@ -27,10 +26,10 @@ const FooterComponent = () => (
       <Link to={{ pathname: 'https://www.facebook.com/' }} target="_blank">
         <Image preview={false} src={facebook} alt="facebook" className="icon" />
       </Link>
-      <Title level={5} className="copy-write" style={{ color: '#FFFFFF' }}>
-        جميع الحقوق محفوظة2021Ⓒ
-      </Title>
     </div>
-  </Footer>
+    <Title level={5} className="copy-write" style={{ color: '#FFFFFF' }}>
+      جميع الحقوق محفوظة &copy; 2021
+    </Title>
+  </div>
 );
 export default FooterComponent;
