@@ -1,0 +1,83 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Menu, Dropdown, Image, Typography } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+import PropTypes from 'prop-types';
+
+import MainButton from '../../Common/MainButton';
+import UserImage from '../../Common/UserImage';
+import home from '../../../assets/icons/home.svg';
+import logout from '../../../assets/icons/logout.svg';
+import './style.css';
+
+const { Text } = Typography;
+
+function Navbar({ userName, isLogged, image }) {
+  const menu = (
+    <Menu id="drop-down">
+      <Text className="user-name">{userName}</Text>
+      <Menu.Divider />
+
+      <Menu.Item key="1">
+        <Link to="!#">
+          <Image preview={false} src={home} alt="home" />
+          <span className="drop-down-list-span">صفحة الروضة</span>
+        </Link>
+      </Menu.Item>
+      <Menu.Item key="2">
+        <Link to="!#">
+          <Image preview={false} src={logout} alt="logout" />
+          <span className="drop-down-list-span">تسجيل الخروج</span>
+        </Link>
+      </Menu.Item>
+    </Menu>
+  );
+
+  return (
+    <div className="navbar">
+      <div className="navbar-logo-div">
+        <h1>روضــتـــي</h1>
+      </div>
+      <div className="navbar-taps-div">
+        <div>ComponComponentComponentComponentComponentComponent</div>
+        <MainButton
+          border="3px solid var(--main-color)"
+          backgroundColor="var(--main-white)"
+          color="#739c98"
+          borderRadius="var(--border-radius)"
+        >
+          إضافة روضة
+        </MainButton>
+        {isLogged && (
+          <Dropdown
+            id="Drop-down--container"
+            overlay={menu}
+            trigger={['click']}
+          >
+            <div className="drop-down-div">
+              <UserImage
+                userName={userName}
+                image={image}
+                background="var(--main-gray)"
+              />
+              <DownOutlined />
+            </div>
+          </Dropdown>
+        )}
+      </div>
+    </div>
+  );
+}
+
+Navbar.defaultProps = {
+  isLogged: false,
+  image: ' ',
+};
+
+Navbar.propTypes = {
+  userName: PropTypes.string.isRequired,
+  isLogged: PropTypes.bool,
+  image: PropTypes.string,
+};
+
+export default Navbar;
