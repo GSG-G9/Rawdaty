@@ -6,6 +6,7 @@ import MainButton from '../MainButton';
 
 const commentsPerPage = 5;
 let arrayForHoldingComments = [];
+
 const CommentContainer = ({ data }) => {
   const [commentsToShow, setCommentsToShow] = useState([]);
   const [next, setNext] = useState(5);
@@ -16,14 +17,15 @@ const CommentContainer = ({ data }) => {
     setCommentsToShow(arrayForHoldingComments);
   };
 
-  useEffect(() => {
-    loopWithSlice(0, commentsPerPage);
-  }, []);
-
   const handleShowMoreComments = () => {
     loopWithSlice(next, next + commentsPerPage);
     setNext(next + commentsPerPage);
   };
+
+  useEffect(() => {
+    loopWithSlice(0, commentsPerPage);
+  }, []);
+
   return (
     <div>
       <List
@@ -46,7 +48,9 @@ const CommentContainer = ({ data }) => {
           عرض المزيد من التعليقات
         </MainButton>
       ) : (
-        <MainButton backgroundColor="#ABC4C1">عرض من التعليقات</MainButton>
+        <MainButton backgroundColor="#ABC4C1">
+          عرض المزيد من التعليقات
+        </MainButton>
       )}
     </div>
   );
