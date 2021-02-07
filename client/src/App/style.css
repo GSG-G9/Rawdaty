@@ -4,7 +4,11 @@
   font-family: 'Tajawal';
   font-size: 15px;
 }
-
+.footer-dx{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
 :root {
   --main-color: #739c98;
   --main-white: #ffffff;

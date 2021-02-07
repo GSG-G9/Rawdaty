@@ -1,25 +1,26 @@
-.footer  *{
+#footer {
   background-color: var(--main-color) ;
+  padding:0;
 }
 
 .icon{
-  margin-left: 10px;
+  padding-right: 10px;
 } 
 
 .icon:hover{
   opacity:0.8;
 }
 
-.icons{
+.footer-contents{
   display: flex;
   align-items: center;
-  padding:10px 350px  10px 0;
+  padding:6px 350px  0px 0;
 }
 
 .copy-write{
   font-weight: bold;
   color: white;
-  font-size: 1.2em;
   margin-right: 55%;
   letter-spacing: 0.1em; 
+  margin-top: 5px;
 }
