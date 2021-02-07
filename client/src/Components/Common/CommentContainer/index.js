@@ -1,26 +1,35 @@
-// import React from 'react';
-// import { List } from 'antd';
-// // import PropTypes from 'prop-types';
-// // import Comment from '../Comment';
+import React from 'react';
+import { List } from 'antd';
+import PropTypes from 'prop-types';
+import Comment from '../Comment';
 
-// const CommentContainer = ({ data }) => (
-// //   <List
-// //     itemLayout="horizontal"
-// //     dataSource={data}
-// //     renderItem={(item) => (
-// //       //   <List.Item>
-// //       //     <List.Item.Meta
-// //       //       title={<a href="https://ant.design">{item.title}</a>}
-// //       //       description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-// //       //     />
-// //       //   </List.Item>
-// //       <Comment
-// //         isAdmin
-// //         userName="حنين سامي"
-// //         commentText="هذه روضة رائعة اتمنى لها دوام التفوق والنجاح"
-// // //       />
-// //     )}
-// //   />
-// );
+const CommentContainer = ({ data }) => (
+  <List
+    itemLayout="horizontal"
+    dataSource={data}
+    renderItem={(item) => (
+      <List.Item>
+        <Comment
+          isAdmin={item.isAdmin}
+          userName={item.userName}
+          commentText={item.commentText}
+          date={item.date}
+          rateValue={item.rateValue}
+        />
+      </List.Item>
+    )}
+  />
+);
 
-// export default CommentContainer;
+CommentContainer.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      isAdmin: PropTypes.bool,
+      userName: PropTypes.string,
+      commentText: PropTypes.string,
+      date: PropTypes.string,
+      rateValue: PropTypes.number,
+    })
+  ).isRequired,
+};
+export default CommentContainer;
