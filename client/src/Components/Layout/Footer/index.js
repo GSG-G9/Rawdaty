@@ -11,7 +11,7 @@ import './style.css';
 const { Title } = Typography;
 const FooterComponent = () => (
   <div id="footer">
-    <div className="icons--container">
+    <div className="icons-container">
       <Link to={{ pathname: 'https://www.instagram.com/' }} target="_blank">
         <Image
           preview={false}

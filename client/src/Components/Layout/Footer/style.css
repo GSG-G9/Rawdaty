@@ -20,7 +20,7 @@
 .icon:hover {
   opacity: 0.8;
 }
-.icons--container {
+.icons-container {
   display: flex;
   align-items: center;
 }
