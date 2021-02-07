@@ -32,11 +32,69 @@ const data = [
     date: '1 - مايو - 2021',
     rateValue: 3,
   },
+  {
+    isAdmin: true,
+    userName: 'حنين أحمد',
+    commentText: 'هذه روضة رائة اتمنى لها دوام التقدم والنجاح',
+    date: '1 - مايو - 2021',
+    rateValue: 3,
+  },
+  {
+    isAdmin: true,
+    userName: 'حنين أحمد',
+    commentText: 'هذه روضة رائة اتمنى لها دوام التقدم والنجاح',
+    date: '1 - مايو - 2021',
+    rateValue: 2,
+  },
+  {
+    isAdmin: false,
+    userName: 'هدى',
+    commentText: ' وهذه روضة رائة اتمنى لها دوام التقدم والنجاح',
+    date: '1 - مايو - 2021',
+    rateValue: 5,
+  },
+  {
+    isAdmin: true,
+    userName: 'حنين أحمد',
+    commentText: 'هذه روضة رائة اتمنى لها دوام التقدم والنجاح',
+    date: '1 - مايو - 2021',
+    rateValue: 3,
+  },
+  {
+    isAdmin: true,
+    userName: 'حنين أحمد',
+    commentText: 'هذه روضة رائة اتمنى لها دوام التقدم والنجاح',
+    date: '1 - مايو - 2021',
+    rateValue: 3,
+  },
+  {
+    isAdmin: true,
+    userName: 'حنين أحمد',
+    commentText: 'هذه روضة رائة اتمنى لها دوام التقدم والنجاح',
+    date: '1 - مايو - 2021',
+    rateValue: 2,
+  },
+  {
+    isAdmin: false,
+    userName: 'هدى',
+    commentText: ' وهذه روضة رائة اتمنى لها دوام التقدم والنجاح',
+    date: '1 - مايو - 2021',
+    rateValue: 5,
+  },
+  {
+    isAdmin: true,
+    userName: 'اسراء احمد',
+    commentText: 'هذه روضة رائة اتمنى لها دوام التقدم والنجاح',
+    date: '1 - مايو - 2021',
+    rateValue: 3,
+  },
 ];
 const App = () => (
   <Router>
     <div className="App">روضتي هنا</div>
-    <CommentContainer data={data} />
+    <div className="comment-container">
+      <CommentContainer data={data} />
+    </div>
   </Router>
 );
 

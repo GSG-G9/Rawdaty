@@ -4,7 +4,9 @@
   font-family: 'Tajawal';
   font-size: 15px;
 }
-
+.comment-container{
+  width:fit-content;
+}
 :root {
   --main-color: #739c98;
   --main-white: #ffffff;
