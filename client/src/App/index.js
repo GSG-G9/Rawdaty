@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import FooterComponent from '../Components/Layout/Footer';
+import Footer from '../Components/Layout/Footer';
 
 import './style.css';
 
 const App = () => (
   <Router>
-    <FooterComponent />
+    <Footer />
   </Router>
 );
 

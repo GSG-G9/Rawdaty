@@ -9,7 +9,7 @@ import twitter from '../../../assets/icons/twitter.svg';
 import './style.css';
 
 const { Title } = Typography;
-const FooterComponent = () => (
+const Footer = () => (
   <div id="footer">
     <div className="icons-container">
       <Link to={{ pathname: 'https://www.instagram.com/' }} target="_blank">
@@ -32,4 +32,4 @@ const FooterComponent = () => (
     </Title>
   </div>
 );
-export default FooterComponent;
+export default Footer;
