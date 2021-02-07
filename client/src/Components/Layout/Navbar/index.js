@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 
 import MainButton from '../../Common/MainButton';
 import UserImage from '../../Common/UserImage';
-import home from '../../../assets/icons/home.svg';
+import NavTap from '../../Common/NavTap';
+import homedrop from '../../../assets/icons/homedrop.svg';
 import logout from '../../../assets/icons/logout.svg';
 import './style.css';
 
@@ -20,7 +21,7 @@ function Navbar({ userName, isLogged, image }) {
 
       <Menu.Item key="1">
         <Link to="!#">
-          <Image preview={false} src={home} alt="home" />
+          <Image preview={false} src={homedrop} alt="home" />
           <span className="drop-down-list-span">صفحة الروضة</span>
         </Link>
       </Menu.Item>
@@ -39,7 +40,7 @@ function Navbar({ userName, isLogged, image }) {
         <h1>روضــتـــي</h1>
       </div>
       <div className="navbar-taps-div">
-        <div>ComponComponentComponentComponentComponentComponent</div>
+        <NavTap />
         <MainButton
           border="3px solid var(--main-color)"
           backgroundColor="var(--main-white)"
