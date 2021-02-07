@@ -80,7 +80,13 @@ Search.defaultProps = {
 };
 
 Search.propTypes = {
-  dorpListOptions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  dorpListOptions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      value: PropTypes.string,
+      disabled: PropTypes.bool,
+    })
+  ).isRequired,
   onSearch: PropTypes.func.isRequired,
   isRed: PropTypes.bool,
   sliderMin: PropTypes.number,
