@@ -46,6 +46,7 @@ function Navbar({ userName, isLogged, image }) {
           backgroundColor="var(--main-white)"
           color="#739c98"
           borderRadius="var(--border-radius)"
+          className="add-kinderg-btn"
         >
           إضافة روضة
         </MainButton>

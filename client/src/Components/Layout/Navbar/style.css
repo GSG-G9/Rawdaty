@@ -14,9 +14,11 @@
 .navbar-logo-div{
   width: 42%;
   /* padding-right: 100px; */
-  padding-top: 14px;
+  /* padding-top: 14px; */
 }
-
+.add-kinderg-btn{
+  margin-top: 10px !important;
+}
 .navbar-logo-div h1{
   color: #739c98; 
   font-weight: bold;
@@ -25,7 +27,6 @@
 
 .navbar-taps-div{
   width: 58%;
-  padding: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -35,11 +36,10 @@
 #drop-down{
   padding: 5px;
   text-align: center;
-
 }
 .drop-down-div{
   min-width: 60px;
-  
+  margin-top: 5px !important;
 }
 .user-name{
   font-weight: bold;
