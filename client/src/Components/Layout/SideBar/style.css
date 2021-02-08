@@ -4,14 +4,14 @@
   height: 100vh;
   display: grid;
   grid-template-areas:
-    "title"
-    "menu"
-    "logOut";
+    'title'
+    'menu'
+    'logOut';
   grid-template-columns: 1fr;
   grid-template-rows: 111px auto 50px;
 }
 
-.side-Bar .ant-menu{
+.side-Bar .ant-menu {
   background-color: #363740;
 }
 
@@ -19,46 +19,47 @@
   padding-top: 50px;
   text-align: center;
   grid-area: title;
-  color:#DDE2FF;
+  color: #dde2ff;
 }
-    
-#menu{
+
+#menu {
   grid-area: menu;
-  color:#DDE2FF;
+  color: #dde2ff;
   border: none;
   font-size: 19px;
 }
 
-#menu .ant-menu-item-selected{
-  background-color: #3F4049;
+#menu .ant-menu-item-selected {
+  background-color: #3f4049;
 }
 
-#menu .ant-menu-item{
-  margin:0 ;
+#menu .ant-menu-item {
+  margin: 0;
   height: 55px;
   line-height: 55px;
 }
 
-#menu .ant-menu-item:active, .ant-menu-submenu-title:active{
-  background-color: #3F4049;
+#menu .ant-menu-item:active,
+.ant-menu-submenu-title:active {
+  background-color: #3f4049;
 }
 
-#menu svg{
+#menu svg {
   font-size: 19px;
 }
 
-#menu span{
+#menu span {
   font-size: 19px;
 }
 
-#log-out{
+#log-out {
   grid-area: logOut;
   cursor: pointer;
-  color:#DDE2FF;
+  color: #dde2ff;
   text-align: center;
   font-size: 20px;
 }
 
-#log-out:active{
-  color:#1890ff;
+#log-out:active {
+  color: #1890ff;
 }
