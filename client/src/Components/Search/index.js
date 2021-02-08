@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Typography, Image } from 'antd';
 
-import DorpList from '../DropList';
-import MainInput from '../MainInput';
-import MainButton from '../MainButton';
-import price from '../../../assets/icons/price.svg';
+import DorpList from '../Common/DropList';
+import MainInput from '../Common/MainInput';
+import MainButton from '../Common/MainButton';
+import price from '../../assets/icons/price.svg';
 
 import './style.css';
 
