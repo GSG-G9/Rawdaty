@@ -1,0 +1,82 @@
+.search-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+@media screen and (max-width: 1062px) {
+  .search-container {
+    height: 124px;
+    align-content: space-between;
+  }
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.search-options {
+  box-shadow: var(--input-shadow);
+  border: var(--input-border);
+  display: flex;
+  padding: 8px 15px;
+  border-radius: var(--border-radius);
+  max-height: 52px;
+}
+
+.search-options,
+.search-input {
+  margin-left: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .search-options {
+    margin: 0;
+  }
+}
+
+.search-options .drop-list {
+  border-left: solid 1px #c4c4c4;
+  margin-left: 20px;
+  min-width: 126px;
+}
+
+.search-options .drop-list img {
+  width: 15px;
+}
+
+.search-options .price-icon {
+  width: 26px;
+  margin-left: 10px;
+}
+
+.search-options .price-text {
+  line-height: 30px;
+  margin: 0 0 0 10px;
+}
+
+.search-options .slider-label {
+  line-height: 31px;
+}
+
+.search-input svg {
+  font-size: 21px;
+}
+
+.search-input input {
+  font-size: 17px;
+}
+
+.search-container .ant-btn {
+  width: 95px;
+  border-radius: var(--border-radius);
+}
+
+.search-container .ant-btn span {
+  font-weight: bold;
+  font-size: 25px;
+}
