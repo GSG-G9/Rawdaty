@@ -28,7 +28,8 @@
       "error",
       {
         "trailingComma": "es5",
-        "singleQuote": true
+        "singleQuote": true,
+        "endOfLine":"auto"
       }
     ]
   }
