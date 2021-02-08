@@ -42,49 +42,47 @@ const NavBar = ({ userName, isLogged, image, isAdmin }) => {
           روضــتـــي
         </Title>
       </div>
-      <div className="navbar-taps-div">
-        {isAdmin ? (
-          <div className="admin-div-name">
-            <Title level={5} className="admin-title-name">
-              {userName}
-            </Title>
-            <UserImage
-              userName={userName}
-              image={image}
-              background="var(--main-gray)"
-            />
-          </div>
-        ) : (
-          <>
-            <NavTap />
-            <MainButton
-              border="3px solid var(--main-color)"
-              backgroundColor="var(--main-white)"
-              color="#739c98"
-              borderRadius="var(--border-radius)"
-              className="add-kinderg-btn"
+      {isAdmin ? (
+        <div className="admin-div-name">
+          <Title level={5} className="admin-title-name">
+            {userName}
+          </Title>
+          <UserImage
+            userName={userName}
+            image={image}
+            background="var(--main-gray)"
+          />
+        </div>
+      ) : (
+        <div className="navbar-taps-div">
+          <NavTap />
+          <MainButton
+            border="3px solid var(--main-color)"
+            backgroundColor="var(--main-white)"
+            color="#739c98"
+            borderRadius="var(--border-radius)"
+            className="add-kinderg-btn"
+          >
+            إضافة روضة
+          </MainButton>
+          {isLogged && (
+            <Dropdown
+              id="Drop-down--container"
+              overlay={menu}
+              trigger={['click']}
             >
-              إضافة روضة
-            </MainButton>
-            {isLogged && (
-              <Dropdown
-                id="Drop-down--container"
-                overlay={menu}
-                trigger={['click']}
-              >
-                <div className="drop-down-div">
-                  <UserImage
-                    userName={userName}
-                    image={image}
-                    background="var(--main-gray)"
-                  />
-                  <DownOutlined />
-                </div>
-              </Dropdown>
-            )}
-          </>
-        )}
-      </div>
+              <div className="drop-down-div">
+                <UserImage
+                  userName={userName}
+                  image={image}
+                  background="var(--main-gray)"
+                />
+                <DownOutlined />
+              </div>
+            </Dropdown>
+          )}
+        </div>
+      )}
     </div>
   );
 };
