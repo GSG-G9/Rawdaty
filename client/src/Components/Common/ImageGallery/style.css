@@ -1,0 +1,7 @@
+.ant-upload-picture-card-wrapper {
+    display: flex !important
+}
+
+.ant-upload-list-rtl {
+    direction: ltr !important;
+}

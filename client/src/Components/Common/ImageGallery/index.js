@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Upload } from 'antd';
 import ImgCrop from 'antd-img-crop';
+import './style.css';
 
 const ImageGallery = () => {
   const [fileList, setFileList] = useState([
@@ -41,7 +42,7 @@ const ImageGallery = () => {
         onChange={onChange}
         onPreview={onPreview}
       >
-        {fileList.length < 5 && '+ Upload'}
+        {fileList.length < 8 && '+ Upload'}
       </Upload>
     </ImgCrop>
   );
