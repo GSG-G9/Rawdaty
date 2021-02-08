@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { List } from 'antd';
 import PropTypes from 'prop-types';
-import Comment from '../Comment';
-import MainButton from '../MainButton';
+import Comment from '../Common/Comment';
+import MainButton from '../Common/MainButton';
 
 const CommentContainer = ({ data, isAdmin }) => {
   const [commentsToShow, setCommentsToShow] = useState([]);
-  const [next, setNext] = useState(5);
-  const commentsPerPage = 5;
+  const [next, setNext] = useState(3);
+  const commentsPerPage = 3;
 
   const loopWithSlice = (start, end) => {
     const slicedComments = data.slice(start, end);
@@ -26,6 +26,7 @@ const CommentContainer = ({ data, isAdmin }) => {
   return (
     <div>
       <List
+        split={false}
         itemLayout="horizontal"
         dataSource={commentsToShow}
         renderItem={(item) => (
