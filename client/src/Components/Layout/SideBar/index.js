@@ -13,7 +13,7 @@ import './style.css';
 const { Title } = Typography;
 const { Item } = Menu;
 
-const SideBar = ({ onClick }) => {
+const SideBar = ({ onClick, onLogout }) => {
   const history = useHistory();
 
   const handleItemClick = (to) => {
@@ -21,8 +21,8 @@ const SideBar = ({ onClick }) => {
   };
 
   const handleLogout = () => {
-    // TODO: handle logout logic
-
+    // handle logout logic
+    onLogout();
     history.push('/');
   };
 
@@ -68,8 +68,13 @@ const SideBar = ({ onClick }) => {
   );
 };
 
+SideBar.defaultProps = {
+  onClick: () => {},
+};
+
 SideBar.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default SideBar;
