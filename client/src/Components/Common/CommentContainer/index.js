@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Comment from '../Comment';
 import MainButton from '../MainButton';
 
-const CommentContainer = ({ data }) => {
+const CommentContainer = ({ data, isAdmin }) => {
   const [commentsToShow, setCommentsToShow] = useState([]);
   const [next, setNext] = useState(5);
   const commentsPerPage = 5;
@@ -31,7 +31,7 @@ const CommentContainer = ({ data }) => {
         renderItem={(item) => (
           <List.Item>
             <Comment
-              isAdmin={item.isAdmin}
+              isAdmin={isAdmin}
               userName={item.userName}
               commentText={item.commentText}
               date={item.date}
@@ -63,6 +63,7 @@ CommentContainer.propTypes = {
       rateValue: PropTypes.number,
     })
   ),
+  isAdmin: PropTypes.bool.isRequired,
 };
 
 export default CommentContainer;
