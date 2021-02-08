@@ -56,7 +56,7 @@ const Search = ({ dorpListOptions, onSearch, isRed, sliderMin, sliderMax }) => {
         <MainInput
           type="search"
           height="52px"
-          placeholder="أدخل إسم الروضة"
+          placeholder="أدخل اسم الروضة"
           onChange={onMainInputChange}
         />
         <MainButton
