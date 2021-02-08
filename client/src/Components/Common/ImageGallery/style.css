@@ -1,7 +1,28 @@
 .ant-upload-picture-card-wrapper {
-    display: flex !important
+  display: flex !important;
 }
 
 .ant-upload-list-rtl {
-    direction: ltr !important;
+  direction: ltr !important;
+}
+
+.ant-upload-list-picture-card-container {
+  width: 113px !important;
+  height: 113px !important;
+}
+
+.ant-upload-list-picture .ant-upload-list-item,
+.ant-upload-list-picture-card .ant-upload-list-item {
+  padding: 0px !important;
+  border: 0px solid #d9d9d9 !important;
+}
+
+.ant-upload-list-item-info {
+  border-radius: 5px !important;
+}
+
+.ant-upload.ant-upload-select-picture-card {
+  width: 113px !important;
+  height: 113px !important;
+  border-radius: 5px !important;
 }
