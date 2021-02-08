@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Upload } from 'antd';
+import ImgCrop from 'antd-img-crop';
 
 const ImageGallery = () => {
   const [fileList, setFileList] = useState([
@@ -32,15 +33,17 @@ const ImageGallery = () => {
   };
 
   return (
-    <Upload
-      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-      listType="picture-card"
-      fileList={fileList}
-      onChange={onChange}
-      onPreview={onPreview}
-    >
-      {fileList.length < 5 && '+ Upload'}
-    </Upload>
+    <ImgCrop rotate>
+      <Upload
+        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        listType="picture-card"
+        fileList={fileList}
+        onChange={onChange}
+        onPreview={onPreview}
+      >
+        {fileList.length < 5 && '+ Upload'}
+      </Upload>
+    </ImgCrop>
   );
 };
 
