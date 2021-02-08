@@ -1,0 +1,65 @@
+.side-Bar {
+  background-color: #363740;
+  max-width: 255px;
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    'title'
+    'menu'
+    'logOut';
+  grid-template-columns: 1fr;
+  grid-template-rows: 111px auto 50px;
+}
+
+.side-Bar .ant-menu {
+  background-color: #363740;
+}
+
+#title {
+  padding-top: 50px;
+  text-align: center;
+  grid-area: title;
+  color: #dde2ff;
+}
+
+#menu {
+  grid-area: menu;
+  color: #dde2ff;
+  border: none;
+  font-size: 19px;
+}
+
+#menu .ant-menu-item-selected {
+  background-color: #3f4049;
+}
+
+#menu .ant-menu-item {
+  margin: 0;
+  height: 55px;
+  line-height: 55px;
+}
+
+#menu .ant-menu-item:active,
+.ant-menu-submenu-title:active {
+  background-color: #3f4049;
+}
+
+#menu svg {
+  font-size: 19px;
+}
+
+#menu span {
+  font-size: 19px;
+}
+
+#log-out {
+  grid-area: logOut;
+  cursor: pointer;
+  color: #dde2ff;
+  text-align: center;
+  font-size: 20px;
+}
+
+#log-out:active {
+  color: #1890ff;
+}
