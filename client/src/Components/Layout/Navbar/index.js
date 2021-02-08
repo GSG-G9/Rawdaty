@@ -12,8 +12,9 @@ import logout from '../../../assets/icons/logout.svg';
 import './style.css';
 
 const { Text } = Typography;
+const { Title } = Typography;
 
-const NavBar = ({ userName, isLogged, image }) => {
+const NavBar = ({ userName, isLogged, image, isAdmin }) => {
   const menu = (
     <Menu id="drop-down">
       <Text className="user-name">{userName}</Text>
@@ -37,34 +38,51 @@ const NavBar = ({ userName, isLogged, image }) => {
   return (
     <div className="navbar">
       <div className="navbar-logo-div">
-        <h1>روضــتـــي</h1>
+        <Title level={1} className="navbar-logo-div-title">
+          روضــتـــي
+        </Title>
       </div>
       <div className="navbar-taps-div">
-        <NavTap />
-        <MainButton
-          border="3px solid var(--main-color)"
-          backgroundColor="var(--main-white)"
-          color="#739c98"
-          borderRadius="var(--border-radius)"
-          className="add-kinderg-btn"
-        >
-          إضافة روضة
-        </MainButton>
-        {isLogged && (
-          <Dropdown
-            id="Drop-down--container"
-            overlay={menu}
-            trigger={['click']}
-          >
-            <div className="drop-down-div">
-              <UserImage
-                userName={userName}
-                image={image}
-                background="var(--main-gray)"
-              />
-              <DownOutlined />
-            </div>
-          </Dropdown>
+        {isAdmin ? (
+          <div className="admin-div-name">
+            <Title level={5} className="admin-title-name">
+              {userName}
+            </Title>
+            <UserImage
+              userName={userName}
+              image={image}
+              background="var(--main-gray)"
+            />
+          </div>
+        ) : (
+          <>
+            <NavTap />
+            <MainButton
+              border="3px solid var(--main-color)"
+              backgroundColor="var(--main-white)"
+              color="#739c98"
+              borderRadius="var(--border-radius)"
+              className="add-kinderg-btn"
+            >
+              إضافة روضة
+            </MainButton>
+            {isLogged && (
+              <Dropdown
+                id="Drop-down--container"
+                overlay={menu}
+                trigger={['click']}
+              >
+                <div className="drop-down-div">
+                  <UserImage
+                    userName={userName}
+                    image={image}
+                    background="var(--main-gray)"
+                  />
+                  <DownOutlined />
+                </div>
+              </Dropdown>
+            )}
+          </>
         )}
       </div>
     </div>
@@ -78,6 +96,7 @@ NavBar.defaultProps = {
 
 NavBar.propTypes = {
   userName: PropTypes.string.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
   isLogged: PropTypes.bool,
   image: PropTypes.string,
 };

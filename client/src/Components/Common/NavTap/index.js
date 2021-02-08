@@ -9,17 +9,17 @@ import { ReactComponent as Search } from '../../../assets/icons/search.svg';
 const NavTap = () => (
   <Menu mode="horizontal" defaultSelectedKeys={['1']}>
     <Menu.Item key="1" icon={<Home className="icon" />}>
-      <NavLink exact to="/">
+      <NavLink exact to="/" className="tap">
         الرئيسية
       </NavLink>
     </Menu.Item>
     <Menu.Item key="2" icon={<About className="icon" />}>
-      <NavLink exact to="/about">
+      <NavLink exact to="/about" className="tap">
         حول
       </NavLink>
     </Menu.Item>
     <Menu.Item key="3" icon={<Search className="icon" />}>
-      <NavLink exact to="/search">
+      <NavLink exact to="/search" className="tap">
         البحث
       </NavLink>
     </Menu.Item>
