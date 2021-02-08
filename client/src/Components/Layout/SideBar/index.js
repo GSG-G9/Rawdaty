@@ -21,6 +21,8 @@ const SideBar = ({ onClick, onLogout }) => {
   };
 
   const handleLogout = () => {
+    if (typeof onLogout !== 'function') return;
+
     // handle logout logic
     onLogout();
     history.push('/');
