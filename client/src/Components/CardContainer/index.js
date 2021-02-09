@@ -5,13 +5,12 @@ import { Typography, Empty } from 'antd';
 import Card from '../Common/Card';
 import './style.css';
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
-const CardContainer = ({ title, data, searchText }) => (
+const CardContainer = ({ data, searchText }) => (
   <div>
     <Title level={3} id="container-title">
-      {title}
-      {searchText && <Text className="search-text">{searchText}</Text>}
+      {searchText ? `نتائج البحث عن: ${searchText}` : `أفضل رياض الأطفال`}
     </Title>
     <div className="container-cards">
       <ul>
@@ -30,13 +29,11 @@ const CardContainer = ({ title, data, searchText }) => (
 );
 
 CardContainer.defaultProps = {
-  title: 'أفضل رياض الأطفال',
   searchText: '',
   data: [],
 };
 
 CardContainer.propTypes = {
-  title: PropTypes.string,
   searchText: PropTypes.string,
   data: PropTypes.arrayOf(
     PropTypes.shape({
