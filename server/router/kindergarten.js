@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
-const { getKindergartenById } = require('../controllers');
+const { getSpecificKindergarten } = require('../controllers');
 
-router.get('/kindergarten/:kindergartenId', getKindergartenById);
+router.get('/kindergarten/:kindergartenId', getSpecificKindergarten);
 
 module.exports = router;

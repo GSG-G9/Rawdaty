@@ -1,11 +1,11 @@
 const { clientError, serverError } = require('./errorHandle');
 // const { verifyUser, verifyAdmin } = require('./auth');
-const { getKindergartenById } = require('./kindergarten');
+const { getSpecificKindergarten } = require('./kindergarten');
 
 module.exports = {
   clientError,
   serverError,
   //   verifyUser,
   //   verifyAdmin,
-  getKindergartenById,
+  getSpecificKindergarten,
 };
