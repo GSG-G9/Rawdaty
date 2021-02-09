@@ -13,7 +13,8 @@ create_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 
 CREATE TABLE locations(
 id SERIAL PRIMARY KEY,
-location_name TEXT NOT NULL
+location_sub TEXT NOT NULL,
+location_main TEXT NOT NULL
 );
 
 CREATE TABLE kindergartens(

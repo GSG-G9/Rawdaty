@@ -23,19 +23,29 @@ INSERT INTO users(user_name,email,password)
 VALUES ('وفاء ابراهيم','wafaa@wafaa.com','wafa');
 
 /* ADD LOCATIONS */
-INSERT INTO locations(location_name) VALUES ('غزة');
-INSERT INTO locations(location_name) VALUES ('خانيونس');
-INSERT INTO locations(location_name) VALUES ('رفح');
-INSERT INTO locations(location_name) VALUES ('دير البح');
-INSERT INTO locations(location_name) VALUES ('جباليا');
-INSERT INTO locations(location_name) VALUES ('بيت لاهيا');
-INSERT INTO locations(location_name) VALUES ('بيت حانون');
-INSERT INTO locations(location_name) VALUES ('النصيرات');
-INSERT INTO locations(location_name) VALUES ('المغراقة');
-INSERT INTO locations(location_name) VALUES ('البريج');
-INSERT INTO locations(location_name) VALUES ('المغازي');
-INSERT INTO locations(location_name) VALUES ('خزاعة');
-INSERT INTO locations(location_name) VALUES ('عبسان');
+INSERT INTO locations(location_sub,location_main ) VALUES ('الرمال الجنوبي','غزة');
+INSERT INTO locations(location_sub,location_main) VALUES ('الرمال الشمالي','غزة');
+INSERT INTO locations(location_sub,location_main) VALUES ('النصر','غزة');
+INSERT INTO locations(location_sub,location_main) VALUES ('الشيخ رضوان','غزة');
+INSERT INTO locations(location_sub,location_main) VALUES ('الشجاعية','غزة');
+INSERT INTO locations(location_sub,location_main) VALUES ('الزيتون','غزة');
+INSERT INTO locations(location_sub,location_main) VALUES ('التفاح','غزة');
+INSERT INTO locations(location_sub,location_main) VALUES ('الجلاء','غزة');
+INSERT INTO locations(location_sub,location_main) VALUES ('جباليا','شمال غزة');
+INSERT INTO locations(location_sub,location_main) VALUES ('بيت حانون','شمال غزة');
+INSERT INTO locations(location_sub,location_main) VALUES ('بيت لاهيا','شمال غزة');
+INSERT INTO locations(location_sub,location_main) VALUES ('النصيرات','ألمنطقة الوسطى');
+INSERT INTO locations(location_sub,location_main) VALUES ('البريج','ألمنطقة الوسطى');
+INSERT INTO locations(location_sub,location_main) VALUES ('دير البلح','ألمنطقة الوسطى');
+INSERT INTO locations(location_sub,location_main) VALUES ('الزهراء','ألمنطقة الوسطى');
+INSERT INTO locations(location_sub,location_main) VALUES ('المغازي','ألمنطقة الوسطى');
+INSERT INTO locations(location_sub,location_main) VALUES ('المغراقة','ألمنطقة الوسطى');
+INSERT INTO locations(location_sub,location_main) VALUES ('خانيونس','خانيونس');
+INSERT INTO locations(location_sub,location_main) VALUES ('خزاعة','خانيونس');
+INSERT INTO locations(location_sub,location_main) VALUES ('عبسان','خانيونس');
+INSERT INTO locations(location_sub,location_main) VALUES ('القرارة','خانيونس');
+INSERT INTO locations(location_sub,location_main) VALUES ('رفح','رفح');
+INSERT INTO locations(location_sub,location_main) VALUES ('الشوكة','رفح');
 
 /* ADD KINDERGARTENS */
 INSERT INTO 
