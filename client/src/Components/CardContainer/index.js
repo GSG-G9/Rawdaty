@@ -21,7 +21,7 @@ const CardContainer = ({ data, searchText }) => (
             </li>
           ))
         ) : (
-          <Empty description="لم يتم إضافة أي رياض أطفال" />
+          <Empty description="لا يوجد رياض أطفال" />
         )}
       </ul>
     </div>
