@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from 'antd';
+import { Typography, Empty } from 'antd';
 
 import Card from '../Common/Card';
 import './style.css';
 
-const { Title, Empty } = Typography;
+const { Title, Text } = Typography;
 
 const CardContainer = ({ title, data, searchText }) => (
   <div>
     <Title level={3} id="container-title">
       {title}
-      {searchText && <span className="search-text">{searchText}</span>}
+      {searchText && <Text className="search-text">{searchText}</Text>}
     </Title>
     <div className="container-cards">
       <ul>
@@ -30,7 +30,7 @@ const CardContainer = ({ title, data, searchText }) => (
 );
 
 CardContainer.defaultProps = {
-  title: '',
+  title: 'أفضل رياض الأطفال',
   searchText: '',
   data: [],
 };
