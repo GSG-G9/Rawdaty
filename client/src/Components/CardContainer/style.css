@@ -23,7 +23,7 @@
 
 .search-text {
   padding-right: 10px;
-  color: #b5b5b5;
+  color: #b5b5b5 !important;
   font-weight: bold;
   font-size: 24px;
 }
