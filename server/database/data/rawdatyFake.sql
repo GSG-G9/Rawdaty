@@ -1,6 +1,6 @@
 /* ADD USER */
 INSERT INTO users(user_name,email,password,is_admin)
-VALUES ('حسن محمد حسن','admin@admin.com','admin','true');
+VALUES ('المسؤول','admin@admin.com','admin','true');
 INSERT INTO users(user_name,email,password)
 VALUES ('حلا محمد حسن','hala@hala.com','hala');
 INSERT INTO users(user_name,email,password)
