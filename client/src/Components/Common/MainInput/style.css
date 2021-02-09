@@ -29,6 +29,7 @@
   font-size: 17px;
   line-height: 32px;
   margin-right: 13px;
+  min-width: 95px;
 }
 
 .input .ant-input,
@@ -64,4 +65,8 @@
 
 .search-input .ant-input {
   height: 100%;
+}
+
+.input{
+  font-size: 21px;
 }

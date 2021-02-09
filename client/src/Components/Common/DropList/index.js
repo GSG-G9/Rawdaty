@@ -18,7 +18,7 @@ const DropList = ({ options, isSearch, ...otherSelectProps }) => (
     >
       {options.map((option) => (
         <Option key={option.id} value={option.value} disabled={option.disabled}>
-          {option.label}
+          {option.value}
         </Option>
       ))}
     </Select>
