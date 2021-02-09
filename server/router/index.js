@@ -1,7 +1,6 @@
 const router = require('express').Router();
+const { kindergartenSearch } = require('../controllers');
 
-router.get('/', (req, res) => {
-  res.json({ msg: 'Rawdaty is here' });
-});
+router.get('/search', kindergartenSearch);
 
 module.exports = router;
