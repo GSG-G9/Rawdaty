@@ -1,4 +1,4 @@
-const { connection } = require('../data');
+const { connection } = require('../../data');
 
 const getKindergartenById = (kindergartenId) => {
   const sql = {
@@ -9,4 +9,6 @@ const getKindergartenById = (kindergartenId) => {
   return connection.query(sql);
 };
 
-module.exports = getKindergartenById;
+module.exports = {
+  getKindergartenById,
+};
