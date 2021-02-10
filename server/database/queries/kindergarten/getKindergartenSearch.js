@@ -2,7 +2,14 @@ const connection = require('../../data/connection');
 
 const getKindergartenSearch = ({ q, minPrice, maxPrice, locationId }) => {
   let text =
-    'SELECT kindergartens.id, kindergartens.kindergarten_name, kindergartens.cover_image, kindergartens.phone_number, kindergartens.min_price, kindergartens.max_price, locations.location_sub FROM kindergartens INNER JOIN locations ON locations.id = kindergartens.location_id WHERE ';
+    'SELECT kindergartens.id, kindergartens.kindergarten_name, kindergartens.cover_image, kindergartens.phone_number, kindergartens.min_price, kindergartens.max_price, locations.location_sub, rating.rating_count, rating.rating_average ' +
+    'FROM kindergartens ' +
+    'INNER JOIN locations ON locations.id = kindergartens.location_id ' +
+    'INNER JOIN ' +
+    '(select COUNT(rating) AS rating_count , AVG(rating) AS rating_average, kindergarten_id  FROM comments GROUP BY kindergarten_id ) ' +
+    'AS rating ON rating.kindergarten_id = kindergartens.id ' +
+    'WHERE ';
+
   const values = [];
 
   if (q) {
