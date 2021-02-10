@@ -5,6 +5,6 @@ const { getUsers } = require('./users');
 module.exports = {
   clientError,
   serverError,
-  getSpecificKindergarten,
   getUsers,
+  getSpecificKindergarten,
 };
