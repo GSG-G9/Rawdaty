@@ -89,28 +89,30 @@ describe('search endPoint', () => {
         return done();
       }));
 
-  // test('Route /search?minPrice=500&maxPrice=1000, status 200, json header, data = testData', (done) => {
-  //   // still something TODO
-  //   const testData = {
-  //     id: 6,
-  //     kindergarten_name: 'روضة الزهراء النموذجية الخاصة',
-  //     cover_image:
-  //       'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/551059_604585486228232_1415987366_n.jpg?_nc_cat=111&ccb=2&_nc_sid=e3f864&_nc_ohc=kEd6i519NhYAX8iivcY&_nc_ht=scontent.fgza2-1.fna&oh=aa8c6154da2c42b82c50adb9cfa5f5e6&oe=6045F3E5',
-  //     phone_number: '0599123456',
-  //     min_price: 500,
-  //     max_price: 1000,
-  //     location_sub: 'الشجاعية',
-  //   };
+  test('Route /search?minPrice=500&maxPrice=1000, status 200, json header, data = testData', (done) => {
+    // still something TODO
+    const testData = {
+      id: 6,
+      kindergarten_name: 'روضة الزهراء النموذجية الخاصة',
+      cover_image:
+        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/551059_604585486228232_1415987366_n.jpg?_nc_cat=111&ccb=2&_nc_sid=e3f864&_nc_ohc=kEd6i519NhYAX8iivcY&_nc_ht=scontent.fgza2-1.fna&oh=aa8c6154da2c42b82c50adb9cfa5f5e6&oe=6045F3E5',
+      phone_number: '0599123456',
+      min_price: 500,
+      max_price: 1000,
+      location_sub: 'الشجاعية',
+      rating_count: '1',
+      rating_average: '5.00',
+    };
 
-  //   return request(app)
-  //     .get('/api/v1/search?minPrice=500&maxPrice=1000')
-  //     .expect(200)
-  //     .expect('Content-Type', /json/)
-  //     .end((err, res) => {
-  //       if (err) return done(err);
-  //       const { data } = res.body;
-  //       expect(data[0]).toEqual(testData);
-  //       return done();
-  //     });
-  // });
+    return request(app)
+      .get('/api/v1/search?minPrice=500&maxPrice=1000')
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        if (err) return done(err);
+        const { data } = res.body;
+        expect(data[0]).toEqual(testData);
+        return done();
+      });
+  });
 });
