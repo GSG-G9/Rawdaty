@@ -1,4 +1,4 @@
-const connection = require('../data/connection');
+const connection = require('../../data/connection');
 
 const getKindergarten = () =>
   connection.query(

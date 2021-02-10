@@ -1,3 +1,5 @@
-const getKindergarten = require('./getKindergarten');
+const { getKindergarten } = require('./kindergarten');
 
-module.exports = getKindergarten;
+module.exports = {
+  getKindergarten,
+};

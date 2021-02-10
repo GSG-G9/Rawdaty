@@ -1,9 +1,8 @@
-const getKindergarten = require('../database/queries/index');
+// const {clientError, serverError} = require('./errorHandle');
+// const {verifyUser, verifyAdmin} = require('./auth');
 
-module.exports.getKindergarten = (req, res, next) => {
-  getKindergarten()
-    .then(({ rows }) => {
-      res.json({ data: rows, msg: 'success', status: 200 });
-    })
-    .catch(next);
+const { getKinderGarten } = require('./kindergarten');
+
+module.exports = {
+  getKinderGarten,
 };
