@@ -21,21 +21,20 @@ const kindergartenSearch = async (req, res, next) => {
           'At least one of these (q, minPrice & maxPrice,locationId) values is required'
         )
       );
+    } else {
+      const { rows: data } = await getKindergartenSearch({
+        q,
+        minPrice,
+        maxPrice,
+        locationId,
+      });
+
+      const StatusCode = 200;
+      res.status(StatusCode).json({
+        StatusCode,
+        data,
+      });
     }
-
-    const { rows: data } = await getKindergartenSearch({
-      q,
-      minPrice,
-      maxPrice,
-      locationId,
-    });
-
-    const StatusCode = 200;
-
-    res.status(StatusCode).json({
-      StatusCode,
-      data,
-    });
   } catch (error) {
     next(
       error.name === 'ValidationError'
