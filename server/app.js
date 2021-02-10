@@ -30,4 +30,4 @@ if (process.env.NODE_ENV === 'production') {
 app.use(clientError);
 app.use(serverError);
 
-module.exports = { app };
+module.exports = app;

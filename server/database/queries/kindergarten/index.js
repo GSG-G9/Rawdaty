@@ -1,5 +1,5 @@
-const getKindergarten = require('./getKindergarten');
+const getKindergartenQuery = require('./getKindergartenQuery');
 
 module.exports = {
-  getKindergarten,
+  getKindergartenQuery,
 };
