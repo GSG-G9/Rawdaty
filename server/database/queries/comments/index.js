@@ -1,4 +1,4 @@
-const { getCommentsQuery } = require('./getCommentsQuery');
+const getCommentsQuery = require('./getCommentsQuery');
 
 module.exports = {
   getCommentsQuery,

@@ -8,6 +8,4 @@ const getCommentsQuery = (kindergartenId) => {
   return connection.query(sql);
 };
 
-module.exports = {
-  getCommentsQuery,
-};
+module.exports = getCommentsQuery;
