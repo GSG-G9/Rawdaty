@@ -1,5 +1,5 @@
-const { getAllUsers } = require('./users');
+const { getUsersQuery } = require('./users');
 
 module.exports = {
-  getAllUsers,
+  getUsersQuery,
 };
