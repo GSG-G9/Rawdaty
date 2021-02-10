@@ -15,7 +15,6 @@
       {
         "singleQuote": true
       }
-    ],
-    "jest/no-done-callback": "off"
+    ]
   }
 }
