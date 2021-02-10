@@ -8,5 +8,3 @@ router.get('/', (req, res) => {
 router.use(kindergarten);
 
 module.exports = router;
-
-module.exports = router;
