@@ -5,7 +5,5 @@ const { getSpecificKindergarten } = require('./kindergarten');
 module.exports = {
   clientError,
   serverError,
-  //   verifyUser,
-  //   verifyAdmin,
   getSpecificKindergarten,
 };
