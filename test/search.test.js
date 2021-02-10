@@ -90,7 +90,6 @@ describe('search endPoint', () => {
       }));
 
   test('Route /search?minPrice=500&maxPrice=1000, status 200, json header, data = testData', (done) => {
-    // still something TODO
     const testData = {
       id: 6,
       kindergarten_name: 'روضة الزهراء النموذجية الخاصة',
