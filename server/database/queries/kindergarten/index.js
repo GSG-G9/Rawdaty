@@ -1,4 +1,4 @@
-const { getKindergartenById } = require('./getKindergartenById');
+const getKindergartenById = require('./getKindergartenById');
 
 module.exports = {
   getKindergartenById,
