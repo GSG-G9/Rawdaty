@@ -2,7 +2,7 @@ const connection = require('../../../data/connection');
 
 const getAllUsers = () => {
   const sql = {
-    text: 'SELECT * FROM users',
+    text: 'SELECT id,user_name,email,is_admin,create_at FROM users',
   };
   return connection.query(sql);
 };
