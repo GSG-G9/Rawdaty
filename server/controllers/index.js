@@ -1,4 +1,4 @@
-const { kindergartenSearch } = require('./kindergartens');
+const { kindergartenSearch } = require('./kindergarten');
 
 module.exports = {
   kindergartenSearch,
