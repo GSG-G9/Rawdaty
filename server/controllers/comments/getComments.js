@@ -15,7 +15,7 @@ const getComments = async (req, res, next) => {
         data,
       });
     } else {
-      next(boomify(404, 'Page Not Found', 'There is no comments for this id '));
+      next(boomify(404, 'Page Not Found', 'There is no comments for this id'));
     }
   } catch (error) {
     next(
