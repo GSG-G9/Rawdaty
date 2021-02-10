@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
-const kindergarten = require('./kindergarten');
+const kindergartens = require('./kindergartens');
 
-router.use(kindergarten);
+router.use(kindergartens);
 
 module.exports = router;

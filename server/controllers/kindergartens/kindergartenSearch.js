@@ -30,9 +30,8 @@ const kindergartenSearch = async (req, res, next) => {
       locationId,
     });
 
-    const StatusCode = 200;
-    return res.status(StatusCode).json({
-      StatusCode,
+    return res.json({
+      StatusCode: 200,
       data,
     });
   } catch (error) {
