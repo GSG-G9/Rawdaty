@@ -6,7 +6,7 @@ const getKindergartenSearch = ({ q, minPrice, maxPrice, locationId }) => {
     'FROM kindergartens ' +
     'INNER JOIN locations ON locations.id = kindergartens.location_id ' +
     'INNER JOIN ' +
-    '(select COUNT(rating) AS rating_count , AVG(rating) AS rating_average, kindergarten_id  FROM comments GROUP BY kindergarten_id ) ' +
+    "(select COUNT(rating) AS rating_count , to_char(AVG(rating), '99.99') AS rating_average, kindergarten_id  FROM comments GROUP BY kindergarten_id ) " +
     'AS rating ON rating.kindergarten_id = kindergartens.id ' +
     'WHERE ';
 
