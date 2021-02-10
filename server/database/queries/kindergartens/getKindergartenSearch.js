@@ -14,7 +14,7 @@ const getKindergartenSearch = ({ q, minPrice, maxPrice, locationId }) => {
 
   if (q) {
     text += `kindergarten_name like TRIM($${values.length + 1}) AND `;
-    values.push(q);
+    values.push(`%${q}%`);
   }
 
   if (minPrice && maxPrice) {
@@ -32,10 +32,8 @@ const getKindergartenSearch = ({ q, minPrice, maxPrice, locationId }) => {
     values.push(locationId);
   }
 
-  text = text.slice(0, -4);
-
   return connection.query({
-    text,
+    text: text.slice(0, -4),
     values,
   });
 };

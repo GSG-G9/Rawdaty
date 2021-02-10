@@ -14,28 +14,28 @@ const kindergartenSearch = async (req, res, next) => {
     });
 
     if (!q && (!minPrice || !maxPrice) && !locationId) {
-      return next(
+      next(
         boomify(
           400,
           'Validation Error',
           'At least one of these (q, minPrice & maxPrice,locationId) values is required'
         )
       );
+    } else {
+      const { rows: data } = await getKindergartenSearch({
+        q,
+        minPrice,
+        maxPrice,
+        locationId,
+      });
+
+      res.json({
+        StatusCode: 200,
+        data,
+      });
     }
-
-    const { rows: data } = await getKindergartenSearch({
-      q,
-      minPrice,
-      maxPrice,
-      locationId,
-    });
-
-    return res.json({
-      StatusCode: 200,
-      data,
-    });
   } catch (error) {
-    return next(
+    next(
       error.name === 'ValidationError'
         ? boomify(400, 'Validation Error', error.errors)
         : error
