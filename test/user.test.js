@@ -16,6 +16,6 @@ describe('Get all users', () => {
         if (err) return done(err);
         const { data } = res.body;
         expect(data).toHaveLength(11);
-        return done();
+        done();
       }));
 });
