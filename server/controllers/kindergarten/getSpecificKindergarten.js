@@ -10,18 +10,17 @@ const getSpecificKindergarten = async (req, res, next) => {
 
     const { rows: data } = await getKindergartenById(kindergartenId);
     if (data.length !== 0) {
-      return res.json({
-        message: 'success',
-        status: 200,
+      res.json({
+        statusCode: 200,
         data,
       });
+    } else {
+      next(
+        boomify(404, 'Page Not Found', 'There is no kindergarten with this id')
+      );
     }
-
-    return next(
-      boomify(404, 'Page Not Found', 'There is no kindergarten with this id')
-    );
   } catch (error) {
-    return next(
+    next(
       error.name === 'ValidationError'
         ? boomify(400, 'Validation Error', error.errors)
         : error
