@@ -8,89 +8,73 @@ afterAll(() => connection.end());
 
 // test the route /search?q=&minPrice=&maxPrice=&locationId=
 describe('search endPoint', () => {
-  test('Route /search, status 400, json header, message = At least one of these (q, minPrice & maxPrice,locationId) values is required', (done) =>
-    request(app)
+  test('Route /search, status 400, json header, message = At least one of these (q, minPrice & maxPrice,locationId) values is required', async () => {
+    expect.assertions(1);
+    const res = await request(app)
       .get('/api/v1/search')
       .expect(400)
-      .expect('Content-Type', /json/)
-      .end((err, res) => {
-        if (err) return done(err);
-        const { message } = res.body;
-        expect(message).toBe(
-          'At least one of these (q, minPrice & maxPrice,locationId) values is required'
-        );
-        return done();
-      }));
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message).toBe(
+      'At least one of these (q, minPrice & maxPrice,locationId) values is required'
+    );
+  });
 
-  test('Route /search?something=hi, status 400, json header, message = At least one of these (q, minPrice & maxPrice, locationId) values is required', (done) =>
-    request(app)
+  test('Route /search?something=hi, status 400, json header, message = At least one of these (q, minPrice & maxPrice, locationId) values is required', async () => {
+    expect.assertions(1);
+    const res = await request(app)
       .get('/api/v1/search?something=hi')
       .expect(400)
-      .expect('Content-Type', /json/)
-      .end((err, res) => {
-        if (err) return done(err);
-        const { message } = res.body;
-        expect(message).toBe(
-          'At least one of these (q, minPrice & maxPrice,locationId) values is required'
-        );
-        return done();
-      }));
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message).toBe(
+      'At least one of these (q, minPrice & maxPrice,locationId) values is required'
+    );
+  });
 
-  test('Route /search?minPrice=hi, status 400, json header, message = minPrice must be a `number` type', (done) =>
-    request(app)
+  test('Route /search?minPrice=hi, status 400, json header, message = minPrice must be a `number` type', async () => {
+    expect.assertions(1);
+    const res = await request(app)
       .get('/api/v1/search?minPrice=hi')
       .expect(400)
-      .expect('Content-Type', /json/)
-      .end((err, res) => {
-        if (err) return done(err);
-        const { message } = res.body;
-        expect(message[0].split(',')[0]).toBe(
-          'minPrice must be a `number` type'
-        );
-        return done();
-      }));
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message[0].split(',')[0]).toBe('minPrice must be a `number` type');
+  });
 
-  test('Route /search?maxPrice=hi, status 400, json header, message = minPrice must be a `number` type', (done) =>
-    request(app)
+  test('Route /search?maxPrice=hi, status 400, json header, message = minPrice must be a `number` type', async () => {
+    expect.assertions(1);
+    const res = await request(app)
       .get('/api/v1/search?maxPrice=hi')
       .expect(400)
-      .expect('Content-Type', /json/)
-      .end((err, res) => {
-        if (err) return done(err);
-        const { message } = res.body;
-        expect(message[0].split(',')[0]).toBe(
-          'maxPrice must be a `number` type'
-        );
-        return done();
-      }));
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message[0].split(',')[0]).toBe('maxPrice must be a `number` type');
+  });
 
-  test('Route /search?locationId=-10, status 400, json header, message = minPrice must be a positive number', (done) =>
-    request(app)
+  test('Route /search?locationId=-10, status 400, json header, message = minPrice must be a positive number', async () => {
+    expect.assertions(1);
+    const res = await request(app)
       .get('/api/v1/search?locationId=-10')
       .expect(400)
-      .expect('Content-Type', /json/)
-      .end((err, res) => {
-        if (err) return done(err);
-        const { message } = res.body;
-        expect(message[0]).toBe('locationId must be a positive number');
-        return done();
-      }));
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message[0]).toBe('locationId must be a positive number');
+  });
 
-  test('Route /search?maxPrice=800, status 400, json header, message = At least one of these (q, minPrice & maxPrice,locationId) values is required', (done) =>
-    request(app)
+  test('Route /search?maxPrice=800, status 400, json header, message = At least one of these (q, minPrice & maxPrice,locationId) values is required', async () => {
+    expect.assertions(1);
+    const res = await request(app)
       .get('/api/v1/search?maxPrice=800')
       .expect(400)
-      .expect('Content-Type', /json/)
-      .end((err, res) => {
-        if (err) return done(err);
-        const { message } = res.body;
-        expect(message).toBe(
-          'At least one of these (q, minPrice & maxPrice,locationId) values is required'
-        );
-        return done();
-      }));
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message).toBe(
+      'At least one of these (q, minPrice & maxPrice,locationId) values is required'
+    );
+  });
 
-  test('Route /search?minPrice=500&maxPrice=1000, status 200, json header, data = testData', (done) => {
+  test('Route /search?minPrice=500&maxPrice=1000, status 200, json header, data = testData', async () => {
     const testData = {
       id: 6,
       kindergarten_name: 'روضة الزهراء النموذجية الخاصة',
@@ -104,15 +88,12 @@ describe('search endPoint', () => {
       rating_average: '5.00',
     };
 
-    return request(app)
+    expect.assertions(1);
+    const res = await request(app)
       .get('/api/v1/search?minPrice=500&maxPrice=1000')
       .expect(200)
-      .expect('Content-Type', /json/)
-      .end((err, res) => {
-        if (err) return done(err);
-        const { data } = res.body;
-        expect(data[0]).toEqual(testData);
-        return done();
-      });
+      .expect('Content-Type', /json/);
+    const { data } = res.body;
+    expect(data[0]).toEqual(testData);
   });
 });
