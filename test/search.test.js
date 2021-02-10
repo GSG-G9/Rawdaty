@@ -6,6 +6,7 @@ const app = require('../server/app');
 beforeAll(() => dbBuild());
 afterAll(() => connection.end());
 
+// test the route /search?q=&minPrice=&maxPrice=&locationId=
 describe('search endPoint', () => {
   test('Route /search, status 400, json header, message = At least one of these (q, minPrice & maxPrice,locationId) values is required', (done) =>
     request(app)
