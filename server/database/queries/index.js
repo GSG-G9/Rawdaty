@@ -1,5 +1,9 @@
-const { getKindergartenSearch } = require('./kindergarten');
+const {
+  getKindergartenSearch,
+  getKindergartenById,
+} = require('./kindergarten');
 
 module.exports = {
   getKindergartenSearch,
+  getKindergartenById,
 };

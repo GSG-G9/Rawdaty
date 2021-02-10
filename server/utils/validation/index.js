@@ -1,3 +1,7 @@
 const kindergartenSearchSchema = require('./kindergartenSearchSchema');
+const kindergartenIdSchema = require('./kindergartenIdSchema');
 
-module.exports = { kindergartenSearchSchema };
+module.exports = {
+  kindergartenIdSchema,
+  kindergartenSearchSchema,
+};
