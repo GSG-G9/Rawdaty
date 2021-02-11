@@ -1,10 +1,10 @@
 const connection = require('../../../data/connection');
 
-const postLocationsQuery = (id, subLocation, mainLocation) => {
+const postLocationsQuery = (subLocation, mainLocation) => {
   const sql = {
     text:
-      'INSERT INTO locations(id,location_sub,location_main) VALUES ($1, $2, $3) RETURNING *',
-    values: [id, subLocation, mainLocation],
+      'INSERT INTO locations(location_sub,location_main) VALUES ($1, $2) RETURNING(location_sub,location_main)',
+    values: [subLocation, mainLocation],
   };
   return connection.query(sql);
 };
