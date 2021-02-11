@@ -114,3 +114,28 @@ describe('Get all kindergartens', () => {
     expect(data[0]).toEqual(testData);
   });
 });
+
+// test the route /locations
+describe('Get locations', () => {
+  test('Route /users status 200, json header', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .get('/api/v1/locations')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data).toHaveLength(23);
+  });
+
+  test('should return an object contains id, sub and main locations', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .get('/api/v1/locations')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data[0]).toEqual({
+      id: 1,
+      location_sub: 'الرمال الجنوبي',
+      location_main: 'غزة',
+    });
+  });
+});
