@@ -224,7 +224,7 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
       .get('/api/v1/kindergarten/2/comments')
       .expect(200);
     const { data } = res.body;
-    expect(data.length).toBe(5);
+    expect(data).toHaveLength(5);
   });
 
   test('should return status code 200 and expected data when given GET  /kindergarten/1/comments', async () => {
