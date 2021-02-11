@@ -9,6 +9,4 @@ const getKindergartenById = (kindergartenId) => {
   return connection.query(sql);
 };
 
-module.exports = {
-  getKindergartenById,
-};
+module.exports = getKindergartenById;
