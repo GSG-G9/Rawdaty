@@ -30,7 +30,8 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
     const res = await request(app)
       .get('/api/v1/kindergarten/text/comments')
       .expect(400);
-    expect(res.body.error).toBe('Validation Error');
+    const { error } = res.body;
+    expect(error).toBe('Validation Error');
   });
 
   test('should return status code 400 given GET  /kindergarten/-1/comments', async () => {
@@ -38,7 +39,8 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
     const res = await request(app)
       .get('/api/v1/kindergarten/-1/comments')
       .expect(400);
-    expect(res.body.error).toBe('Validation Error');
+    const { error } = res.body;
+    expect(error).toBe('Validation Error');
   });
 
   test('should return status code 400 given GET  /kindergarten/0/comments', async () => {
@@ -46,7 +48,8 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
     const res = await request(app)
       .get('/api/v1/kindergarten/0/comments')
       .expect(400);
-    expect(res.body.error).toBe('Validation Error');
+    const { error } = res.body;
+    expect(error).toBe('Validation Error');
   });
 
   test('should return status code 404 given GET  /kindergarten/17/comments', async () => {
@@ -54,6 +57,7 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
     const res = await request(app)
       .get('/api/v1/kindergarten/17/comments')
       .expect(404);
-    expect(res.body.message).toBe('There is no comments for this id');
+    const { message } = res.body;
+    expect(message).toBe('There is no comments for this id');
   });
 });
