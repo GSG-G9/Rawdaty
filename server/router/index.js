@@ -2,11 +2,11 @@ const router = require('express').Router();
 const user = require('./user');
 const kindergarten = require('./kindergarten');
 const location = require('./location');
-const comment = require('./comment');
+const comments = require('./comments');
 
 router.use(kindergarten);
 router.use(user);
 router.use(location);
-router.use(comment);
+router.use(comments);
 
 module.exports = router;

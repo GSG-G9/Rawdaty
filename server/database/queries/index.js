@@ -1,4 +1,4 @@
-const { addCommentsQuery } = require('./comments');
+const { addCommentsQuery, getCommentsQuery } = require('./comments');
 const {
   getKindergartenQuery,
   getKindergartenById,
@@ -12,6 +12,7 @@ module.exports = {
   getKindergartenById,
   addCommentsQuery,
   getKindergartenId,
+  getCommentsQuery,
   getUsersQuery,
   getLocationsQuery,
 };

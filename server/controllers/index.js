@@ -1,8 +1,8 @@
 const { clientError, serverError } = require('./errorHandle');
+const { getComments, addComments } = require('./comments');
 const { getKindergarten, getSpecificKindergarten } = require('./kindergarten');
 const { getUsers } = require('./users');
 const { getLocations } = require('./locations');
-const { addComments } = require('./comments');
 
 module.exports = {
   clientError,
@@ -11,5 +11,6 @@ module.exports = {
   getUsers,
   getSpecificKindergarten,
   addComments,
+  getComments,
   getLocations,
 };
