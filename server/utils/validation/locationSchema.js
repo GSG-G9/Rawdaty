@@ -1,9 +1,9 @@
 const { object, number, string } = require('yup');
 
 const locationSchema = object({
-  id: number().positive().required(),
-  locatoin_main: string().required(),
-  locatoin_sub: string().required(),
+  locationId: number().positive().required(),
+  locationMain: string().required(),
+  locationSub: string().required(),
 });
 
 module.exports = locationSchema;
