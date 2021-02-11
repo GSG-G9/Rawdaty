@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const kindergarten = require('./kindergarten');
 const user = require('./user');
-const locations = require('./location');
+const location = require('./location');
 
 router.use(user);
 router.use(kindergarten);
