@@ -1,4 +1,7 @@
-const { addCommentsQuery } = require('../../database/queries/comments');
+const {
+  addCommentsQuery,
+  getKindergartenId,
+} = require('../../database/queries');
 const { boomify } = require('../../utils');
 const { addCommentSchema } = require('../../utils/validation');
 const { kindergartenIdSchema } = require('../../utils/validation');
@@ -8,30 +11,32 @@ const addComments = async (req, res, next) => {
     const { kindergartenId } = await kindergartenIdSchema.validate(req.params, {
       abortEarly: false,
     });
-    console.log(kindergartenId);
-    console.log(req.body);
-    console.log('id');
     const { userName, comment, rating } = await addCommentSchema.validate(
       req.body,
       {
         abortEarly: false,
       }
     );
-    console.log('body');
-    const { rows: data } = await addCommentsQuery(
-      kindergartenId,
-      userName,
-      comment,
-      rating
-    );
-    if (data.length !== 0) {
-      console.log(data);
-      res.json({
-        statusCode: 200,
-        data,
-      });
+    const { rows: idData } = await getKindergartenId(kindergartenId);
+    if (idData.length !== 0) {
+      const { rows: data } = await addCommentsQuery(
+        kindergartenId,
+        userName,
+        comment,
+        rating
+      );
+      if (data.length !== 0) {
+        res.json({
+          statusCode: 200,
+          data,
+        });
+      } else {
+        next(boomify(400, 'Bad Request', 'Failed to insert new comment'));
+      }
     } else {
-      next(boomify(404, 'Page Not Found', 'There is no comments for this id'));
+      next(
+        boomify(400, 'Bad Request', 'There is no kindergarten with this id')
+      );
     }
   } catch (error) {
     next(

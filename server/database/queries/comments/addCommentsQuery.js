@@ -6,7 +6,6 @@ const addCommentsQuery = (kindergartenId, userName, comment, rating) => {
       'INSERT INTO comments (kindergarten_id,user_name ,comment, rating) VALUES($1,$2,$3,$4) returning *',
     values: [kindergartenId, userName, comment, rating],
   };
-  console.log(sql);
   return connection.query(sql);
 };
 
