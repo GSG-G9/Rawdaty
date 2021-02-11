@@ -16,13 +16,24 @@ describe('Testing get comments by kindergarten id query', () => {
 
 // test the route /kindergarten/:kindergartenId/comments
 describe('Test the route /kindergarten/:kindergartenId/comments', () => {
-  test('should return status code 200 and data length 2 when given GET  /kindergarten/2', async () => {
+  test('should return status code 200 and data length 2 when given GET  /kindergarten/2/comments', async () => {
     expect.assertions(1);
     const res = await request(app)
       .get('/api/v1/kindergarten/2/comments')
       .expect(200);
     const { data } = res.body;
     expect(data.length).toBe(2);
+  });
+
+  test('should return status code 200 and expected data when given GET  /kindergarten/1/comments', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .get('/api/v1/kindergarten/1/comments')
+      .expect(200);
+    const { data } = res.body;
+    expect(data[0].comment).toBe(
+      'هذه روضة رائعة وأتمنى لها دوام التميز والنجاح'
+    );
   });
 
   test('should return status code 400 given GET  /kindergarten/text/comments', async () => {
