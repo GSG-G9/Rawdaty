@@ -19,7 +19,7 @@ describe('Get all kindergartens', () => {
       .expect(200)
       .expect('Content-Type', /json/);
     const { data } = res.body;
-    expect(data).toHaveLength(11);
+    expect(data).toHaveLength(9);
   });
   test('Route /kindergarten status 200, json header, data[0]= testData', async () => {
     expect.assertions(1);

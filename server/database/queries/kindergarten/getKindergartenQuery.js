@@ -2,8 +2,7 @@ const connection = require('../../data/connection');
 
 const getKindergartenQuery = () => {
   const sql = {
-    text:
-      'SELECT *, (SELECT AVG(comments.rating) AS rating_average FROM comments WHERE comments.kindergarten_id = kindergartens.id), (SELECT COUNT(comments) AS rating_count FROM comments WHERE comments.kindergarten_id = kindergartens.id) FROM kindergartens',
+    text: `SELECT *, (SELECT AVG(comments.rating) AS rating_average FROM comments WHERE comments.kindergarten_id = kindergartens.id), (SELECT COUNT(comments) AS rating_count FROM comments WHERE comments.kindergarten_id = kindergartens.id) FROM kindergartens WHERE kindergartens.request_status = 'approved' AND kindergartens.is_enable = 'true'`,
   };
   return connection.query(sql);
 };
