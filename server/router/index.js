@@ -5,6 +5,6 @@ const location = require('./location');
 
 router.use(user);
 router.use(kindergarten);
-router.use(locations);
+router.use(location);
 
 module.exports = router;
