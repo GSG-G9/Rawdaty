@@ -1,5 +1,4 @@
 const router = require('express').Router();
-
 const { getComments, addComments } = require('../controllers');
 
 router.get('/kindergarten/:kindergartenId/comments', getComments);

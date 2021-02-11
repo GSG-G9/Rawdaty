@@ -4,15 +4,14 @@ const {
 } = require('../../database/queries');
 const { boomify } = require('../../utils');
 const { addCommentSchema } = require('../../utils/validation');
-const { kindergartenIdSchema } = require('../../utils/validation');
 
 const addComments = async (req, res, next) => {
   try {
-    const { kindergartenId } = await kindergartenIdSchema.validate(req.params, {
-      abortEarly: false,
-    });
-    const { userName, comment, rating } = await addCommentSchema.validate(
-      req.body,
+    const { kindergartenId } = req.params;
+    const { userName, comment, rating } = req.body;
+    await addCommentSchema.validate(
+      { userName, comment, rating, kindergartenId },
+      req.params,
       {
         abortEarly: false,
       }
@@ -26,8 +25,8 @@ const addComments = async (req, res, next) => {
         rating
       );
       if (data.length !== 0) {
-        res.json({
-          statusCode: 200,
+        res.status(201).json({
+          statusCode: 201,
           data,
         });
       } else {

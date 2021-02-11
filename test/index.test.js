@@ -192,7 +192,7 @@ describe('Test the route POST /kindergarten/:kindergartenId/comments', () => {
     const res = await request(app)
       .post('/api/v1/kindergarten/2/comments')
       .send({ userName: 'محمد', comment: 'هذه روضة مميزة', rating: 4 })
-      .expect(200);
+      .expect(201);
     const { data } = res.body;
     expect(data).toHaveLength(1);
   });
@@ -202,7 +202,7 @@ describe('Test the route POST /kindergarten/:kindergartenId/comments', () => {
     const res = await request(app)
       .post('/api/v1/kindergarten/2/comments')
       .send({ userName: 'محمد', comment: 'هذه روضة مميزة', rating: 4 })
-      .expect(200);
+      .expect(201);
     const { data } = res.body;
     expect(data[0].user_name).toBe('محمد');
   });
