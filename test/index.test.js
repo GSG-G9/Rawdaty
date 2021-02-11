@@ -62,3 +62,15 @@ describe('Test the route /kindergarten/:kindergartenId', () => {
     expect(res.body.error).toBe('Page Not Found');
   });
 });
+
+// test the route /locations
+describe('Get locations', () => {
+  test('Route /users status 200, json header', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .get('/api/v1/locations')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data).toHaveLength(23);
+  });
+});
