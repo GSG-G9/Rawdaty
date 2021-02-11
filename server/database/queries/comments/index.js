@@ -1,5 +1,5 @@
-const addCommentQuery = require('./addCommentsQuery');
+const addCommentsQuery = require('./addCommentsQuery');
 
 module.exports = {
-  addCommentQuery,
+  addCommentsQuery,
 };
