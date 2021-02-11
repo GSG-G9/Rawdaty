@@ -1,10 +1,10 @@
 const connection = require('../../../data/connection');
 
-const getLocatoinsQuery = () => {
+const getLocationsQuery = () => {
   const sql = {
     text: 'SELECT * FROM locations',
   };
   return connection.query(sql);
 };
 
-module.exports = getLocatoinsQuery;
+module.exports = getLocationsQuery;

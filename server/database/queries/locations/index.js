@@ -1,3 +1,3 @@
-const getLocatoinsQuery = require('./getLocations');
+const getLocationsQuery = require('./getLocations');
 
-module.exports = { getLocatoinsQuery };
+module.exports = { getLocationsQuery };

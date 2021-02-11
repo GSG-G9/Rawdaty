@@ -1,8 +1,8 @@
-const { getLocatoinsQuery } = require('../../../database/queries');
+const { getLocationsQuery } = require('../../../database/queries');
 
 const getLocations = async (req, res, next) => {
   try {
-    const { rows: data } = await getLocatoinsQuery();
+    const { rows: data } = await getLocationsQuery();
     res.json({ statusCode: 200, data });
   } catch (err) {
     next(err);
