@@ -1,10 +1,8 @@
 const router = require('express').Router();
 const kindergarten = require('./kindergarten');
+const user = require('./user');
 
-router.get('/', (req, res) => {
-  res.json({ msg: 'Rawdaty is here' });
-});
-
+router.use(user);
 router.use(kindergarten);
 
 module.exports = router;
