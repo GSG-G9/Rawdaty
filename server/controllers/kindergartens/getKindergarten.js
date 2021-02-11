@@ -1,4 +1,3 @@
-// const { default: axios } = require('axios');
 const { getKindergartenQuery } = require('../../database/queries');
 
 const getKindergarten = async (req, res, next) => {
