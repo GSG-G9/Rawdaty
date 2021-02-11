@@ -8,7 +8,7 @@ const getKindergartenSearch = ({ q, minPrice, maxPrice, locationId }) => {
     'INNER JOIN ' +
     '(select COUNT(rating) AS rating_count, AVG(rating) AS rating_average, kindergarten_id FROM comments GROUP BY kindergarten_id ) ' +
     'AS rating ON rating.kindergarten_id = kindergartens.id ' +
-    'WHERE ';
+    "WHERE kindergartens.request_status = 'approved' AND kindergartens.is_enable = 'true'  AND ";
   const values = [];
 
   if (q) {
