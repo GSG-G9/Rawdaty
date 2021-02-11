@@ -187,7 +187,7 @@ describe('Testing get comments by kindergarten id query', () => {
 
 // test the route /kindergarten/:kindergartenId/comments
 describe('Test the route POST /kindergarten/:kindergartenId/comments', () => {
-  test('should return status code 200 and data length 1 when given POST  /kindergarten/2/comments', async () => {
+  test('should return status code 201 and data length 1 when given POST  /kindergarten/2/comments', async () => {
     expect.assertions(1);
     const res = await request(app)
       .post('/api/v1/kindergarten/2/comments')
