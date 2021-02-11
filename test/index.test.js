@@ -197,7 +197,7 @@ describe('Test the route POST /kindergarten/:kindergartenId/comments', () => {
     expect(data).toHaveLength(1);
   });
 
-  test('should return status code 200 required username when given POST  /kindergarten/2/comments', async () => {
+  test('should return status code 201 required username when given POST  /kindergarten/2/comments', async () => {
     expect.assertions(1);
     const res = await request(app)
       .post('/api/v1/kindergarten/2/comments')
