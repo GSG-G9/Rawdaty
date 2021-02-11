@@ -76,16 +76,16 @@ describe('search endPoint', () => {
 
   test('Route /search?minPrice=500&maxPrice=1000, status 200, json header, data = testData', async () => {
     const testData = {
-      id: 6,
-      kindergarten_name: 'روضة الزهراء النموذجية الخاصة',
+      id: 3,
+      kindergarten_name: 'روضة يا هلا النموذجية الخاصة',
       cover_image:
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/551059_604585486228232_1415987366_n.jpg?_nc_cat=111&ccb=2&_nc_sid=e3f864&_nc_ohc=kEd6i519NhYAX8iivcY&_nc_ht=scontent.fgza2-1.fna&oh=aa8c6154da2c42b82c50adb9cfa5f5e6&oe=6045F3E5',
-      phone_number: '0599123456',
-      min_price: 500,
-      max_price: 1000,
-      location_sub: 'الشجاعية',
+        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/145371533_4926517364056683_4419031173382697234_o.jpg?_nc_cat=101&ccb=2&_nc_sid=e3f864&_nc_ohc=p8yB9sYxtWYAX9PP0Ap&_nc_ht=scontent.fgza2-1.fna&oh=ddc08b927f6773710ca251668d628d73&oe=6048B032',
+      min_price: 300,
+      max_price: 500,
+      location_sub: 'النصر',
+      location_main: 'غزة',
       rating_count: '1',
-      rating_average: '5.00',
+      rating_average: '4.0000000000000000',
     };
 
     expect.assertions(1);
