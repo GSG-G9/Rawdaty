@@ -19,9 +19,10 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
   test('should return status code 200 and data length 2 when given GET  /kindergarten/2', async () => {
     expect.assertions(1);
     const res = await request(app)
-      .get('/api/v1//kindergarten/2/comments')
+      .get('/api/v1/kindergarten/2/comments')
       .expect(200);
-    expect(res.body.data.length).toBe(2);
+    const { data } = res.body;
+    expect(data.length).toBe(2);
   });
 
   test('should return status code 400 given GET  /kindergarten/text/comments', async () => {
