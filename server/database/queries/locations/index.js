@@ -1,3 +1,4 @@
 const getLocationsQuery = require('./getLocations');
+const postLocationsQuery = require('./postLocations');
 
-module.exports = { getLocationsQuery };
+module.exports = { getLocationsQuery, postLocationsQuery };
