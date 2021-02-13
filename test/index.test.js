@@ -44,7 +44,7 @@ describe('Testing get kindergarten by id query', () => {
       phone_number: '0599123456',
       min_price: 1000,
       max_price: 2000,
-      periods: [['7:00 am', '11:00 am']],
+      periods: [['7:00', '11:00']],
       image_gallery: [
         'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126072436_2810042115930329_426976181002437064_o.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=UX2zxNzPBTYAX_XAYLE&_nc_ht=scontent.fgza2-1.fna&oh=72a8ef5d8369f7e183116f4423bad872&oe=604613F1',
         'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p526x395/126362711_2810037339264140_8115186378406081155_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=1pa0nWqLMVQAX8xj-8Z&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=43ba32d04a1478c83ca4cee8950955f9&oe=6045D9DF',
@@ -123,7 +123,7 @@ describe('Get all kindergartens', () => {
       longitude: null,
       min_price: 1000,
       max_price: 2000,
-      periods: [['7:00 am', '11:00 am']],
+      periods: [['7:00', '11:00']],
       image_gallery: [
         'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126072436_2810042115930329_426976181002437064_o.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=UX2zxNzPBTYAX_XAYLE&_nc_ht=scontent.fgza2-1.fna&oh=72a8ef5d8369f7e183116f4423bad872&oe=604613F1',
         'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p526x395/126362711_2810037339264140_8115186378406081155_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=1pa0nWqLMVQAX8xj-8Z&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=43ba32d04a1478c83ca4cee8950955f9&oe=6045D9DF',
