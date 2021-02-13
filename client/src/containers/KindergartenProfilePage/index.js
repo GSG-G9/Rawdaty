@@ -88,8 +88,23 @@ const KindergartenProfilePage = ({ match }) => {
               <p>{kindergartenProfile.description}</p>
             </div>
             <div>
-              <Title level={4}>ماذا يقول الناس</Title>
-              <CommentContainer data={kindergartenComments} isAdmin="flase" />
+              <Title level={4}>معلومات عنا</Title>
+              <div>
+                {' '}
+                {`${kindergartenProfile.location_main}  - ${kindergartenProfile.location_sub}`}{' '}
+              </div>
+              <div>
+                متوسط السعر
+                {`  :  ${kindergartenProfile.min_price}  - ${kindergartenProfile.max_price} ₪`}
+              </div>
+              <div>
+                الفترة الصباحية{' '}
+                {`${kindergartenProfile.periods[0][0]} - ${kindergartenProfile.periods[0][1]} `}
+              </div>
+            </div>
+            <div>
+              <Title level={3}>ماذا يقول الناس</Title>
+              <CommentContainer data={kindergartenComments} />
             </div>
             {kindergartenComments[0].user_name}
           </div>
