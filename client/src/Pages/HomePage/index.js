@@ -32,7 +32,6 @@ const HomePage = () => {
         <Search dorpListOptions={[{ id: 2, value: 'asda', disabled: false }]} />
         <CardContainer data={data} />
       </div>
-      {/* <h1>Alaa</h1> */}
     </div>
   );
 };
