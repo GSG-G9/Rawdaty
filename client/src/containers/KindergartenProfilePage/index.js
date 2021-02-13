@@ -123,7 +123,7 @@ const KindergartenProfilePage = ({ match }) => {
             </div>
             <div>
               <Title level={3}>ماذا يقول الناس</Title>
-              {/* <CommentContainer data={kindergartenComments} /> */}
+              <CommentContainer data={kindergartenComments} />
             </div>
           </div>
         ) : (
