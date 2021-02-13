@@ -6,3 +6,10 @@
  /* .cover-image{
    object-fit: cover;  
  } */
+
+ .rating-avg{
+   border-left: 1px solid #C4C4C4;
+ }
+ .reviewers{
+   padding: 100px;
+ }

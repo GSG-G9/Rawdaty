@@ -3,7 +3,8 @@ import Axios from 'axios';
 import propTypes from 'prop-types';
 import { Alert, Typography, Image } from 'antd';
 import Loading from '../../Components/Common/Loading';
-
+import Rating from '../../Components/Common/Rating';
+import CommentContainer from '../../Components/CommentContainer';
 import './style.css';
 
 const { Title } = Typography;
@@ -76,9 +77,20 @@ const KindergartenProfilePage = ({ match }) => {
             />
             <div className="profile-sub-container">
               <Title level={1}>{kindergartenProfile.kindergarten_name}</Title>
+              <span className="rating-avg">
+                <Rating rateValue={kindergartenProfile.rating_average} />
+                <span>{kindergartenProfile.rating_average}</span>
+              </span>
+
+              <span className="reviewers">
+                {kindergartenProfile.rating_count} مراجعين
+              </span>
               <p>{kindergartenProfile.description}</p>
             </div>
-
+            <div>
+              <Title level={4}>ماذا يقول الناس</Title>
+              <CommentContainer data={kindergartenComments} isAdmin="flase" />
+            </div>
             {kindergartenComments[0].user_name}
           </div>
         ) : (
