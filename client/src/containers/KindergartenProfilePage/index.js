@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import propTypes from 'prop-types';
-import { Alert, Typography, Image } from 'antd';
+
+import { Alert, Typography, Image, Carousel } from 'antd';
 import Loading from '../../Components/Common/Loading';
 import Rating from '../../Components/Common/Rating';
+
 import CommentContainer from '../../Components/CommentContainer';
 import './style.css';
 
@@ -86,6 +88,16 @@ const KindergartenProfilePage = ({ match }) => {
                 {kindergartenProfile.rating_count} مراجعين
               </span>
               <p>{kindergartenProfile.description}</p>
+              <div>
+                <Carousel>
+                  {kindergartenProfile.image_gallery.map((e) => (
+                    <div>
+                      <Image width={400} src={e} />
+                    </div>
+                  ))}
+                </Carousel>
+                ,
+              </div>
             </div>
             <div>
               <Title level={4}>معلومات عنا</Title>
@@ -100,13 +112,19 @@ const KindergartenProfilePage = ({ match }) => {
               <div>
                 الفترة الصباحية{' '}
                 {`${kindergartenProfile.periods[0][0]} - ${kindergartenProfile.periods[0][1]} `}
+                {kindergartenProfile.periods[1] ? (
+                  <div>
+                    الفترة المسائية
+                    {` :   ${kindergartenProfile.periods[1][0]} - ${kindergartenProfile.periods[1][1]} `}
+                  </div>
+                ) : null}
+                <div>{kindergartenProfile.phone_number}</div>
               </div>
             </div>
             <div>
               <Title level={3}>ماذا يقول الناس</Title>
-              <CommentContainer data={kindergartenComments} />
+              {/* <CommentContainer data={kindergartenComments} /> */}
             </div>
-            {kindergartenComments[0].user_name}
           </div>
         ) : (
           <Loading />
