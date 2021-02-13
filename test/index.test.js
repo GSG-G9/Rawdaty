@@ -57,6 +57,8 @@ describe('Testing get kindergarten by id query', () => {
       ],
       location_sub: 'الرمال الجنوبي',
       location_main: 'غزة',
+      rating_count: '4',
+      rating_average: '4',
     });
   });
 });
