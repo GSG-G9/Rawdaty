@@ -13,7 +13,17 @@ const HomePage = () => {
     axios
       .get(`/api/v1/kindergarten`)
       .then(({ data: { data: response } }) => {
-        setData(response);
+        const sortRes = response.sort((a, b) => {
+          if (a.rating_average < b.rating_average) {
+            return 1;
+          }
+          if (a.rating_average > b.rating_average) {
+            return -1;
+          }
+          return 0;
+        });
+
+        setData(sortRes);
       })
       .catch(() => message.err('خطأ في السيرفر يرجى المحاولة لاحقًا.'));
   };
