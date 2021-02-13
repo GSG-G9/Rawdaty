@@ -17,7 +17,16 @@ const CardContainer = ({ data, searchText }) => (
         {data.length !== 0 ? (
           data.map((item) => (
             <li key={item.id}>
-              <Card {...item} />
+              <Card
+                id={item.id}
+                title={item.kindergarten_name}
+                rating={parseFloat(item.rating_average)}
+                reviewersNo={parseFloat(item.rating_count)}
+                location={item.location_sub}
+                minPrice={item.min_price}
+                maxPrice={item.max_price}
+                cover={item.cover_image}
+              />
             </li>
           ))
         ) : (
