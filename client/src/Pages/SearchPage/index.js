@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { notification } from 'antd';
-import Axios from 'axios';
+import axios from 'axios';
 
 import Search from '../../Components/Search';
 import CardContainer from '../../Components/CardContainer';
@@ -25,12 +25,12 @@ const SearchPage = () => {
   };
   useEffect(() => {
     let unmounted = false;
-    const source = Axios.CancelToken.source();
+    const source = axios.CancelToken.source();
 
     kindergartenSearchSchema
       .validate(queryObj)
       .then(({ q, minPrice, maxPrice, locationId }) =>
-        Axios.get(
+        axios.get(
           `/api/v1${createSearchUrl(q, minPrice, maxPrice, locationId)}`
         )
       )
@@ -71,7 +71,7 @@ const SearchPage = () => {
       </div>
       <div className="search-results">
         <CardContainer
-          data={[...searchResults]}
+          data={searchResults}
           searchText={queryObj.q || 'رياض الأطفال'}
         />
       </div>

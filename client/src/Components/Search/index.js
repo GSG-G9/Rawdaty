@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Typography, Image, notification } from 'antd';
 import PropTypes from 'prop-types';
-import Axios from 'axios';
+import axios from 'axios';
 
 import DorpList from '../Common/DropList';
 import MainInput from '../Common/MainInput';
@@ -43,9 +43,10 @@ const Search = ({ isRed, sliderMin, sliderMax }) => {
 
   useEffect(() => {
     let unmounted = false;
-    const source = Axios.CancelToken.source();
+    const source = axios.CancelToken.source();
 
-    Axios.get(`/api/v1/locations`)
+    axios
+      .get(`/api/v1/locations`)
       .then(({ data: { data } }) => {
         if (!unmounted) {
           setOptions(data);
