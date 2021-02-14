@@ -8,7 +8,7 @@ import './style.css';
 
 const App = () => (
   <Router>
-    <NavBar userName="Alaa" isAdmin="false" />
+    <NavBar userName="Alaa" isAdmin={false} />
     <Switch>
       <Route
         exact

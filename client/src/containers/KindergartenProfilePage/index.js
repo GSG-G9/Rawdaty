@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import propTypes from 'prop-types';
 
-import { Alert, Typography, Image, Carousel, Form } from 'antd';
+import { Alert, Typography, Image, Carousel, Form, Button } from 'antd';
 import Loading from '../../Components/Common/Loading';
 import Rating from '../../Components/Common/Rating';
 import MainInput from '../../Components/Common/MainInput';
-import MainButton from '../../Components/Common/MainButton';
 
 import CommentContainer from '../../Components/CommentContainer';
 import './style.css';
@@ -56,8 +55,8 @@ const KindergartenProfilePage = ({ match }) => {
     }
   };
   const onFinish = async ({ userName, comment, rating }) => {
+    console.log('finish');
     try {
-      console.log('finish');
       const { data } = await Axios.post(
         `/api/v1/kindergarten/${kindergartenId}/comments`,
         {
@@ -67,7 +66,7 @@ const KindergartenProfilePage = ({ match }) => {
         }
       );
       console.log({ data });
-      getKindergartenComments(kindergartenId);
+      // getKindergartenComments(kindergartenId);
     } catch (err) {
       let e;
       if (err.message === 'There is no kindergarten with this id') {
@@ -78,7 +77,9 @@ const KindergartenProfilePage = ({ match }) => {
       setError(e);
     }
   };
-
+  // const setRating = (val) => {
+  //   rateValue = val;
+  // };
   useEffect(() => {
     getKindergartenData(kindergartenId);
     getKindergartenComments(kindergartenId);
@@ -149,7 +150,7 @@ const KindergartenProfilePage = ({ match }) => {
             </div>
             <div>
               <Title level={3}>ماذا يقول الناس</Title>
-              <CommentContainer data={kindergartenComments} />
+              <CommentContainer data={kindergartenComments} isAdmin={false} />
             </div>
             <Form onFinish={onFinish}>
               <Form.Item>
@@ -159,7 +160,10 @@ const KindergartenProfilePage = ({ match }) => {
                 <MainInput type="textArea" placeholder="أدخل تعليقك ..." />
               </Form.Item>
               <Form.Item>
-                <MainButton htmlType="submit">أضف تعليق</MainButton>
+                {/* <Rating onChange={handleChange} value={value} /> */}
+              </Form.Item>
+              <Form.Item>
+                <Button htmlType="submit">أضف تعليق</Button>
               </Form.Item>
             </Form>
           </div>
