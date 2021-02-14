@@ -15,6 +15,7 @@ const KindergartenProfilePage = ({ match }) => {
   const [kindergartenProfile, setKindergartenProfile] = useState();
   const [kindergartenComments, setKindergartenComments] = useState();
   const [error, setError] = useState(null);
+  const [rating, setRating] = useState(0);
   const { kindergartenId } = match.params;
 
   const getKindergartenData = async (id) => {
@@ -54,7 +55,8 @@ const KindergartenProfilePage = ({ match }) => {
       setError(e);
     }
   };
-  const onFinish = async ({ userName, comment, rating }) => {
+  const onFinish = async ({ userName, comment }) => {
+    console.log({ userName, comment, rating, kindergartenId });
     console.log('finish');
     try {
       const { data } = await Axios.post(
@@ -66,7 +68,7 @@ const KindergartenProfilePage = ({ match }) => {
         }
       );
       console.log({ data });
-      // getKindergartenComments(kindergartenId);
+      getKindergartenComments(kindergartenId);
     } catch (err) {
       let e;
       if (err.message === 'There is no kindergarten with this id') {
@@ -77,9 +79,7 @@ const KindergartenProfilePage = ({ match }) => {
       setError(e);
     }
   };
-  // const setRating = (val) => {
-  //   rateValue = val;
-  // };
+
   useEffect(() => {
     getKindergartenData(kindergartenId);
     getKindergartenComments(kindergartenId);
@@ -153,15 +153,20 @@ const KindergartenProfilePage = ({ match }) => {
               <CommentContainer data={kindergartenComments} isAdmin={false} />
             </div>
             <Form onFinish={onFinish}>
-              <Form.Item>
+              <Form.Item name="userName">
                 <MainInput type="text" placeholder="أدخل اسمك ..." />
               </Form.Item>
-              <Form.Item>
+              <Form.Item name="comment">
                 <MainInput type="textArea" placeholder="أدخل تعليقك ..." />
               </Form.Item>
-              <Form.Item>
-                {/* <Rating onChange={handleChange} value={value} /> */}
-              </Form.Item>
+
+              <Rating
+                setRating={(val) => {
+                  setRating(val);
+                  console.log(val);
+                }}
+              />
+
               <Form.Item>
                 <Button htmlType="submit">أضف تعليق</Button>
               </Form.Item>
