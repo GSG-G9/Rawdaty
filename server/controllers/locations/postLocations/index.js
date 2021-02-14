@@ -11,9 +11,8 @@ const postLocations = async (req, res, next) => {
       }
     );
     const { rows: data } = await postLocationsQuery(subLocation, mainLocation);
-    res.json(201).json({ statusCode: 201, data });
+    res.status(201).json({ statusCode: 201, data });
   } catch (err) {
-    console.log(err);
     next(err);
   }
 };
