@@ -6,7 +6,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 0px 160px 0 55px;
-  border-bottom: 5px solid #739c98;
+  top: 0;
+  height: auto;
 }
 
 .navbar-logo-div {

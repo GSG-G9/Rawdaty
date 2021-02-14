@@ -13,7 +13,8 @@ const CardComponent = ({
   title,
   rating,
   reviewersNo,
-  location,
+  subLocation,
+  mainLocation,
   minPrice,
   maxPrice,
   cover,
@@ -43,7 +44,7 @@ const CardComponent = ({
             <Rating rateValue={rating} />
             <h3 className="reviewers"> {reviewersNo} مراجعات </h3>
             <div className="location-price">
-              <h3> {location}</h3>
+              <h3> {`${mainLocation} - ${subLocation}`}</h3>
               <h3>{`${minPrice}-${maxPrice}`} شيكل </h3>
             </div>
           </div>
@@ -58,7 +59,8 @@ CardComponent.propTypes = {
   title: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   reviewersNo: PropTypes.number.isRequired,
-  location: PropTypes.string.isRequired,
+  subLocation: PropTypes.string.isRequired,
+  mainLocation: PropTypes.string.isRequired,
   minPrice: PropTypes.number.isRequired,
   maxPrice: PropTypes.number.isRequired,
   cover: PropTypes.string.isRequired,
