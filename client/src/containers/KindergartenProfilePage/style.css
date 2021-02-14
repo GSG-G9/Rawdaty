@@ -3,11 +3,24 @@
     margin: 64px auto;
     color: #955f83;
   }
- /* .cover-image{
+ .cover-image{
    object-fit: cover;  
- } */
+ }
+/* .profile-sub-container{
+  display : flex;
+  justify-content: space-around;
 
- .rating-avg{
+
+} */
+.profile-first{
+  display: flex;
+  flex-direction: column;
+}
+.title{
+color :var (--main-color)
+} 
+
+.rating-avg{
    border-left: 1px solid #C4C4C4;
  }
  .reviewers{

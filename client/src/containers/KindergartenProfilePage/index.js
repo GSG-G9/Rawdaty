@@ -103,37 +103,65 @@ const KindergartenProfilePage = ({ match }) => {
             showIcon
           />
         ) : kindergartenProfile ? (
-          <div>
-            <Image
-              width="100%"
-              height="10%"
-              className="cover-image"
-              src={kindergartenProfile.cover_image}
-              preview={false}
-            />
-            <div className="profile-sub-container">
-              <Title level={1}>{kindergartenProfile.kindergarten_name}</Title>
-              <span className="rating-avg">
-                <Rating rateValue={kindergartenProfile.rating_average} />
-                <span>{kindergartenProfile.rating_average}</span>
-              </span>
+          <div className="profile-sub-container">
+            <div className="profile-first">
+              <Image
+                width="100%"
+                height="400px"
+                className="cover-image"
+                src={kindergartenProfile.cover_image}
+                preview={false}
+              />
 
-              <span className="reviewers">
-                {kindergartenProfile.rating_count} مراجعين
-              </span>
-              <p>{kindergartenProfile.description}</p>
-              <div className="carousal-container">
-                <Carousel autoplay>
-                  {kindergartenProfile.image_gallery.map((e) => (
-                    <div className="image-container">
-                      <Image width={400} src={e} className="slider-image" />
-                    </div>
-                  ))}
-                </Carousel>
-                ,
+              <div>
+                <Title level={1} className="title" style={{ color: '#739c98' }}>
+                  {kindergartenProfile.kindergarten_name}
+                </Title>
+                <span className="rating-avg">
+                  <Rating rateValue={kindergartenProfile.rating_average} />
+                  <span>{kindergartenProfile.rating_average}</span>
+                </span>
+
+                <span className="reviewers">
+                  {kindergartenProfile.rating_count} مراجعين
+                </span>
+                <p>{kindergartenProfile.description}</p>
+                <div className="carousal-container">
+                  <Carousel autoplay>
+                    {kindergartenProfile.image_gallery.map((e) => (
+                      <div className="image-container">
+                        <Image width={400} src={e} className="slider-image" />
+                      </div>
+                    ))}
+                  </Carousel>
+                </div>
               </div>
+
+              <div>
+                <Title level={3}>ماذا يقول الناس</Title>
+                <CommentContainer data={kindergartenComments} isAdmin={false} />
+              </div>
+              <Form onFinish={onFinish}>
+                <Form.Item name="userName">
+                  <MainInput type="text" placeholder="أدخل اسمك ..." />
+                </Form.Item>
+                <Form.Item name="comment">
+                  <MainInput type="textArea" placeholder="أدخل تعليقك ..." />
+                </Form.Item>
+
+                <Rating
+                  setRating={(val) => {
+                    setRating(val);
+                    console.log(val);
+                  }}
+                />
+
+                <Form.Item>
+                  <Button htmlType="submit">أضف تعليق</Button>
+                </Form.Item>
+              </Form>
             </div>
-            <div>
+            <div className="information">
               <Title level={4}>معلومات عنا</Title>
               <div>
                 {' '}
@@ -155,29 +183,6 @@ const KindergartenProfilePage = ({ match }) => {
                 <div>{kindergartenProfile.phone_number}</div>
               </div>
             </div>
-            <div>
-              <Title level={3}>ماذا يقول الناس</Title>
-              <CommentContainer data={kindergartenComments} isAdmin={false} />
-            </div>
-            <Form onFinish={onFinish}>
-              <Form.Item name="userName">
-                <MainInput type="text" placeholder="أدخل اسمك ..." />
-              </Form.Item>
-              <Form.Item name="comment">
-                <MainInput type="textArea" placeholder="أدخل تعليقك ..." />
-              </Form.Item>
-
-              <Rating
-                setRating={(val) => {
-                  setRating(val);
-                  console.log(val);
-                }}
-              />
-
-              <Form.Item>
-                <Button htmlType="submit">أضف تعليق</Button>
-              </Form.Item>
-            </Form>
           </div>
         ) : (
           <Loading />
