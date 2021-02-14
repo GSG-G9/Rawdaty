@@ -1,5 +1,6 @@
 const { postLocationsQuery } = require('../../../database/queries');
 const { locationSchema } = require('../../../utils/validation');
+const { boomify } = require('../../../utils');
 
 const postLocations = async (req, res, next) => {
   try {
@@ -10,10 +11,23 @@ const postLocations = async (req, res, next) => {
         abortEarly: false,
       }
     );
-    const { rows: data } = await postLocationsQuery(subLocation, mainLocation);
-    res.status(201).json({ statusCode: 201, data });
-  } catch (err) {
-    next(err);
+    if (subLocation && mainLocation) {
+      const { rows: data } = await postLocationsQuery(
+        subLocation,
+        mainLocation
+      );
+      res.status(201).json({ statusCode: 201, data });
+    } else {
+      next(
+        boomify(400, 'Validation wError', 'Sub and main locations are required')
+      );
+    }
+  } catch (error) {
+    next(
+      error.name === 'ValidationError'
+        ? boomify(400, 'Validation Error', error.errors)
+        : error
+    );
   }
 };
 
