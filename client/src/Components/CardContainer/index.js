@@ -23,6 +23,8 @@ const CardContainer = ({ data, searchText }) => (
                 rating={parseFloat(item.rating_average)}
                 reviewersNo={parseFloat(item.rating_count)}
                 location={item.location_sub}
+                mainLocation={item.location_main}
+                subLocation={item.location_sub}
                 minPrice={item.min_price}
                 maxPrice={item.max_price}
                 cover={item.cover_image}
@@ -49,7 +51,8 @@ CardContainer.propTypes = {
       title: PropTypes.string,
       rating: PropTypes.number,
       reviewersNo: PropTypes.number,
-      location: PropTypes.string,
+      subLocation: PropTypes.string.isRequired,
+      mainLocation: PropTypes.string.isRequired,
       minPrice: PropTypes.number,
       maxPrice: PropTypes.number,
       cover: PropTypes.string,
