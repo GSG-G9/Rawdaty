@@ -75,7 +75,7 @@ const NavBar = ({ userName, isLogged, image, isAdmin }) => {
     </Menu>
   );
 
-  const modalChildren = <Search onSearch={onSearchHandler} />;
+  const modalChildren = <Search onSearch={onSearchHandler} isRed />;
 
   return (
     <div className="navbar">
@@ -110,6 +110,7 @@ const NavBar = ({ userName, isLogged, image, isAdmin }) => {
             color="#739c98"
             borderRadius="var(--border-radius)"
             className="add-kinderg-btn"
+            onClick={() => {}}
           >
             إضافة روضة
           </MainButton>

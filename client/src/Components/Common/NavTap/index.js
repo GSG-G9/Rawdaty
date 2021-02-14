@@ -51,7 +51,7 @@ NavTap.defaultProps = {
 };
 
 NavTap.propTypes = {
-  modalChildren: PropTypes.string,
+  modalChildren: PropTypes.element,
   isModalVisible: PropTypes.bool,
   onModalCancel: PropTypes.func,
 };

@@ -24,47 +24,46 @@ const SearchPage = () => {
     maxPrice: query.get('maxPrice'),
     locationId: query.get('locationId'),
   };
-
   const prevQueryObj = usePrevious(queryObj);
+
+  const fetchData = async () => {
+    try {
+      const {
+        q,
+        minPrice,
+        maxPrice,
+        locationId,
+      } = await kindergartenSearchSchema.validate(queryObj);
+
+      const {
+        data: { data },
+      } = await axios.get(
+        `/api/v1${createSearchUrl(q, minPrice, maxPrice, locationId)}`
+      );
+      setSearchResults(data);
+    } catch (error) {
+      const { name: errorName, response } = error;
+      if (
+        errorName === 'ValidationError' ||
+        response.data.error === 'Validation Error'
+      ) {
+        history.push('/');
+      } else {
+        notification.open({
+          message: 'حدث خطأ في السيرفر, يرجى المحاولة لاحقا',
+        });
+      }
+    }
+  };
 
   useEffect(() => {
     if (
       !prevQueryObj ||
       JSON.stringify(queryObj) !== JSON.stringify(prevQueryObj)
     ) {
-      let unmounted = false;
       const source = axios.CancelToken.source();
-
-      kindergartenSearchSchema
-        .validate(queryObj)
-        .then(({ q, minPrice, maxPrice, locationId }) =>
-          axios.get(
-            `/api/v1${createSearchUrl(q, minPrice, maxPrice, locationId)}`
-          )
-        )
-        .then(({ data: { data } }) => {
-          if (!unmounted) {
-            setSearchResults(data);
-          }
-        })
-        .catch((error) => {
-          if (!unmounted) {
-            const { name: errorName, response } = error;
-            if (
-              errorName === 'ValidationError' ||
-              response.data.error === 'Validation Error'
-            ) {
-              history.push('/');
-            } else {
-              notification.open({
-                message: 'حدث خطأ في السيرفر, يرجى المحاولة لاحقا',
-              });
-            }
-          }
-        });
-
+      fetchData();
       return () => {
-        unmounted = true;
         source.cancel('Cancelling in cleanup');
       };
     }
