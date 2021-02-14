@@ -1,8 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Menu, Dropdown, Image, Typography } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
+import usePrevious from '../../../utils/usePrevious';
 
 import MainButton from '../../Common/MainButton';
 import UserImage from '../../Common/UserImage';
@@ -16,6 +17,44 @@ import './style.css';
 const { Text, Title } = Typography;
 
 const NavBar = ({ userName, isLogged, image, isAdmin }) => {
+  const [selectedNavTapKey, setSelectedNavTapKey] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const { pathname } = useHistory().location;
+
+  const prevSelectedNavTapKey = usePrevious(selectedNavTapKey);
+
+  useEffect(() => {
+    switch (pathname) {
+      case '/':
+        setSelectedNavTapKey(['1']);
+        break;
+      case '/about':
+        setSelectedNavTapKey(['2']);
+        break;
+      case '/search':
+        setSelectedNavTapKey(['3']);
+        break;
+      default:
+        break;
+    }
+  }, []);
+
+  const handleCancel = () => {
+    setSelectedNavTapKey(prevSelectedNavTapKey);
+    setIsModalVisible(false);
+  };
+
+  const onSearchHandler = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleMenu = (val) => {
+    if (val.key === '3') {
+      setIsModalVisible(true);
+    }
+    setSelectedNavTapKey([val.key]);
+  };
+
   const menu = (
     <Menu id="drop-down">
       <Text className="user-name">{userName}</Text>
@@ -36,7 +75,7 @@ const NavBar = ({ userName, isLogged, image, isAdmin }) => {
     </Menu>
   );
 
-  const modalChildren = <Search />;
+  const modalChildren = <Search onSearch={onSearchHandler} />;
 
   return (
     <div className="navbar">
@@ -58,7 +97,13 @@ const NavBar = ({ userName, isLogged, image, isAdmin }) => {
         </div>
       ) : (
         <div className="navbar-taps-div">
-          <NavTap modalChildren={modalChildren} />
+          <NavTap
+            onSelect={handleMenu}
+            selectedKeys={selectedNavTapKey}
+            modalChildren={modalChildren}
+            isModalVisible={isModalVisible}
+            onModalCancel={handleCancel}
+          />
           <MainButton
             border="3px solid var(--main-color)"
             backgroundColor="var(--main-white)"

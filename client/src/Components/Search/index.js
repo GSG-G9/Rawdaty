@@ -14,7 +14,7 @@ import './style.css';
 
 const { Title } = Typography;
 
-const Search = ({ isRed, sliderMin, sliderMax }) => {
+const Search = ({ isRed, sliderMin, sliderMax, onSearch }) => {
   const history = useHistory();
   const [selectValue, setSelectValue] = useState('');
   const [sliderValue, setSliderValue] = useState([500, 2000]);
@@ -22,6 +22,7 @@ const Search = ({ isRed, sliderMin, sliderMax }) => {
   const [options, setOptions] = useState([]);
 
   const onClick = () => {
+    onSearch();
     history.push(
       createSearchUrl(inputValue, sliderValue[0], sliderValue[1], selectValue)
     );
@@ -107,12 +108,14 @@ Search.defaultProps = {
   isRed: false,
   sliderMin: 500,
   sliderMax: 2000,
+  onSearch: () => {},
 };
 
 Search.propTypes = {
   isRed: PropTypes.bool,
   sliderMin: PropTypes.number,
   sliderMax: PropTypes.number,
+  onSearch: PropTypes.func,
 };
 
 export default Search;
