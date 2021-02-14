@@ -33,10 +33,10 @@ const CommentContainer = ({ data, isAdmin }) => {
           <List.Item>
             <Comment
               isAdmin={isAdmin}
-              userName={item.userName}
-              commentText={item.commentText}
-              date={item.date}
-              rateValue={item.rateValue}
+              userName={item.user_name}
+              commentText={item.comment}
+              date={item.create_at}
+              rateValue={item.rating}
             />
           </List.Item>
         )}
