@@ -103,84 +103,92 @@ const KindergartenProfilePage = ({ match }) => {
             showIcon
           />
         ) : kindergartenProfile ? (
-          <div className="profile-sub-container">
-            <div className="profile-first">
-              <Image
-                width="100%"
-                height="400px"
-                className="cover-image"
-                src={kindergartenProfile.cover_image}
-                preview={false}
-              />
+          <div>
+            <Image
+              width="100%"
+              height="400px"
+              className="cover-image"
+              src={kindergartenProfile.cover_image}
+              preview={false}
+            />
+            <div className="profile-sub-container">
+              <div className="right-container">
+                <div>
+                  <Title
+                    level={1}
+                    className="title"
+                    style={{ color: '#739c98' }}
+                  >
+                    {kindergartenProfile.kindergarten_name}
+                  </Title>
+                  <span className="rating-avg">
+                    <Rating rateValue={kindergartenProfile.rating_average} />
+                    <span>{kindergartenProfile.rating_average}</span>
+                  </span>
 
-              <div>
-                <Title level={1} className="title" style={{ color: '#739c98' }}>
-                  {kindergartenProfile.kindergarten_name}
-                </Title>
-                <span className="rating-avg">
-                  <Rating rateValue={kindergartenProfile.rating_average} />
-                  <span>{kindergartenProfile.rating_average}</span>
-                </span>
-
-                <span className="reviewers">
-                  {kindergartenProfile.rating_count} مراجعين
-                </span>
-                <p>{kindergartenProfile.description}</p>
-                <div className="carousal-container">
-                  <Carousel autoplay>
-                    {kindergartenProfile.image_gallery.map((e) => (
-                      <div className="image-container">
-                        <Image width={400} src={e} className="slider-image" />
-                      </div>
-                    ))}
-                  </Carousel>
-                </div>
-              </div>
-
-              <div>
-                <Title level={3}>ماذا يقول الناس</Title>
-                <CommentContainer data={kindergartenComments} isAdmin={false} />
-              </div>
-              <Form onFinish={onFinish}>
-                <Form.Item name="userName">
-                  <MainInput type="text" placeholder="أدخل اسمك ..." />
-                </Form.Item>
-                <Form.Item name="comment">
-                  <MainInput type="textArea" placeholder="أدخل تعليقك ..." />
-                </Form.Item>
-
-                <Rating
-                  setRating={(val) => {
-                    setRating(val);
-                    console.log(val);
-                  }}
-                />
-
-                <Form.Item>
-                  <Button htmlType="submit">أضف تعليق</Button>
-                </Form.Item>
-              </Form>
-            </div>
-            <div className="information">
-              <Title level={4}>معلومات عنا</Title>
-              <div>
-                {' '}
-                {`${kindergartenProfile.location_main}  - ${kindergartenProfile.location_sub}`}{' '}
-              </div>
-              <div>
-                متوسط السعر
-                {`  :  ${kindergartenProfile.min_price}  - ${kindergartenProfile.max_price} ₪`}
-              </div>
-              <div>
-                الفترة الصباحية{' '}
-                {`${kindergartenProfile.periods[0][0]} - ${kindergartenProfile.periods[0][1]} `}
-                {kindergartenProfile.periods[1] ? (
-                  <div>
-                    الفترة المسائية
-                    {` :   ${kindergartenProfile.periods[1][0]} - ${kindergartenProfile.periods[1][1]} `}
+                  <span className="reviewers">
+                    {kindergartenProfile.rating_count} مراجعين
+                  </span>
+                  <p>{kindergartenProfile.description}</p>
+                  <div className="carousal-container">
+                    <Carousel autoplay>
+                      {kindergartenProfile.image_gallery.map((e) => (
+                        <div className="image-container">
+                          <Image width={400} src={e} className="slider-image" />
+                        </div>
+                      ))}
+                    </Carousel>
                   </div>
-                ) : null}
-                <div>{kindergartenProfile.phone_number}</div>
+                </div>
+
+                <div>
+                  <Title level={3}>ماذا يقول الناس</Title>
+                  <CommentContainer
+                    data={kindergartenComments}
+                    isAdmin={false}
+                  />
+                </div>
+                <Form onFinish={onFinish}>
+                  <Form.Item name="userName">
+                    <MainInput type="text" placeholder="أدخل اسمك ..." />
+                  </Form.Item>
+                  <Form.Item name="comment">
+                    <MainInput type="textArea" placeholder="أدخل تعليقك ..." />
+                  </Form.Item>
+
+                  <Rating
+                    setRating={(val) => {
+                      setRating(val);
+                      console.log(val);
+                    }}
+                  />
+
+                  <Form.Item>
+                    <Button htmlType="submit">أضف تعليق</Button>
+                  </Form.Item>
+                </Form>
+              </div>
+              <div className="information">
+                <Title level={4}>معلومات عنا</Title>
+                <div>
+                  {' '}
+                  {`${kindergartenProfile.location_main}  - ${kindergartenProfile.location_sub}`}{' '}
+                </div>
+                <div>
+                  متوسط السعر
+                  {`  :  ${kindergartenProfile.min_price}  - ${kindergartenProfile.max_price} ₪`}
+                </div>
+                <div>
+                  الفترة الصباحية{' '}
+                  {`${kindergartenProfile.periods[0][0]} - ${kindergartenProfile.periods[0][1]} `}
+                  {kindergartenProfile.periods[1] ? (
+                    <div>
+                      الفترة المسائية
+                      {` :   ${kindergartenProfile.periods[1][0]} - ${kindergartenProfile.periods[1][1]} `}
+                    </div>
+                  ) : null}
+                  <div>{kindergartenProfile.phone_number}</div>
+                </div>
               </div>
             </div>
           </div>

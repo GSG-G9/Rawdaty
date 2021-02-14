@@ -6,15 +6,22 @@
  .cover-image{
    object-fit: cover;  
  }
-/* .profile-sub-container{
+.profile-sub-container{
   display : flex;
-  justify-content: space-around;
 
 
-} */
+
+}
 .profile-first{
   display: flex;
   flex-direction: column;
+}
+.right-container{
+  width:800px;
+  border: var(--input-border);
+  margin: 25px 50px 75px 100px;
+  padding: 50px;
+  box-shadow: var(--card-shadow);
 }
 .title{
 color :var (--main-color)
