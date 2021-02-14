@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { notification } from 'antd';
 import axios from 'axios';
+import usePrevious from '../../utils/usePrevious';
 
 import Search from '../../Components/Search';
 import CardContainer from '../../Components/CardContainer';
@@ -23,42 +24,51 @@ const SearchPage = () => {
     maxPrice: query.get('maxPrice'),
     locationId: query.get('locationId'),
   };
+
+  const prevQueryObj = usePrevious(queryObj);
+
   useEffect(() => {
-    let unmounted = false;
-    const source = axios.CancelToken.source();
+    if (
+      !prevQueryObj ||
+      JSON.stringify(queryObj) !== JSON.stringify(prevQueryObj)
+    ) {
+      let unmounted = false;
+      const source = axios.CancelToken.source();
 
-    kindergartenSearchSchema
-      .validate(queryObj)
-      .then(({ q, minPrice, maxPrice, locationId }) =>
-        axios.get(
-          `/api/v1${createSearchUrl(q, minPrice, maxPrice, locationId)}`
+      kindergartenSearchSchema
+        .validate(queryObj)
+        .then(({ q, minPrice, maxPrice, locationId }) =>
+          axios.get(
+            `/api/v1${createSearchUrl(q, minPrice, maxPrice, locationId)}`
+          )
         )
-      )
-      .then(({ data: { data } }) => {
-        if (!unmounted) {
-          setSearchResults(data);
-        }
-      })
-      .catch((error) => {
-        if (!unmounted) {
-          const { name: errorName, response } = error;
-          if (
-            errorName === 'ValidationError' ||
-            response.data.error === 'Validation Error'
-          ) {
-            history.push('/');
-          } else {
-            notification.open({
-              message: 'حدث خطأ في السيرفر, يرجى المحاولة لاحقا',
-            });
+        .then(({ data: { data } }) => {
+          if (!unmounted) {
+            setSearchResults(data);
           }
-        }
-      });
+        })
+        .catch((error) => {
+          if (!unmounted) {
+            const { name: errorName, response } = error;
+            if (
+              errorName === 'ValidationError' ||
+              response.data.error === 'Validation Error'
+            ) {
+              history.push('/');
+            } else {
+              notification.open({
+                message: 'حدث خطأ في السيرفر, يرجى المحاولة لاحقا',
+              });
+            }
+          }
+        });
 
-    return () => {
-      unmounted = true;
-      source.cancel('Cancelling in cleanup');
-    };
+      return () => {
+        unmounted = true;
+        source.cancel('Cancelling in cleanup');
+      };
+    }
+    return null;
   }, [query]);
 
   return (
