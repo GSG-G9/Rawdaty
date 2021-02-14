@@ -25,6 +25,17 @@
   font-weight: bold !important;
 }
 
+.ant-menu-horizontal > .ant-menu-item span {
+  color: #739c98 !important;
+  font-weight: bold;
+}
+
+.ant-menu-horizontal > .ant-menu-item-selected span {
+  color: #fff !important;
+  font-weight: bold !important;
+  font-weight: bold;
+}
+
 .ant-menu .ant-menu-item-selected .icon {
   fill: #fff;
 }
@@ -66,6 +77,25 @@
   color: #ffffff !important;
   border-bottom: 2px solid #739c98 !important;
 }
+
 .tap {
   font-weight: bold;
+}
+
+.modal {
+  width: 1120px !important;
+  height: 100px !important;
+}
+.ant-modal-content {
+  height: 150px !important;
+}
+.ant-modal-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.ant-modal-footer {
+  display: none;
 }
