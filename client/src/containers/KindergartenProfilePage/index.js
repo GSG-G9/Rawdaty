@@ -3,7 +3,7 @@ import Axios from 'axios';
 import propTypes from 'prop-types';
 
 import { Alert, Typography, Image, Carousel, Form, Button } from 'antd';
-import Loading from '../../Components/Common/Loading';
+import Spinner from '../../Components/Common/Spinner';
 import Rating from '../../Components/Common/Rating';
 import MainInput from '../../Components/Common/MainInput';
 
@@ -193,7 +193,7 @@ const KindergartenProfilePage = ({ match }) => {
             </div>
           </div>
         ) : (
-          <Loading />
+          <Spinner />
         )
       }
     </div>

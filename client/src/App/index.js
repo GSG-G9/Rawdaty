@@ -4,6 +4,7 @@ import NavBar from '../Components/Layout/Navbar';
 import Footer from '../Components/Layout/Footer';
 import KindergartenProfilePage from '../containers/KindergartenProfilePage';
 
+import Home from '../Pages/HomePage';
 import './style.css';
 
 const App = () => (
@@ -15,6 +16,9 @@ const App = () => (
         path="/kindergarten/:kindergartenId"
         render={(props) => <KindergartenProfilePage {...props} />}
       />
+      <Route exact to="/">
+        <Home />
+      </Route>
     </Switch>
     <Footer />
   </Router>
