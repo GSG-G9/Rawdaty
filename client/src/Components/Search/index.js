@@ -29,7 +29,6 @@ const Search = ({ isRed, sliderMin, sliderMax, onSearch }) => {
   };
 
   const onDorpListSelect = (val) => {
-    console.log(val);
     if (val.key !== 'كل المنطقة') {
       setSelectValue(
         options.filter((data) => data.location_sub === val.key)[0].id
