@@ -243,7 +243,7 @@ describe('Get all kindergartens', () => {
 });
 
 // test the route /locations
-describe('Locations', () => {
+describe('Post locations', () => {
   test('Route post /locations status 201', async () => {
     expect.assertions(1);
     const res = await request(app)
@@ -258,7 +258,7 @@ describe('Locations', () => {
     });
   });
 
-  test('ٍShould return error 400 when sub or main locations are not inserted', async () => {
+  test('Should return error 400 when sub or main locations are not inserted', async () => {
     expect.assertions(1);
     const res = await request(app)
       .post('/api/v1/locations')
@@ -267,7 +267,9 @@ describe('Locations', () => {
     const { error } = res.body;
     expect(error).toBe('Validation Error');
   });
+});
 
+describe('Get locations', () => {
   test('Route get /locations status 200, json header', async () => {
     expect.assertions(1);
     const res = await request(app)
@@ -275,6 +277,19 @@ describe('Locations', () => {
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.data).toHaveLength(24);
+  });
+
+  test('should return an object contains id, sub and main locations', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .get('/api/v1/locations')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data[0]).toEqual({
+      id: 1,
+      location_sub: 'الرمال الجنوبي',
+      location_main: 'غزة',
+    });
   });
 
   test('should return an object contains id, sub and main locations', async () => {
