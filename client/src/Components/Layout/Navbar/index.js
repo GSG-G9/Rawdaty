@@ -9,6 +9,7 @@ import UserImage from '../../Common/UserImage';
 import NavTap from '../../Common/NavTap';
 import homeDrop from '../../../assets/icons/homeDrop.svg';
 import logout from '../../../assets/icons/logout.svg';
+import Search from '../../Search';
 
 import './style.css';
 
@@ -35,6 +36,8 @@ const NavBar = ({ userName, isLogged, image, isAdmin }) => {
     </Menu>
   );
 
+  const modalChildren = <Search />;
+
   return (
     <div className="navbar">
       <div className="navbar-logo-div">
@@ -55,7 +58,7 @@ const NavBar = ({ userName, isLogged, image, isAdmin }) => {
         </div>
       ) : (
         <div className="navbar-taps-div">
-          <NavTap />
+          <NavTap modalChildren={modalChildren} />
           <MainButton
             border="3px solid var(--main-color)"
             backgroundColor="var(--main-white)"
