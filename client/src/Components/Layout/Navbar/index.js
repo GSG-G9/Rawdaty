@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Menu, Dropdown, Image, Typography } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import PropTypes from 'prop-types';
 
 import MainButton from '../../Common/MainButton';
 import UserImage from '../../Common/UserImage';
 import NavTap from '../../Common/NavTap';
-import homedrop from '../../../assets/icons/homedrop.svg';
+import homeDrop from '../../../assets/icons/homeDrop.svg';
 import logout from '../../../assets/icons/logout.svg';
+
 import './style.css';
 
-const { Text } = Typography;
-const { Title } = Typography;
+const { Text, Title } = Typography;
 
 const NavBar = ({ userName, isLogged, image, isAdmin }) => {
   const menu = (
@@ -22,7 +22,7 @@ const NavBar = ({ userName, isLogged, image, isAdmin }) => {
 
       <Menu.Item key="1">
         <Link to="!#">
-          <Image preview={false} src={homedrop} alt="home" />
+          <Image preview={false} src={homeDrop} alt="home" />
           <span className="drop-down-list-span">صفحة الروضة</span>
         </Link>
       </Menu.Item>
