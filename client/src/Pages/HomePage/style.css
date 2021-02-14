@@ -1,15 +1,17 @@
 .header-image {
   position: absolute;
-  width: 1440px;
+  width: 100vw;
   height: 414px;
   left: 0px;
   top: 65px;
-  background: url('../../assets/img/header.png');
+  background: url('../../assets/img/header.png') no-repeat;
+  background-size: cover;
 }
 .imported-component-container {
   position: relative;
   top: 440px;
   padding-top: 40px;
+  margin-bottom: 120px;
 }
 .header-image-title {
   position: absolute;

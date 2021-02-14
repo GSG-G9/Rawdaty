@@ -4,10 +4,12 @@ import axios from 'axios';
 import { message } from 'antd';
 import Search from '../../Components/Search';
 import CardContainer from '../../Components/CardContainer';
+import Spinner from '../../Components/Common/Spinner';
 import './style.css';
 
 const HomePage = () => {
   const [kindergartensData, setKindergartensData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const fetchData = async () => {
     try {
       const {
@@ -23,13 +25,18 @@ const HomePage = () => {
         return 0;
       });
       setKindergartensData(sortRes);
+      setLoading(false);
     } catch (err) {
       message.error('خطأ في السيرفر يرجى المحاولة لاحقًا.');
     }
   };
 
   useEffect(() => {
+    const source = axios.CancelToken.source();
     fetchData();
+    return () => {
+      source.cancel('clean up axios');
+    };
   }, []);
   return (
     <div>
@@ -40,7 +47,7 @@ const HomePage = () => {
       </div>
       <div className="imported-component-container">
         <Search dorpListOptions={[{ id: 2, value: 'asda', disabled: false }]} />
-        <CardContainer data={kindergartensData} />
+        {loading ? <Spinner /> : <CardContainer data={kindergartensData} />}
       </div>
     </div>
   );
