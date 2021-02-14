@@ -23,8 +23,8 @@ const CardContainer = ({ data, searchText }) => {
               <Card
                 id={item.id}
                 title={item.kindergarten_name}
-                rating={parseFloat(item.rating_average)}
-                reviewersNo={parseFloat(item.rating_count)}
+                rating={parseFloat(item.rating_average || 0)}
+                reviewersNo={parseFloat(item.rating_count || 0)}
                 location={item.location_sub}
                 mainLocation={item.location_main}
                 subLocation={item.location_sub}

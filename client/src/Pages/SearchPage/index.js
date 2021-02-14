@@ -34,7 +34,6 @@ const SearchPage = () => {
         maxPrice,
         locationId,
       } = await kindergartenSearchSchema.validate(queryObj);
-
       const {
         data: { data },
       } = await axios.get(
