@@ -18,9 +18,7 @@ const postLocations = async (req, res, next) => {
       );
       res.status(201).json({ statusCode: 201, data });
     } else {
-      next(
-        boomify(400, 'Validation wError', 'Sub and main locations are required')
-      );
+      next(boomify(400, 'Bad Request', 'Sub and main locations are required'));
     }
   } catch (error) {
     next(
