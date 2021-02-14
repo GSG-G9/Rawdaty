@@ -10,6 +10,7 @@ const { Title } = Typography;
 const CardContainer = ({ data, searchText }) => {
   const numEachPage = 9;
   const [limit, setLimit] = useState([0, numEachPage]);
+
   return (
     <div>
       <Title level={3} id="container-title">
