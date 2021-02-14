@@ -81,8 +81,15 @@ const KindergartenProfilePage = ({ match }) => {
   };
 
   useEffect(() => {
-    getKindergartenData(kindergartenId);
-    getKindergartenComments(kindergartenId);
+    let isActive = true;
+    if (isActive) {
+      getKindergartenData(kindergartenId);
+      getKindergartenComments(kindergartenId);
+    }
+
+    return () => {
+      isActive = false;
+    };
   }, [kindergartenId]);
   return (
     <div className="profile-container">
