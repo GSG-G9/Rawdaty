@@ -1,9 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import NavBar from '../Components/Layout/Navbar';
 import Footer from '../Components/Layout/Footer';
 import Home from '../Pages/HomePage';
 import SearchPage from '../Pages/SearchPage';
+
 import './style.css';
 
 const App = () => (

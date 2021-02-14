@@ -41,9 +41,9 @@ const HomePage = () => {
   return (
     <div>
       <div className="header-image">
-        <p className="header-image-title">
+        <h3 className="header-image-title">
           المنصة الأولى لمساعدتكم في اختيار روضة أبنائكم
-        </p>
+        </h3>
       </div>
       <div className="imported-component-container">
         <Search dorpListOptions={[{ id: 2, value: 'asda', disabled: false }]} />
