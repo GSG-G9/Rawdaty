@@ -13,3 +13,32 @@
  .reviewers{
    padding: 100px;
  }
+
+ .main-carousal {
+  display: flex;
+    justify-content: space-around;
+    align-self: center;
+    margin-top: 7px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+.carousal-container {
+  height: 30vh;
+  line-height: 160px;
+  overflow: hidden;
+  width: 40%;
+  padding: 10px;
+
+}
+
+.image-container {
+  width: 100%;
+  height: 30vh;
+}
+
+.slider-image {
+  width: 100%;
+  height: 90%;
+  object-fit: cover;
+}

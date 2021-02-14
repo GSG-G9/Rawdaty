@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import propTypes from 'prop-types';
 
-import { Alert, Typography, Image, Carousel } from 'antd';
+import { Alert, Typography, Image, Carousel, Form } from 'antd';
 import Loading from '../../Components/Common/Loading';
 import Rating from '../../Components/Common/Rating';
+import MainInput from '../../Components/Common/MainInput';
+import MainButton from '../../Components/Common/MainButton';
 
 import CommentContainer from '../../Components/CommentContainer';
 import './style.css';
@@ -15,6 +17,7 @@ const KindergartenProfilePage = ({ match }) => {
   const [kindergartenComments, setKindergartenComments] = useState();
   const [error, setError] = useState(null);
   const { kindergartenId } = match.params;
+
   const getKindergartenData = async (id) => {
     try {
       console.log('hi');
@@ -48,6 +51,29 @@ const KindergartenProfilePage = ({ match }) => {
         e = 'لا يوجد روضة بهذا المعرف';
       } else {
         e = 'تعذر جلب بيانات الروضة ';
+      }
+      setError(e);
+    }
+  };
+  const onFinish = async ({ userName, comment, rating }) => {
+    try {
+      console.log('finish');
+      const { data } = await Axios.post(
+        `/api/v1/kindergarten/${kindergartenId}/comments`,
+        {
+          userName,
+          comment,
+          rating,
+        }
+      );
+      console.log({ data });
+      getKindergartenComments(kindergartenId);
+    } catch (err) {
+      let e;
+      if (err.message === 'There is no kindergarten with this id') {
+        e = 'لا يوجد روضة بهذا المعرف';
+      } else {
+        e = 'تعذر  ارسال التعليق  ';
       }
       setError(e);
     }
@@ -88,11 +114,11 @@ const KindergartenProfilePage = ({ match }) => {
                 {kindergartenProfile.rating_count} مراجعين
               </span>
               <p>{kindergartenProfile.description}</p>
-              <div>
-                <Carousel>
+              <div className="carousal-container">
+                <Carousel autoplay>
                   {kindergartenProfile.image_gallery.map((e) => (
-                    <div>
-                      <Image width={400} src={e} />
+                    <div className="image-container">
+                      <Image width={400} src={e} className="slider-image" />
                     </div>
                   ))}
                 </Carousel>
@@ -125,6 +151,17 @@ const KindergartenProfilePage = ({ match }) => {
               <Title level={3}>ماذا يقول الناس</Title>
               <CommentContainer data={kindergartenComments} />
             </div>
+            <Form onFinish={onFinish}>
+              <Form.Item>
+                <MainInput type="text" placeholder="أدخل اسمك ..." />
+              </Form.Item>
+              <Form.Item>
+                <MainInput type="textArea" placeholder="أدخل تعليقك ..." />
+              </Form.Item>
+              <Form.Item>
+                <MainButton htmlType="submit">أضف تعليق</MainButton>
+              </Form.Item>
+            </Form>
           </div>
         ) : (
           <Loading />
