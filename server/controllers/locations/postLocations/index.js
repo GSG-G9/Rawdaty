@@ -4,9 +4,8 @@ const { boomify } = require('../../../utils');
 
 const postLocations = async (req, res, next) => {
   try {
-    const { subLocation, mainLocation } = req.body;
-    await locationSchema.validate(
-      { subLocation, mainLocation },
+    const { subLocation, mainLocation } = await locationSchema.validate(
+      req.body,
       {
         abortEarly: false,
       }
