@@ -1,21 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Menu, Modal } from 'antd';
+import usePrevious from '../../../utils/usePrevious';
 
 import { ReactComponent as Home } from '../../../assets/icons/home.svg';
 import { ReactComponent as About } from '../../../assets/icons/about.svg';
 import { ReactComponent as Search } from '../../../assets/icons/search.svg';
 
 import './style.css';
-
-const usePrevious = (value) => {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-};
 
 const NavTap = ({ modalChildren }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
