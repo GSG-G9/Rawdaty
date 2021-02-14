@@ -30,6 +30,9 @@ const DropList = ({ options, isSearch, ...otherSelectProps }) => {
         className={`${isSearch ? 'search-case' : 'request-case'}`}
         {...otherSelectProps}
       >
+        <Option key={0} value="كل المنطقة">
+          كل المنطقة
+        </Option>
         {Object.keys(optionItem).map((oneKey) => (
           <OptGroup key={oneKey} label={oneKey}>
             {optionItem[oneKey]}

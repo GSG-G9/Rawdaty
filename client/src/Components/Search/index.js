@@ -29,9 +29,14 @@ const Search = ({ isRed, sliderMin, sliderMax, onSearch }) => {
   };
 
   const onDorpListSelect = (val) => {
-    setSelectValue(
-      options.filter((data) => data.location_sub === val.key)[0].id
-    );
+    console.log(val);
+    if (val.key !== 'كل المنطقة') {
+      setSelectValue(
+        options.filter((data) => data.location_sub === val.key)[0].id
+      );
+    } else {
+      setSelectValue('');
+    }
   };
 
   const onSliderChange = (val) => {
@@ -43,26 +48,20 @@ const Search = ({ isRed, sliderMin, sliderMax, onSearch }) => {
   };
 
   useEffect(() => {
-    let unmounted = false;
     const source = axios.CancelToken.source();
 
     axios
       .get(`/api/v1/locations`)
       .then(({ data: { data } }) => {
-        if (!unmounted) {
-          setOptions(data);
-        }
+        setOptions(data);
       })
       .catch(() => {
-        if (!unmounted) {
-          notification.open({
-            message: 'حدث خطأ في السيرفر, يرجى المحاولة لاحقا',
-          });
-        }
+        notification.open({
+          message: 'حدث خطأ في السيرفر, يرجى المحاولة لاحقا',
+        });
       });
 
     return () => {
-      unmounted = true;
       source.cancel('Cancelling in cleanup');
     };
   }, []);
