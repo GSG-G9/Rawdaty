@@ -7,7 +7,7 @@ const {
   getCommentsQuery,
 } = require('../server/database/queries');
 
-beforeAll(() => dbBuild());
+beforeEach(() => dbBuild());
 afterAll(() => connection.end());
 
 describe('Get all users', () => {
@@ -276,7 +276,7 @@ describe('Get locations', () => {
       .get('/api/v1/locations')
       .expect(200)
       .expect('Content-Type', /json/);
-    expect(res.body.data).toHaveLength(24);
+    expect(res.body.data).toHaveLength(23);
   });
 
   test('should return an object contains id, sub and main locations', async () => {
@@ -359,7 +359,7 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
       .get('/api/v1/kindergarten/2/comments')
       .expect(200);
     const { data } = res.body;
-    expect(data).toHaveLength(5);
+    expect(data).toHaveLength(2);
   });
 
   test('should return status code 200 and expected data when given GET  /kindergarten/1/comments', async () => {
