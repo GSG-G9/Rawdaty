@@ -8,6 +8,11 @@ import Rating from '../../Components/Common/Rating';
 import MainInput from '../../Components/Common/MainInput';
 
 import CommentContainer from '../../Components/CommentContainer';
+import locationIcon from '../../assets/icons/location1.svg';
+import price from '../../assets/icons/price.svg';
+import time from '../../assets/icons/time.svg';
+import phone from '../../assets/icons/phone.svg';
+import commentIcon from '../../assets/icons/comment.svg';
 import './style.css';
 
 const { Title } = Typography;
@@ -117,32 +122,59 @@ const KindergartenProfilePage = ({ match }) => {
                   <Title
                     level={1}
                     className="title"
-                    style={{ color: '#739c98' }}
+                    style={{ color: '#739c98', fontSize: '3rem' }}
                   >
                     {kindergartenProfile.kindergarten_name}
                   </Title>
-                  <span className="rating-avg">
-                    <Rating rateValue={kindergartenProfile.rating_average} />
-                    <span>{kindergartenProfile.rating_average}</span>
-                  </span>
+                  <div className="sub-info">
+                    <span className="rating-avg">
+                      <Rating rateValue={kindergartenProfile.rating_average} />
+                      <span className="info-text">
+                        {kindergartenProfile.rating_average}
+                      </span>
+                    </span>
 
-                  <span className="reviewers">
-                    {kindergartenProfile.rating_count} مراجعين
-                  </span>
-                  <p>{kindergartenProfile.description}</p>
-                  <div className="carousal-container">
-                    <Carousel autoplay>
-                      {kindergartenProfile.image_gallery.map((e) => (
-                        <div className="image-container">
-                          <Image width={400} src={e} className="slider-image" />
-                        </div>
-                      ))}
-                    </Carousel>
+                    <span className="reviewer">
+                      <Image src={commentIcon} alt="comment" />
+                      <span className="info-text">
+                        {kindergartenProfile.rating_count} مراجعات
+                      </span>{' '}
+                    </span>
+                  </div>
+                  <p className="desc">{kindergartenProfile.description}</p>
+                  <div>
+                    <Title
+                      level={2}
+                      className="sub-title"
+                      style={{ color: '#739c98' }}
+                    >
+                      المزيد من الصور
+                    </Title>
+
+                    <div className="carousal-container">
+                      <Carousel autoplay>
+                        {kindergartenProfile.image_gallery.map((e) => (
+                          <div className="image-container">
+                            <Image
+                              width={400}
+                              src={e}
+                              className="slider-image"
+                            />
+                          </div>
+                        ))}
+                      </Carousel>
+                    </div>
                   </div>
                 </div>
 
-                <div>
-                  <Title level={3}>ماذا يقول الناس</Title>
+                <div className="comments">
+                  <Title
+                    level={2}
+                    className="sub-title"
+                    style={{ color: '#739c98' }}
+                  >
+                    ماذا يقول الناس
+                  </Title>
                   <CommentContainer
                     data={kindergartenComments}
                     isAdmin={false}
@@ -155,39 +187,72 @@ const KindergartenProfilePage = ({ match }) => {
                   <Form.Item name="comment">
                     <MainInput type="textArea" placeholder="أدخل تعليقك ..." />
                   </Form.Item>
-
+                  <span className="info-text rev-text">تقييمك :</span>{' '}
                   <Rating
                     setRating={(val) => {
                       setRating(val);
                       console.log(val);
                     }}
                   />
-
                   <Form.Item>
-                    <Button htmlType="submit">أضف تعليق</Button>
+                    <Button
+                      htmlType="submit"
+                      className="add-button"
+                      style={{
+                        backgroundColor: 'var(--main-color)',
+                        border: 'var(--button-border)',
+                        color: 'var(--main-white)',
+                        size: 'large',
+                      }}
+                    >
+                      أضف تعليق
+                    </Button>
                   </Form.Item>
                 </Form>
               </div>
               <div className="information">
-                <Title level={4}>معلومات عنا</Title>
+                <Title level={3} style={{ margin: '10px auto' }}>
+                  معلومات عنا
+                </Title>
+                <div className="sub-info">
+                  <Image src={locationIcon} alt="location" />
+
+                  <span className="info-text">
+                    {`${kindergartenProfile.location_main}  - ${kindergartenProfile.location_sub} `}
+                  </span>
+                </div>
+                <br />
                 <div>
-                  {' '}
-                  {`${kindergartenProfile.location_main}  - ${kindergartenProfile.location_sub}`}{' '}
+                  <Image
+                    src={price}
+                    alt="price"
+                    style={{ width: '20px', height: '20px' }}
+                  />
+                  <span className="info-text">
+                    متوسط السعر
+                    {`  :  ${kindergartenProfile.min_price}  - ${kindergartenProfile.max_price} ₪`}
+                  </span>{' '}
+                </div>
+                <br />
+                <div className="period">
+                  <Image src={time} alt="time" />
+                  <span className="info-text periods">
+                    الفترة الصباحية{' '}
+                    {`${kindergartenProfile.periods[0][0]} - ${kindergartenProfile.periods[0][1]} `}
+                    {kindergartenProfile.periods[1] ? (
+                      <div>
+                        الفترة المسائية
+                        {` :   ${kindergartenProfile.periods[1][0]} - ${kindergartenProfile.periods[1][1]} `}
+                      </div>
+                    ) : null}
+                  </span>
                 </div>
                 <div>
-                  متوسط السعر
-                  {`  :  ${kindergartenProfile.min_price}  - ${kindergartenProfile.max_price} ₪`}
-                </div>
-                <div>
-                  الفترة الصباحية{' '}
-                  {`${kindergartenProfile.periods[0][0]} - ${kindergartenProfile.periods[0][1]} `}
-                  {kindergartenProfile.periods[1] ? (
-                    <div>
-                      الفترة المسائية
-                      {` :   ${kindergartenProfile.periods[1][0]} - ${kindergartenProfile.periods[1][1]} `}
-                    </div>
-                  ) : null}
-                  <div>{kindergartenProfile.phone_number}</div>
+                  <br />
+                  <Image src={phone} alt="phone" />
+                  <span className="info-text">
+                    {kindergartenProfile.phone_number}
+                  </span>
                 </div>
               </div>
             </div>

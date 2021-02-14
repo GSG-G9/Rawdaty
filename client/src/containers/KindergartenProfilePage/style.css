@@ -1,64 +1,123 @@
 .profile-container {
     
-    margin: 64px auto;
-    color: #955f83;
+    margin: 0 auto;
+    color: var(--main-color-font);
   }
  .cover-image{
    object-fit: cover;  
  }
 .profile-sub-container{
   display : flex;
+justify-content: center;
+flex-wrap: wrap;
 
 
+}
+.period{
+  display: flex;
 
+}
+.periods{
+  display: flex;
+  flex-direction: column;
 }
 .profile-first{
   display: flex;
   flex-direction: column;
 }
 .right-container{
-  width:800px;
+  width:50%;
   border: var(--input-border);
-  margin: 25px 50px 75px 100px;
+  margin: 25px 50px 75px 50px;
   padding: 50px;
   box-shadow: var(--card-shadow);
 }
 .title{
-color :var (--main-color)
+text-align: center;
+border-bottom: var(--input-border) ;
+padding-bottom: 20px;
+
 } 
+.sub-title{
+  border-bottom: var(--input-border) ;
 
+padding: 10px 10px 10px 40px;
+width: fit-content;
+}
+.sub-info{
+  display: flex;
+}
+.info-text{
+  margin-right: 10px;
+  margin-left: 10px;
+  font-weight: 700;
+}
+.information{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  box-shadow: var(--card-shadow);
+  padding: 30px;
+  margin: 25px 50px 75px 100px;
+}
 .rating-avg{
-   border-left: 1px solid #C4C4C4;
+   border-left: var(--input-border) ;
+   margin-right: 10px;
  }
- .reviewers{
-   padding: 100px;
+ .reviewer{
+  display: flex;
+  margin-top: -3px;
+  padding: 10px;
+  color: var(--main-color-font);
  }
-
- .main-carousal {
+.desc{
+  padding: 10px;
+  font-size: 1.5rem;
+  font-weight: 700px;
+}
+ /* .main-carousal {
   display: flex;
     justify-content: space-around;
     align-self: center;
     margin-top: 7px;
     padding-top: 50px;
     padding-bottom: 50px;
-  }
+  } */
 
 .carousal-container {
   height: 30vh;
   line-height: 160px;
   overflow: hidden;
-  width: 40%;
+  width: 50%;
   padding: 10px;
+ margin-bottom: 40px;
 
 }
 
-.image-container {
+ .image-container {
   width: 100%;
   height: 30vh;
-}
+} 
 
 .slider-image {
   width: 100%;
   height: 90%;
   object-fit: cover;
+} 
+.comments{
+  margin-bottom: 40px;
+}
+
+.add-button{
+  background-color: var(--main-color);
+  border: var(--button-border);
+  color: var(--main-white);
+ 
+  size: large;
+}
+.rev-text{
+  color:#69938F;
 }
