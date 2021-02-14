@@ -96,6 +96,98 @@ describe('Test the route /kindergarten/:kindergartenId', () => {
   });
 });
 
+// test the route /search?q=&minPrice=&maxPrice=&locationId=
+describe('search endPoint', () => {
+  test('Route /search, status 400, json header, message = At least one of these (q, minPrice & maxPrice,locationId) values is required', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .get('/api/v1/search')
+      .expect(400)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message).toBe(
+      'At least one of these (q, minPrice & maxPrice,locationId) values is required'
+    );
+  });
+
+  test('Route /search?something=hi, status 400, json header, message = At least one of these (q, minPrice & maxPrice, locationId) values is required', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .get('/api/v1/search?something=hi')
+      .expect(400)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message).toBe(
+      'At least one of these (q, minPrice & maxPrice,locationId) values is required'
+    );
+  });
+
+  test('Route /search?minPrice=hi, status 400, json header, message = minPrice must be a `number` type', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .get('/api/v1/search?minPrice=hi')
+      .expect(400)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message[0].split(',')[0]).toBe('minPrice must be a `number` type');
+  });
+
+  test('Route /search?maxPrice=hi, status 400, json header, message = minPrice must be a `number` type', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .get('/api/v1/search?maxPrice=hi')
+      .expect(400)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message[0].split(',')[0]).toBe('maxPrice must be a `number` type');
+  });
+
+  test('Route /search?locationId=-10, status 400, json header, message = minPrice must be a positive number', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .get('/api/v1/search?locationId=-10')
+      .expect(400)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message[0]).toBe('locationId must be a positive number');
+  });
+
+  test('Route /search?maxPrice=800, status 400, json header, message = At least one of these (q, minPrice & maxPrice,locationId) values is required', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .get('/api/v1/search?maxPrice=800')
+      .expect(400)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message).toBe(
+      'At least one of these (q, minPrice & maxPrice,locationId) values is required'
+    );
+  });
+
+  test('Route /search?minPrice=500&maxPrice=1000, status 200, json header, data = testData', async () => {
+    const testData = {
+      id: 3,
+      kindergarten_name: 'روضة يا هلا النموذجية الخاصة',
+      cover_image:
+        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/145371533_4926517364056683_4419031173382697234_o.jpg?_nc_cat=101&ccb=2&_nc_sid=e3f864&_nc_ohc=p8yB9sYxtWYAX9PP0Ap&_nc_ht=scontent.fgza2-1.fna&oh=ddc08b927f6773710ca251668d628d73&oe=6048B032',
+      min_price: 300,
+      max_price: 500,
+      location_sub: 'النصر',
+      location_main: 'غزة',
+      rating_count: '1',
+      rating_average: '4.0000000000000000',
+    };
+
+    expect.assertions(1);
+    const res = await request(app)
+      .get('/api/v1/search?minPrice=500&maxPrice=1000')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    const { data } = res.body;
+    expect(data[0]).toEqual(testData);
+  });
+});
+
 // Test the route 'Get'  /kindergarten
 describe('Get all kindergartens', () => {
   test('Route /kindergarten status 200, json header', async () => {
@@ -124,6 +216,8 @@ describe('Get all kindergartens', () => {
       min_price: 1000,
       max_price: 2000,
       periods: [['7:00', '11:00']],
+      location_sub: 'الرمال الجنوبي',
+      location_main: 'غزة',
       image_gallery: [
         'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126072436_2810042115930329_426976181002437064_o.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=UX2zxNzPBTYAX_XAYLE&_nc_ht=scontent.fgza2-1.fna&oh=72a8ef5d8369f7e183116f4423bad872&oe=604613F1',
         'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p526x395/126362711_2810037339264140_8115186378406081155_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=1pa0nWqLMVQAX8xj-8Z&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=43ba32d04a1478c83ca4cee8950955f9&oe=6045D9DF',
@@ -268,6 +362,7 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
     const { error } = res.body;
     expect(error).toBe('Validation Error');
   });
+
   test('should return status code 400 given GET  /kindergarten/-1/comments', async () => {
     expect.assertions(1);
     const res = await request(app)
