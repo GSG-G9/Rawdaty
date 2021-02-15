@@ -6,14 +6,14 @@ const verifyUser = async (req, res, next) => {
   if (token) {
     try {
       const { decoded } = await verify(token);
-      req.user = decoded;
+      req.userId = decoded;
       next();
     } catch (error) {
       res.clearCookie('token');
-      res.status(401).json(boomify(401, 'unauthorized', 'unauthorized'));
+      next(boomify(401, 'Unauthorized Error', 'unauthorized User'));
     }
   } else {
-    res.status(401).json(boomify(401, 'unauthorized', 'unauthorized'));
+    next(boomify(401, 'Unauthorized Error', 'unauthorized User'));
   }
 };
 
