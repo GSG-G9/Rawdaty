@@ -244,11 +244,22 @@ describe('Get all kindergartens', () => {
 
 // test the route /locations
 describe('Post locations', () => {
+  const header = {};
+  beforeAll(async () => {
+    expect.assertions(0);
+    const res = await request(app)
+      .post('/api/v1/login')
+      .send({ email: 'hala@hala.com', password: 'hala@hala.com' });
+    header.cookie = res.header['set-cookie'];
+  });
+
   test('Route post /locations status 201', async () => {
     expect.assertions(1);
+
     const res = await request(app)
       .post('/api/v1/locations')
       .send({ mainLocation: 'غزة', subLocation: 'الشجاعية' })
+      .set('Cookie', header.cookie)
       .expect(201)
       .expect('Content-Type', /json/);
     expect(res.body.data[0]).toEqual({
@@ -262,6 +273,7 @@ describe('Post locations', () => {
     expect.assertions(1);
     const res = await request(app)
       .post('/api/v1/locations')
+      .set('Cookie', header.cookie)
       .send({ mainLocation: 'غزة' })
       .expect(400);
     const { error } = res.body;
