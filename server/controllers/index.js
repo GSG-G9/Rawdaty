@@ -5,7 +5,7 @@ const {
   getSpecificKindergarten,
   kindergartenSearch,
 } = require('./kindergarten');
-const { getUsers } = require('./users');
+const { getUsers, addUsers } = require('./users');
 const { getLocations } = require('./locations');
 
 module.exports = {
@@ -18,4 +18,5 @@ module.exports = {
   getComments,
   getLocations,
   kindergartenSearch,
+  addUsers,
 };
