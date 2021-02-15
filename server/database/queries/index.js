@@ -6,7 +6,7 @@ const {
   getKindergartenSearch,
 } = require('./kindergarten');
 const { getUsersQuery, checkEmail } = require('./users');
-const { getLocationsQuery } = require('./locations');
+const { getLocationsQuery, postLocationsQuery } = require('./locations');
 
 module.exports = {
   getKindergartenQuery,
@@ -18,4 +18,5 @@ module.exports = {
   getUsersQuery,
   getLocationsQuery,
   checkEmail,
+  postLocationsQuery,
 };
