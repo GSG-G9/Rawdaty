@@ -5,6 +5,7 @@ const {
   getKindergartenById,
   addCommentsQuery,
   getCommentsQuery,
+  addUsersQuery,
 } = require('../server/database/queries');
 
 beforeAll(() => dbBuild());
@@ -388,5 +389,61 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
       .expect(404);
     const { message } = res.body;
     expect(message).toBe('There is no comments for this id');
+  });
+});
+
+// test the add user query
+describe('Testing add users query', () => {
+  test('Should return data length 1', () =>
+    addUsersQuery('سيف', 'sa.sa.com', '123456789', '123456789')
+      .then((result) => expect(result.rows).toHaveLength(1))
+      .catch());
+});
+
+// test the route /kindergarten/:kindergartenId/comments
+describe('Test the route POST /signup', () => {
+  test('should return status code 201 and data length 1 when given POST  /signup', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/signup')
+      .send({
+        userName: '1محمد',
+        email: 'm@m.com',
+        password: '123456789',
+        confirmPassword: '123456789',
+      })
+      .expect(201);
+    const { data } = res.body;
+    expect(data).toHaveLength(1);
+  });
+
+  test('should return status code 400 and validation error message when given not valid email POST  /signup', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/signup')
+      .send({
+        userName: '1محمد',
+        email: 'mm',
+        password: '123456789',
+        confirmPassword: '123456789',
+      })
+      .expect(400);
+    const { error } = res.body;
+    expect(error).toBe('Validation Error');
+  });
+
+  test('should return status code 400 and validation error message when given not matched passwords POST  /signup', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/signup')
+      .send({
+        userName: '1محمد',
+        email: 'm@m.net',
+        password: '123456789',
+        confirmPassword: '1234567',
+      })
+      .expect(400);
+    const { error } = res.body;
+    expect(error).toBe('Validation Error');
   });
 });
