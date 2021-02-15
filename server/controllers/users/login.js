@@ -15,11 +15,11 @@ const login = async (req, res, next) => {
     } = await checkEmail({ email });
 
     if (user) {
-      const { id: userId, password: userPassword } = user;
+      const { id: userId, password: userPassword, is_admin: isAdmin } = user;
       const isPassword = await compare(password, userPassword);
 
       if (isPassword) {
-        const token = await sign({ userId });
+        const token = await sign({ userId, isAdmin });
         res
           .cookie('token', token, { httpOnly: true })
           .json({ statusCode: 200, message: 'logged in successfully' });

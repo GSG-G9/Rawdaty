@@ -5,8 +5,9 @@ const {
   getSpecificKindergarten,
   kindergartenSearch,
 } = require('../controllers');
+const { verifyUser, verifyAdmin } = require('../middleware/authentication');
 
-router.get('/kindergarten', getKindergarten);
+router.get('/kindergarten', verifyUser, verifyAdmin, getKindergarten);
 router.get('/kindergarten/:kindergartenId', getSpecificKindergarten);
 router.get('/search', kindergartenSearch);
 

@@ -5,8 +5,8 @@ const verifyUser = async (req, res, next) => {
   const { token } = req.cookies;
   if (token) {
     try {
-      const { decoded } = await verify(token);
-      req.userId = decoded;
+      const { userId } = await verify(token);
+      req.userId = userId;
       next();
     } catch (error) {
       res.clearCookie('token');
