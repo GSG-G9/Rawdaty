@@ -1,0 +1,6 @@
+#left-image{
+  height: 100vh;
+  background: url('../../assets/img/login&signUp.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
