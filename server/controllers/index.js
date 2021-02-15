@@ -6,7 +6,7 @@ const {
   kindergartenSearch,
 } = require('./kindergarten');
 const { getUsers } = require('./users');
-const { getLocations } = require('./locations');
+const { getLocations, postLocations } = require('./locations');
 
 module.exports = {
   clientError,
@@ -17,5 +17,6 @@ module.exports = {
   addComments,
   getComments,
   getLocations,
+  postLocations,
   kindergartenSearch,
 };
