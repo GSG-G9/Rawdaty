@@ -6,16 +6,17 @@ import { Alert, Typography, Image, Carousel, Form, Button } from 'antd';
 import Spinner from '../../Components/Common/Spinner';
 import Rating from '../../Components/Common/Rating';
 import MainInput from '../../Components/Common/MainInput';
-
 import CommentContainer from '../../Components/CommentContainer';
 import locationIcon from '../../assets/icons/location1.svg';
 import price from '../../assets/icons/price.svg';
 import time from '../../assets/icons/time.svg';
 import phone from '../../assets/icons/phone.svg';
 import commentIcon from '../../assets/icons/comment.svg';
+
 import './style.css';
 
 const { Title } = Typography;
+
 const KindergartenProfilePage = ({ match }) => {
   const [kindergartenProfile, setKindergartenProfile] = useState();
   const [kindergartenComments, setKindergartenComments] = useState();
@@ -23,13 +24,12 @@ const KindergartenProfilePage = ({ match }) => {
   const [rating, setRating] = useState(0);
   const { kindergartenId } = match.params;
 
+  // Fetch kindergarten data
   const getKindergartenData = async (id) => {
     try {
-      console.log('hi');
       const { data: kindergartenData } = await Axios.get(
         `/api/v1/kindergarten/${id}`
       );
-      console.log({ kindergartenData });
       setKindergartenProfile(kindergartenData.data[0]);
     } catch (err) {
       let e;
@@ -42,13 +42,12 @@ const KindergartenProfilePage = ({ match }) => {
     }
   };
 
+  // fetch all comments on this kindergarten
   const getKindergartenComments = async (id) => {
     try {
-      console.log('hi');
       const { data: kindergartenReview } = await Axios.get(
         `/api/v1/kindergarten/${id}/comments`
       );
-      console.log({ kindergartenReview });
       setKindergartenComments(kindergartenReview.data);
     } catch (err) {
       let e;
@@ -60,9 +59,9 @@ const KindergartenProfilePage = ({ match }) => {
       setError(e);
     }
   };
+
+  // add a new comment
   const onFinish = async ({ userName, comment }) => {
-    console.log({ userName, comment, rating, kindergartenId });
-    console.log('finish');
     try {
       const { data } = await Axios.post(
         `/api/v1/kindergarten/${kindergartenId}/comments`,
@@ -72,8 +71,9 @@ const KindergartenProfilePage = ({ match }) => {
           rating,
         }
       );
-      console.log({ data });
-      getKindergartenComments(kindergartenId);
+      if (data.length !== 0) {
+        getKindergartenComments(kindergartenId);
+      }
     } catch (err) {
       let e;
       if (err.message === 'There is no kindergarten with this id') {
@@ -85,17 +85,18 @@ const KindergartenProfilePage = ({ match }) => {
     }
   };
 
+  // fetch the data when the kindergarten id change
   useEffect(() => {
     let isActive = true;
     if (isActive) {
       getKindergartenData(kindergartenId);
       getKindergartenComments(kindergartenId);
     }
-
     return () => {
       isActive = false;
     };
   }, [kindergartenId]);
+
   return (
     <div className="profile-container">
       {
@@ -138,7 +139,7 @@ const KindergartenProfilePage = ({ match }) => {
                       <Image src={commentIcon} alt="comment" />
                       <span className="info-text">
                         {kindergartenProfile.rating_count} مراجعات
-                      </span>{' '}
+                      </span>
                     </span>
                   </div>
                   <p className="desc">{kindergartenProfile.description}</p>
@@ -152,7 +153,7 @@ const KindergartenProfilePage = ({ match }) => {
                     </Title>
 
                     <div className="carousal-container">
-                      <Carousel autoplay>
+                      <Carousel autoplay adaptiveHeight>
                         {kindergartenProfile.image_gallery.map((e) => (
                           <div className="image-container">
                             <Image
@@ -191,7 +192,6 @@ const KindergartenProfilePage = ({ match }) => {
                   <Rating
                     setRating={(val) => {
                       setRating(val);
-                      console.log(val);
                     }}
                   />
                   <Form.Item>
