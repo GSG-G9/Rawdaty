@@ -13,7 +13,7 @@
     "lint-fix": "eslint server/ --fix",
     "lint": "eslint server/",
     "lint-react": "cd client && npm run lint",
-    "build": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",

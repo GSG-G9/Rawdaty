@@ -44,9 +44,6 @@
       "last 1 safari version"
     ]
   },
-  "optionalDependencies": {
-    "fsevents": "^2.3.2"
-  },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^7.19.0",
