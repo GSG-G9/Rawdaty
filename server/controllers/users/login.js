@@ -2,10 +2,11 @@ const { compare } = require('bcrypt');
 const { sign } = require('../../utils/jwt');
 const boomify = require('../../utils/boomify');
 const { checkEmail } = require('../../database/queries');
+const loginSchema = require('../../utils/validation/loginSchema');
 
 const login = async (req, res, next) => {
   try {
-    const { email, password } = req.body;
+    const { email, password } = await loginSchema.validate(req.body);
 
     const { rows: user } = await checkEmail({ email });
     if (!user[0]) {
@@ -23,8 +24,12 @@ const login = async (req, res, next) => {
     return res
       .cookie('token', token, { httpOnly: true })
       .json({ statusCode: 200, message: 'logged in successfully' });
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(
+      error.name === 'ValidationError'
+        ? boomify(400, 'Validation Error', error.errors)
+        : error
+    );
   }
 };
 
