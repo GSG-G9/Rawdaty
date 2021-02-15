@@ -291,19 +291,6 @@ describe('Get locations', () => {
       location_main: 'غزة',
     });
   });
-
-  test('should return an object contains id, sub and main locations', async () => {
-    expect.assertions(1);
-    const res = await request(app)
-      .get('/api/v1/locations')
-      .expect(200)
-      .expect('Content-Type', /json/);
-    expect(res.body.data[0]).toEqual({
-      id: 1,
-      location_sub: 'الرمال الجنوبي',
-      location_main: 'غزة',
-    });
-  });
 });
 
 // test the database query
@@ -427,5 +414,37 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
       .expect(404);
     const { message } = res.body;
     expect(message).toBe('There is no comments for this id');
+  });
+});
+
+describe('delete /kindergarten/:kindergartenId', () => {
+  test('should return status code 200 and msg = kindergarten was deleted', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .delete('/api/v1/kindergarten/1')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    const { msg } = res.body;
+    expect(msg).toBe('kindergarten was deleted');
+  });
+
+  test('should return status code 404 when Delete  /kindergarten/20', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .delete('/api/v1/kindergarten/20')
+      .expect(404)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message).toBe('There is no kindergarten with this id');
+  });
+
+  test('should return status code 400 and validation error  when try to delete kindergarten its id is not valid', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .delete('/api/v1/kindergarten/0/')
+      .expect('Content-Type', /json/)
+      .expect(400);
+    const { error } = res.body;
+    expect(error).toBe('Validation Error');
   });
 });
