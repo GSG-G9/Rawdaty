@@ -4,6 +4,7 @@ const {
   getKindergarten,
   getSpecificKindergarten,
   kindergartenSearch,
+  addKindergarten,
 } = require('./kindergarten');
 const { getUsers } = require('./users');
 const { getLocations } = require('./locations');
@@ -18,4 +19,5 @@ module.exports = {
   getComments,
   getLocations,
   kindergartenSearch,
+  addKindergarten,
 };
