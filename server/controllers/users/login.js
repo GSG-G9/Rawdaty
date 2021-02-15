@@ -20,9 +20,9 @@ const login = async (req, res, next) => {
     }
 
     const token = await sign({ userId });
-    res.cookie('token', token, { httpOnly: true });
-
-    return res.json({ statusCode: 200, message: 'logged in successfully' });
+    return res
+      .cookie('token', token, { httpOnly: true })
+      .json({ statusCode: 200, message: 'logged in successfully' });
   } catch (err) {
     return next(err);
   }
