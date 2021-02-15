@@ -6,8 +6,8 @@ const {
   kindergartenSearch,
   deleteKindergarten,
 } = require('./kindergarten');
-const { getUsers } = require('./users');
-const { getLocations } = require('./locations');
+const { getUsers, logout } = require('./users');
+const { getLocations, postLocations } = require('./locations');
 
 module.exports = {
   clientError,
@@ -18,6 +18,8 @@ module.exports = {
   addComments,
   getComments,
   getLocations,
+  postLocations,
   kindergartenSearch,
   deleteKindergarten,
+  logout,
 };

@@ -7,7 +7,7 @@ const {
   getCommentsQuery,
 } = require('../server/database/queries');
 
-beforeAll(() => dbBuild());
+beforeEach(() => dbBuild());
 afterAll(() => connection.end());
 
 describe('Get all users', () => {
@@ -243,14 +243,53 @@ describe('Get all kindergartens', () => {
 });
 
 // test the route /locations
+describe('Post locations', () => {
+  test('Route post /locations status 201', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/locations')
+      .send({ mainLocation: 'غزة', subLocation: 'الشجاعية' })
+      .expect(201)
+      .expect('Content-Type', /json/);
+    expect(res.body.data[0]).toEqual({
+      id: 24,
+      location_sub: 'الشجاعية',
+      location_main: 'غزة',
+    });
+  });
+
+  test('Should return error 400 when sub or main locations are not inserted', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/locations')
+      .send({ mainLocation: 'غزة' })
+      .expect(400);
+    const { error } = res.body;
+    expect(error).toBe('Validation Error');
+  });
+});
+
 describe('Get locations', () => {
-  test('Route /users status 200, json header', async () => {
+  test('Route get /locations status 200, json header', async () => {
     expect.assertions(1);
     const res = await request(app)
       .get('/api/v1/locations')
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.data).toHaveLength(23);
+  });
+
+  test('should return an object contains id, sub and main locations', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .get('/api/v1/locations')
+      .expect(200)
+      .expect('Content-Type', /json/);
+    expect(res.body.data[0]).toEqual({
+      id: 1,
+      location_sub: 'الرمال الجنوبي',
+      location_main: 'غزة',
+    });
   });
 
   test('should return an object contains id, sub and main locations', async () => {
@@ -320,7 +359,7 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
       .get('/api/v1/kindergarten/2/comments')
       .expect(200);
     const { data } = res.body;
-    expect(data).toHaveLength(5);
+    expect(data).toHaveLength(2);
   });
 
   test('should return status code 200 and expected data when given GET  /kindergarten/1/comments', async () => {
