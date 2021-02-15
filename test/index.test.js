@@ -416,3 +416,40 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
     expect(message).toBe('There is no comments for this id');
   });
 });
+
+describe('login endPoint', () => {
+  test('Route /login, status 200, json header, message = logged in successfully', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/login')
+      .send({ email: 'hala@hala.com', password: 'hala@hala.com' })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message).toBe('logged in successfully');
+  });
+
+  test('Route /login, status 400, json header, message = email must be a valid email', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/login')
+      .send({ email: 'halahala.com', password: 'hala@hala.com' })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message[0]).toBe('email must be a valid email');
+  });
+
+  test('Route /login, status 400, json header, message = Password is too short - should be 8 chars minimum.', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/login')
+      .send({ email: 'hala@hala.com', password: '1234' })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message[0]).toBe(
+      'Password is too short - should be 8 chars minimum.'
+    );
+  });
+});

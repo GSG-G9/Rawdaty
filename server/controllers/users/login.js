@@ -6,7 +6,9 @@ const loginSchema = require('../../utils/validation/loginSchema');
 
 const login = async (req, res, next) => {
   try {
-    const { email, password } = await loginSchema.validate(req.body);
+    const { email, password } = await loginSchema.validate(req.body, {
+      abortEarly: false,
+    });
 
     const { rows: user } = await checkEmail({ email });
     if (!user[0]) {
