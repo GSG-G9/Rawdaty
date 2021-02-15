@@ -10,24 +10,27 @@ const login = async (req, res, next) => {
       abortEarly: false,
     });
 
-    const { rows: user } = await checkEmail({ email });
-    if (!user[0]) {
-      return next(boomify(400, 'Login Error', 'Bad Request'));
+    const {
+      rows: [user],
+    } = await checkEmail({ email });
+
+    if (user) {
+      const { id: userId, password: userPassword } = user;
+      const isPassword = await compare(password, userPassword);
+
+      if (isPassword) {
+        const token = await sign({ userId });
+        res
+          .cookie('token', token, { httpOnly: true })
+          .json({ statusCode: 200, message: 'logged in successfully' });
+      } else {
+        next(boomify(400, 'Login Error', 'Bad Request'));
+      }
+    } else {
+      next(boomify(400, 'Login Error', 'Bad Request'));
     }
-
-    const { id: userId, password: userPassword } = user[0];
-
-    const isPassword = await compare(password, userPassword);
-    if (!isPassword) {
-      return next(boomify(400, 'Login Error', 'Bad Request'));
-    }
-
-    const token = await sign({ userId });
-    return res
-      .cookie('token', token, { httpOnly: true })
-      .json({ statusCode: 200, message: 'logged in successfully' });
   } catch (error) {
-    return next(
+    next(
       error.name === 'ValidationError'
         ? boomify(400, 'Validation Error', error.errors)
         : error
