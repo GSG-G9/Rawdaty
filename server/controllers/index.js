@@ -5,7 +5,7 @@ const {
   getSpecificKindergarten,
   kindergartenSearch,
 } = require('./kindergarten');
-const { getUsers } = require('./users');
+const { getUsers, logout } = require('./users');
 const { getLocations, postLocations } = require('./locations');
 
 module.exports = {
@@ -19,4 +19,5 @@ module.exports = {
   getLocations,
   postLocations,
   kindergartenSearch,
+  logout,
 };
