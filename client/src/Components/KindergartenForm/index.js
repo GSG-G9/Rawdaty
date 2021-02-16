@@ -14,9 +14,14 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
   const [selectValue, setSelectValue] = useState({});
   const [sliderValue, setSliderValue] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  const [add, setAdd] = useState(false);
+
+  const onPeriodChange = () => {
+    setAdd(true);
+  };
 
   const onClick = () => {
-    onAdd(inputValue, sliderValue, selectValue);
+    onAdd(inputValue, sliderValue, selectValue, setAdd);
   };
 
   const onSliderChange = (val) => {
@@ -30,6 +35,7 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
   const onMainInputChange = (e) => {
     setInputValue(e.target.value);
   };
+
   return (
     <Form>
       <Title className="title" level={5}>
@@ -70,23 +76,24 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
                 onChange={onMainInputChange}
               />
             </Form.Item>
-            <Form.Item>
-              <MainInput
-                type="text"
-                textLabel="فترات الدوام :"
-                height="48px"
-                width="471px"
-                onChange={onMainInputChange}
-              />
-            </Form.Item>
+            <Form>
+              <Form.Item name="period1">
+                <MainInput
+                  height="48px"
+                  width="471px"
+                  textLabel="فترات الدوام :"
+                  type="date"
+                />
+              </Form.Item>
+            </Form>
           </div>
           <div className="column">
-            <Form.Item>
+            <Form.Item className="main-upload">
               <p>اضف صورة للروضة</p>
               <Upload>
                 <MainButton
                   height="48px"
-                  width="417px"
+                  width="471px"
                   border="1.6px solid #69938F"
                   backgroundColor="#FFF"
                   color="#000"
@@ -96,7 +103,7 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
                 </MainButton>
               </Upload>
             </Form.Item>
-            <Form.Item>
+            <Form.Item className="slider-input">
               <MainInput
                 type="rangeSlider"
                 textLabel="رسوم الطفل :"
@@ -105,6 +112,21 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
                 min={sliderMin}
                 max={sliderMax}
               />
+            </Form.Item>
+            <Form.Item className="period2" name="period2">
+              {add ? (
+                <MainInput height="48px" width="471px" type="date" />
+              ) : (
+                <MainButton
+                  type="primary"
+                  height="48px"
+                  width="471px"
+                  htmlType="submit"
+                  onClick={onPeriodChange}
+                >
+                  اضف فترة ثانية +
+                </MainButton>
+              )}
             </Form.Item>
           </div>
         </div>

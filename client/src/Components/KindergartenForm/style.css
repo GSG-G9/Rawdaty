@@ -9,29 +9,38 @@
   padding: 10px 250px;
 }
 
-.btn-container{
-    display: flex;
-    align-content: space-between;
-    justify-content: center;
-    margin: 0 15px;
-    padding: 12px;
-
+.btn-container {
+  display: flex;
+  align-content: space-between;
+  justify-content: center;
+  margin: 0 15px;
+  padding: 12px;
 }
 
 .form-container .ant-btn {
   border-radius: var(--border-radius);
 }
 
-
 .row {
-    display: flex;
-    justify-content: space-around;
-    
+  display: flex;
+  justify-content: space-around;
 }
 
-.column{
-    flex: 50%;
-    padding: 0 80px;
+.column {
+  flex: 50%;
+  padding: 0 80px;
 }
 
+.slider-input {
+  position: relative;
+  top: 342px;
+}
 
+.period2 {
+  position: relative;
+  top: 376px;
+}
+
+.main-upload{
+    position: absolute
+}
