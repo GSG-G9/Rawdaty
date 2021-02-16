@@ -70,3 +70,15 @@
 .input{
   font-size: 21px;
 }
+
+.input .ant-input-password  {
+  flex-direction: row;
+  border-width: 2.95px;
+}
+.input .ant-input-password .ant-input {
+  width: 100%;
+  height:  100%;
+}
+.ant-input-suffix svg{
+  font-size: 22px;
+}
