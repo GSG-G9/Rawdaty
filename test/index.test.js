@@ -8,6 +8,9 @@ const {
   addUsersQuery,
 } = require('../server/database/queries');
 
+const token =
+  'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzQWRtaW4iOiJ0cnVlIiwiaWF0IjoxNjEzNDA1MzA0fQ.mBtUvxmAXD3w6Fx9g39z1Ip2J_nmJQC0Ef2wrHtdTYA';
+
 beforeEach(() => dbBuild());
 afterAll(() => connection.end());
 
@@ -247,9 +250,11 @@ describe('Get all kindergartens', () => {
 describe('Post locations', () => {
   test('Route post /locations status 201', async () => {
     expect.assertions(1);
+
     const res = await request(app)
       .post('/api/v1/locations')
       .send({ mainLocation: 'غزة', subLocation: 'الشجاعية' })
+      .set('Cookie', token)
       .expect(201)
       .expect('Content-Type', /json/);
     expect(res.body.data[0]).toEqual({
@@ -263,10 +268,22 @@ describe('Post locations', () => {
     expect.assertions(1);
     const res = await request(app)
       .post('/api/v1/locations')
+      .set('Cookie', token)
       .send({ mainLocation: 'غزة' })
       .expect(400);
     const { error } = res.body;
     expect(error).toBe('Validation Error');
+  });
+
+  test('Should return error 401 when token in wrong', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/locations')
+      .set('Cookie', `${token}z`)
+      .send({ mainLocation: 'غزة' })
+      .expect(401);
+    const { message } = res.body;
+    expect(message).toBe('Unauthorized User');
   });
 });
 
@@ -278,19 +295,6 @@ describe('Get locations', () => {
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.data).toHaveLength(23);
-  });
-
-  test('should return an object contains id, sub and main locations', async () => {
-    expect.assertions(1);
-    const res = await request(app)
-      .get('/api/v1/locations')
-      .expect(200)
-      .expect('Content-Type', /json/);
-    expect(res.body.data[0]).toEqual({
-      id: 1,
-      location_sub: 'الرمال الجنوبي',
-      location_main: 'غزة',
-    });
   });
 
   test('should return an object contains id, sub and main locations', async () => {
@@ -428,6 +432,43 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
       .expect(404);
     const { message } = res.body;
     expect(message).toBe('There is no comments for this id');
+  });
+});
+
+describe('login endPoint', () => {
+  test('Route /login, status 200, json header, message = logged in successfully', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/login')
+      .send({ email: 'hala@hala.com', password: 'hala@hala.com' })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message).toBe('logged in successfully');
+  });
+
+  test('Route /login, status 400, json header, message = email must be a valid email', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/login')
+      .send({ email: 'halahala.com', password: 'hala@hala.com' })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message[0]).toBe('email must be a valid email');
+  });
+
+  test('Route /login, status 400, json header, message = Password is too short - should be 8 chars minimum.', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/login')
+      .send({ email: 'hala@hala.com', password: '1234' })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message[0]).toBe(
+      'Password is too short - should be 8 chars minimum.'
+    );
   });
 });
 

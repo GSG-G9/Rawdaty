@@ -1,26 +1,26 @@
 /* ADD USER */
 INSERT INTO users(user_name,email,password,is_admin)
-VALUES ('المسؤول','admin@admin.com','admin','true');
+VALUES ('المسؤول','admin@admin.com','$2a$10$8iyzRQbJhj/EnVSwD7mXoelUd80.QF/41S.B0bqUqu8qq15/1AmOa','true');
 INSERT INTO users(user_name,email,password)
-VALUES ('حلا محمد حسن','hala@hala.com','hala');
+VALUES ('حلا محمد حسن','hala@hala.com','$2a$10$qrXOMDcuIfE.ykS1N4dBf.VpRruKZDD91Z4eJIv8q2qvJi69h5DCS');
 INSERT INTO users(user_name,email,password)
-VALUES ('اسراء احمد يوسف','israa@israa.com','israa');
+VALUES ('اسراء احمد يوسف','israa@israa.com','$2a$10$OaTQK7evKwJIqOhccJ6KR.Bk0YU8B6wqS0jUwMz4vMvmSYv98pDaG');
 INSERT INTO users(user_name,email,password) 
-VALUES ('اسامة وائل ','osama@osam.com','osama');
+VALUES ('اسامة وائل ','osama@osam.com','$2a$10$6oFh67M4ADKgj82STxVZ3u0n8z.aPsMAQcCfwNQh3xCy9sughwhbu');
 INSERT INTO users(user_name,email,password) 
-VALUES ('الاء عماد','alaa@alaa.com','alaa');
+VALUES ('الاء عماد','alaa@alaa.com','$2a$10$vd4kMcPWBVos/Iz0KZt7E.jPIJic1YEvITyx74MLO21Wmo9ueLBiq');
 INSERT INTO users(user_name,email,password) 
-VALUES ('علاء عاصم','alser@alser.com','alser');
+VALUES ('علاء عاصم','alser@alser.com','$2a$10$B2.ew28gFq49DHLxjswsCOlsfi/6G8avmpps2esl24jK8ai2qo2H.');
 INSERT INTO users(user_name,email,password) 
-VALUES ('محمد حسن محمد','moh@moh.com','moh');
+VALUES ('محمد حسن محمد','moh@moh.com','$2a$10$KdOb.S0X9cGRvGkim./Ju.RiXp4l24gTT24Aum/QT8cxdCKQACzam');
 INSERT INTO users(user_name,email,password) 
-VALUES ('يوسف احمد يوسف','yousef@you.com','you');
+VALUES ('يوسف احمد يوسف','yousef@you.com','$2a$10$b4J4lAky4j4g6RmJ3cl6wulXhBpj7ib.9BJO.RrDW.0M.NKPatH2u');
 INSERT INTO users(user_name,email,password) 
-VALUES ('حنان احمد','hanan@hanan.com','hanan');
+VALUES ('حنان احمد','hanan@hanan.com','$2a$10$f.y2z.pAAoeFvvB2/rUNduMLBlZOKigsTusRee4BCB0BKbiDIHBO2');
 INSERT INTO users(user_name,email,password) 
-VALUES ('هند محمد علي','hend@hend.com','hend');
+VALUES ('هند محمد علي','hend@hend.com','$2a$10$f4BPhKCNLxEJjYc9vWxaGOaVBNqSDeGMXnNLvPkkBDKDT/MRJsfMi');
 INSERT INTO users(user_name,email,password) 
-VALUES ('وفاء ابراهيم','wafaa@wafaa.com','wafa');
+VALUES ('وفاء ابراهيم','wafaa@wafaa.com','$2a$10$2aMX0qv10XIZXYkh3F31h.iyMMRUC9gVq3qMCJLUsKMgqGHAdQ/wy');
 
 /* ADD LOCATIONS */
 INSERT INTO locations(location_sub,location_main ) VALUES ('الرمال الجنوبي','غزة');
