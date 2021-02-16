@@ -15,6 +15,7 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
   const [sliderValue, setSliderValue] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [add, setAdd] = useState(false);
+  const [fileList, setFileList] = useState([]);
 
   const onClick = () => {
     onAdd(inputValue, sliderValue, selectValue);
@@ -34,6 +35,10 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
 
   const onMainInputChange = (e) => {
     setInputValue(e.target.value);
+  };
+
+  const onUpload = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
   };
 
   return (
@@ -131,6 +136,17 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
           </div>
         </div>
       </div>
+      <Form.Item>
+        <Upload
+          className="imgs"
+          listType="picture-card"
+          fileList={fileList}
+          onChange={onUpload}
+        >
+          {fileList.length < 8 && '+ اضف مزيدا من الصور'}
+        </Upload>
+      </Form.Item>
+      ;
       <div className="btn-container">
         <MainButton
           className="btn-container"
