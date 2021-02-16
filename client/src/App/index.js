@@ -10,10 +10,10 @@ const App = () => (
   <Router>
     <NavBar userName="Alaa" isAdmin={false} />
     <Switch>
-      <Route exact to="/signup">
+      <Route exact path="/signup">
         <Signup />
       </Route>
-      <Route exact to="/">
+      <Route exact path="/">
         <Home />
       </Route>
     </Switch>
