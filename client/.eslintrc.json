@@ -23,6 +23,7 @@
       }
     ],
     "react/jsx-props-no-spreading": [0],
+    "no-underscore-dangle": 0,
     // configure the prettier plugin
     "prettier/prettier": [
       "error",
