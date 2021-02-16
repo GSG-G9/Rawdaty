@@ -1,4 +1,4 @@
-const { getUsersQuery } = require('../../../database/queries');
+const { getUsersQuery } = require('../../database/queries');
 
 const getUsers = async (req, res, next) => {
   try {
