@@ -6,7 +6,6 @@ import { DownOutlined } from '@ant-design/icons';
 import MainButton from '../../Common/MainButton';
 import UserImage from '../../Common/UserImage';
 import NavTap from '../../Common/NavTap';
-// import homedrop from '../../../assets/icons/homedrop.svg';
 import logout from '../../../assets/icons/logout.svg';
 import AuthContext from '../../../Context/AuthContext';
 
@@ -41,8 +40,6 @@ const NavBar = () => {
           <Menu id="drop-down">
             <Text className="user-name">{userName}</Text>
             <Menu.Divider />
-
-            {/* <Menu.Item key="1"> */}
             <SubMenu title="الروضة الخاصة بك">
               {kindergartensData &&
                 kindergartensData.map(({ id, kindergarten_name: name }) => (

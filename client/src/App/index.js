@@ -50,7 +50,7 @@ const App = () => {
       <Switch>
         <AuthContext.Provider value={{ role, userData }}>
           <Route exact path="/">
-            <NavBar userName={userData.user_name} isLogged={Boolean(role)} />
+            <NavBar />
             <Home />
             <Footer />
           </Route>
@@ -61,7 +61,7 @@ const App = () => {
           <Route path="/dashboard">
             {role === 'admin' ? (
               <>
-                <NavBar userName={userData.user_name} isLogged isAdmin />
+                <NavBar />
                 <Route exact path="/dashboard/all">
                   all
                 </Route>
