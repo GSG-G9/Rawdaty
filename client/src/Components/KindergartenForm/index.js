@@ -16,12 +16,12 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
   const [inputValue, setInputValue] = useState('');
   const [add, setAdd] = useState(false);
 
-  const onPeriodChange = () => {
-    setAdd(true);
+  const onClick = () => {
+    onAdd(inputValue, sliderValue, selectValue);
   };
 
-  const onClick = () => {
-    onAdd(inputValue, sliderValue, selectValue, setAdd);
+  const onPeriodChange = () => {
+    setAdd(true);
   };
 
   const onSliderChange = (val) => {
