@@ -36,9 +36,14 @@ const addKindergartenQuery = ({
           return null;
         })
         .join(''),
-      // .replace('[', '{')
-      // .replace(']', '}'),
-      imagesGallery.replace('[', '{').replace(']', '}'),
+      imagesGallery
+        .split('')
+        .map((e) => {
+          if (e === '[') return '{';
+          if (e === ']') return '}';
+          return null;
+        })
+        .join(''),
     ],
   };
   return connection.query(sql);
