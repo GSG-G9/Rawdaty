@@ -27,6 +27,7 @@ const MainButton = ({
 );
 
 MainButton.defaultProps = {
+  onClick: () => {},
   children: 'إرسال',
   backgroundColor: 'var(--main-color)',
   border: 'var(--button-border)',
@@ -39,7 +40,7 @@ MainButton.defaultProps = {
 };
 
 MainButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   children: PropTypes.string,
   isDelete: PropTypes.bool,
   backgroundColor: PropTypes.string,

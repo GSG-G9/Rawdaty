@@ -42,6 +42,7 @@
 .drop-down-div {
   min-width: 60px;
   margin-top: 5px !important;
+  cursor: pointer;
 }
 
 .user-name {
@@ -67,4 +68,8 @@
 .admin-title-name {
   padding-top: 13px;
   padding-left: 12px;
+}
+.ant-dropdown-menu-submenu-expand-icon{
+  left: 0px;
+  right:auto !important;
 }
