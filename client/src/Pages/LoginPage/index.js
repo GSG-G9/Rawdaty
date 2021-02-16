@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Row, Col, Typography, Form } from 'antd';
+import { Row, Col, Typography, Form, notification } from 'antd';
+import axios from 'axios';
 
 import MainInput from '../../Components/Common/MainInput';
 import MainButton from '../../Components/Common/MainButton';
@@ -10,12 +11,17 @@ import './style.css';
 const { Title } = Typography;
 
 const LoginPage = () => {
-  const onFinish = (values) => {
-    console.log('Success:', values);
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+  const onFinish = async (values) => {
+    try {
+      const {
+        data: { data },
+      } = axios.post(`/api/v1/login`, values);
+      console.log(data);
+    } catch (error) {
+      notification.open({
+        message: 'حدث خطأ في السيرفر, يرجى المحاولة لاحقا',
+      });
+    }
   };
 
   return (
@@ -26,7 +32,6 @@ const LoginPage = () => {
           name="login"
           initialValues={{ remember: true }}
           onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
         >
           <Title id="title" level={1}>
             روضتـــي
@@ -65,7 +70,7 @@ const LoginPage = () => {
               },
               {
                 min: 8,
-                message: 'كلمت المرور يجب أن تكون أكبر من 8 أحرف !',
+                message: 'كلمة المرور يجب أن تكون أكبر من 8 أحرف !',
               },
             ]}
           >
@@ -78,7 +83,12 @@ const LoginPage = () => {
               id="input"
             />
           </Form.Item>
-          <MainButton id="login-btn" width="470px" height="55px">
+          <MainButton
+            id="login-btn"
+            width="470px"
+            height="55px"
+            htmlType="submit"
+          >
             تسجيل الدخول
           </MainButton>
           <div className="sign-up">

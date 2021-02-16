@@ -9,6 +9,7 @@ const MainButton = ({
   size,
   id,
   className,
+  htmlType,
   ...otherStyleProps
 }) => (
   <Button
@@ -19,6 +20,7 @@ const MainButton = ({
     onClick={onClick}
     style={!isDelete ? { ...otherStyleProps } : null}
     danger={isDelete}
+    htmlType
   >
     {children}
   </Button>
@@ -33,6 +35,7 @@ MainButton.defaultProps = {
   size: 'large',
   id: '',
   className: '',
+  htmlType: '',
 };
 
 MainButton.propTypes = {
@@ -45,6 +48,7 @@ MainButton.propTypes = {
   size: PropTypes.string,
   id: PropTypes.string,
   className: PropTypes.string,
+  htmlType: PropTypes.string,
 };
 
 export default MainButton;
