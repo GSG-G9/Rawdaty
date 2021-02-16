@@ -24,10 +24,10 @@ const login = async (req, res, next) => {
           .cookie('token', token, { httpOnly: true })
           .json({ statusCode: 200, message: 'logged in successfully' });
       } else {
-        next(boomify(400, 'Login Error', 'Bad Request'));
+        next(boomify(400, 'Login Error', 'Incorrect email or password.'));
       }
     } else {
-      next(boomify(400, 'Login Error', 'Bad Request'));
+      next(boomify(400, 'Login Error', 'Incorrect email or password.'));
     }
   } catch (error) {
     next(

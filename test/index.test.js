@@ -7,6 +7,9 @@ const {
   getCommentsQuery,
 } = require('../server/database/queries');
 
+const token =
+  'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzQWRtaW4iOiJ0cnVlIiwiaWF0IjoxNjEzNDA1MzA0fQ.mBtUvxmAXD3w6Fx9g39z1Ip2J_nmJQC0Ef2wrHtdTYA';
+
 beforeEach(() => dbBuild());
 afterAll(() => connection.end());
 
@@ -244,22 +247,13 @@ describe('Get all kindergartens', () => {
 
 // test the route /locations
 describe('Post locations', () => {
-  const header = {};
-  beforeAll(async () => {
-    expect.assertions(0);
-    const res = await request(app)
-      .post('/api/v1/login')
-      .send({ email: 'hala@hala.com', password: 'hala@hala.com' });
-    header.cookie = res.header['set-cookie'];
-  });
-
   test('Route post /locations status 201', async () => {
     expect.assertions(1);
 
     const res = await request(app)
       .post('/api/v1/locations')
       .send({ mainLocation: 'غزة', subLocation: 'الشجاعية' })
-      .set('Cookie', header.cookie)
+      .set('Cookie', token)
       .expect(201)
       .expect('Content-Type', /json/);
     expect(res.body.data[0]).toEqual({
@@ -273,12 +267,23 @@ describe('Post locations', () => {
     expect.assertions(1);
     const res = await request(app)
       .post('/api/v1/locations')
-      .set('Cookie', header.cookie)
+      .set('Cookie', token)
       .send({ mainLocation: 'غزة' })
       .expect(400);
     const { error } = res.body;
     expect(error).toBe('Validation Error');
   });
+
+  // test('Should return error 401 when token in wrong', async () => {
+  //   expect.assertions(1);
+  //   const res = await request(app)
+  //     .post('/api/v1/locations')
+  //     .set('Cookie', `${token}z`)
+  //     .send({ mainLocation: 'غزة' })
+  //     .expect(401);
+  //   const { message } = res.body;
+  //   expect(message).toBe('Unauthorized User');
+  // });
 });
 
 describe('Get locations', () => {

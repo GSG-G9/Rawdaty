@@ -9,11 +9,15 @@ const verifyUser = async (req, res, next) => {
       req.userId = userId;
       next();
     } catch (error) {
-      res.clearCookie('token');
-      next(boomify(401, 'Unauthorized Error', 'unauthorized User'));
+      if (error.name === 'JsonWebTokenError') {
+        res.clearCookie('token');
+        next(boomify(401, 'Unauthorized Error', 'Unauthorized User'));
+      } else {
+        next(error);
+      }
     }
   } else {
-    next(boomify(401, 'Unauthorized Error', 'unauthorized User'));
+    next(boomify(401, 'Unauthorized Error', 'Unauthorized User'));
   }
 };
 
