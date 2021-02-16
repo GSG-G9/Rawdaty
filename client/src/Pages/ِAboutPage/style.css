@@ -28,16 +28,17 @@
 
   .p_title{
     display: inline-block;
+    width: 110vw;
     border-radius: 100%;
     left: 0px;
     top: 65px;
-    font-size: 40px;
-    color: #365855 !important
+    font-size: 40px !important
   }
 
   .content{
     display: inline-block;
     width: 50vw;
+    height: 414px;
     border-radius: 100%;
     left: 0px;
     top: 65px;
