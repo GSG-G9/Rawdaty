@@ -485,4 +485,19 @@ describe('Test the route POST /signup', () => {
     const { error } = res.body;
     expect(error).toBe('Validation Error');
   });
+
+  test('should return status code 401 and validation error message when given an exist email POST  /signup', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/signup')
+      .send({
+        userName: '1محمد',
+        email: 'israa@israa.com',
+        password: '123456789',
+        confirmPassword: '123456789',
+      })
+      .expect(401);
+    const { message } = res.body;
+    expect(message).toBe('You are registered');
+  });
 });
