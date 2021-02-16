@@ -12,7 +12,8 @@
     "kill": "fuser -k 5000/tcp",
     "lint-fix": "eslint server/ --fix",
     "lint": "eslint server/",
-    "lint-react": "cd client && npm run lint"
+    "lint-react": "cd client && npm run lint",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/GSG-G9/Rawdaty#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "cross-env": "^7.0.3",
