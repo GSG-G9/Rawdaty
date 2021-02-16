@@ -6,14 +6,14 @@
 
 .title {
   margin: 0 20px;
-  padding: 10px 0;
+  padding: 10px 250px;
 }
 
 .btn-container{
     display: flex;
     align-content: space-between;
     justify-content: center;
-    margin: 0 20px;
+    margin: 0 15px;
     padding: 12px;
 
 }
@@ -33,4 +33,5 @@
     flex: 50%;
     padding: 0 80px;
 }
+
 

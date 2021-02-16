@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Typography } from 'antd';
+import { Typography, Form, Upload } from 'antd';
 import PropTypes from 'prop-types';
+import { UploadOutlined } from '@ant-design/icons';
 import './style.css';
 
 import MainInput from '../Common/MainInput';
@@ -30,7 +31,7 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
     setInputValue(e.target.value);
   };
   return (
-    <>
+    <Form>
       <Title className="title" level={5}>
         اضافة روضة
       </Title>
@@ -38,57 +39,73 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
       <div className="form-container">
         <div className="row">
           <div className="column">
-            <h3>
-              اسم الروضة :
+            <Form.Item>
               <MainInput
                 type="text"
+                textLabel="اسم الروضة :"
                 height="48px"
                 width="471px"
                 onChange={onMainInputChange}
               />
-            </h3>
-            <h3>
-              وصف عن الروضية :
+            </Form.Item>
+            <Form.Item>
               <MainInput
                 type="textArea"
+                textLabel="وصف عن الروضية :"
                 height="123px"
                 width="471px"
                 onChange={onMainInputChange}
               />
-            </h3>
+            </Form.Item>
             <h3>
               تفاصيل المكان :
               <DorpList options={dorpListOptions} onSelect={onDorpListSelect} />
             </h3>
-            <h3>
-              رقم الحوال :
+            <Form.Item>
               <MainInput
                 type="text"
+                textLabel="رقم الحوال :"
                 height="48px"
                 width="471px"
                 onChange={onMainInputChange}
               />
-            </h3>
-
-            <h3>
-              فترات الدوام :
+            </Form.Item>
+            <Form.Item>
               <MainInput
                 type="text"
+                textLabel="فترات الدوام :"
                 height="48px"
                 width="471px"
                 onChange={onMainInputChange}
               />
-            </h3>
+            </Form.Item>
           </div>
           <div className="column">
-            <h3 className="slider">رسوم الطفل :</h3>
-            <MainInput
-              type="rangeSlider"
-              width="200px"
-              onSliderChange={onSliderChange}
-              min={sliderMin}
-              max={sliderMax}
-            />
+            <Form.Item>
+              <p>اضف صورة للروضة</p>
+              <Upload>
+                <MainButton
+                  height="48px"
+                  width="417px"
+                  border="1.6px solid #69938F"
+                  backgroundColor="#FFF"
+                  color="#000"
+                >
+                  تحميل صورة
+                  <UploadOutlined />
+                </MainButton>
+              </Upload>
+            </Form.Item>
+            <Form.Item>
+              <MainInput
+                type="rangeSlider"
+                textLabel="رسوم الطفل :"
+                width="200px"
+                onSliderChange={onSliderChange}
+                min={sliderMin}
+                max={sliderMax}
+              />
+            </Form.Item>
           </div>
         </div>
       </div>
@@ -100,6 +117,7 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
           width="122px"
           border="1.6px solid #69938F"
           backgroundColor="var(--main-color)"
+          htmlType="submit"
         >
           إضافة
         </MainButton>
@@ -115,7 +133,7 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
           تجاهل
         </MainButton>
       </div>
-    </>
+    </Form>
   );
 };
 
