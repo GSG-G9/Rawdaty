@@ -1,0 +1,36 @@
+.form-container {
+  display: flex;
+  align-content: space-between;
+  justify-content: center;
+}
+
+.title {
+  margin: 0 20px;
+  padding: 10px 0;
+}
+
+.btn-container{
+    display: flex;
+    align-content: space-between;
+    justify-content: center;
+    margin: 0 20px;
+    padding: 12px;
+
+}
+
+.form-container .ant-btn {
+  border-radius: var(--border-radius);
+}
+
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.column{
+    flex: 50%;
+    padding: 0 80px;
+}
+

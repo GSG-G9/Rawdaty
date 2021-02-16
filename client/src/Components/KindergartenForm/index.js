@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Typography } from 'antd';
 import PropTypes from 'prop-types';
+import './style.css';
 
 import MainInput from '../Common/MainInput';
 import DorpList from '../Common/DropList';
@@ -29,82 +30,92 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
     setInputValue(e.target.value);
   };
   return (
-    <div>
-      <Title level={5}>اضافة روضة</Title>
+    <>
+      <Title className="title" level={5}>
+        اضافة روضة
+      </Title>
       <hr />
-      <h3>
-        اسم الروضة:
-        <MainInput
-          type="text"
-          height="48px"
-          width="471px"
-          onChange={onMainInputChange}
-        />
-      </h3>
-      <h3>
-        وصف عن الروضية :
-        <MainInput
-          type="textArea"
-          height="123px"
-          width="471px"
-          onChange={onMainInputChange}
-        />
-      </h3>
-      <h3>
-        تفاصيل المكان :
-        <DorpList options={dorpListOptions} onSelect={onDorpListSelect} />
-      </h3>
-      <h3>
-        رقم الحوال:
-        <MainInput
-          type="text"
-          height="48px"
-          width="471px"
-          onChange={onMainInputChange}
-        />
-      </h3>
+      <div className="form-container">
+        <div className="row">
+          <div className="column">
+            <h3>
+              اسم الروضة :
+              <MainInput
+                type="text"
+                height="48px"
+                width="471px"
+                onChange={onMainInputChange}
+              />
+            </h3>
+            <h3>
+              وصف عن الروضية :
+              <MainInput
+                type="textArea"
+                height="123px"
+                width="471px"
+                onChange={onMainInputChange}
+              />
+            </h3>
+            <h3>
+              تفاصيل المكان :
+              <DorpList options={dorpListOptions} onSelect={onDorpListSelect} />
+            </h3>
+            <h3>
+              رقم الحوال :
+              <MainInput
+                type="text"
+                height="48px"
+                width="471px"
+                onChange={onMainInputChange}
+              />
+            </h3>
 
-      <h3>
-        فترات الدوام:
-        <MainInput
-          type="text"
-          height="48px"
-          width="471px"
-          onChange={onMainInputChange}
-        />
-      </h3>
-      <h3>
-        رسوم الطفل :
-        <MainInput
-          type="rangeSlider"
-          width="200px"
-          onSliderChange={onSliderChange}
-          min={sliderMin}
-          max={sliderMax}
-        />
-      </h3>
-      <MainButton
-        className="Search-btn red-Search-btn"
-        onClick={onClick}
-        height="52px"
-        width="122px"
-        border="1.6px solid #69938F"
-        backgroundColor="var(--main-color)"
-      >
-        إضافة
-      </MainButton>
-      <MainButton
-        className="Search-btn red-Search-btn"
-        onClick={onClick}
-        height="52px"
-        width="122px"
-        border="1.6px solid #69938F"
-        backgroundColor="#FFF"
-        color="#000"
-      >
-        تجاهل
-      </MainButton>
-    </div>
+            <h3>
+              فترات الدوام :
+              <MainInput
+                type="text"
+                height="48px"
+                width="471px"
+                onChange={onMainInputChange}
+              />
+            </h3>
+          </div>
+          <div className="column">
+            <h3 className="slider">رسوم الطفل :</h3>
+            <MainInput
+              type="rangeSlider"
+              width="200px"
+              onSliderChange={onSliderChange}
+              min={sliderMin}
+              max={sliderMax}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="btn-container">
+        <MainButton
+          className="btn-container"
+          onClick={onClick}
+          height="52px"
+          width="122px"
+          border="1.6px solid #69938F"
+          backgroundColor="var(--main-color)"
+        >
+          إضافة
+        </MainButton>
+        <MainButton
+          className="btn-container"
+          onClick={onClick}
+          height="52px"
+          width="122px"
+          border="1.6px solid #69938F"
+          backgroundColor="#FFF"
+          color="#000"
+        >
+          تجاهل
+        </MainButton>
+      </div>
+    </>
   );
 };
 
