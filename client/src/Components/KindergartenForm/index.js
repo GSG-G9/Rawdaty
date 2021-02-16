@@ -3,15 +3,21 @@ import { Typography } from 'antd';
 import PropTypes from 'prop-types';
 
 import MainInput from '../Common/MainInput';
+import DorpList from '../Common/DropList';
 import MainButton from '../Common/MainButton';
 
 const { Title } = Typography;
 
-const KindergartenForm = ({ onAdd }) => {
+const KindergartenForm = ({ onAdd, dorpListOptions }) => {
+  const [selectValue, setSelectValue] = useState({});
   const [inputValue, setInputValue] = useState('');
 
   const onClick = () => {
-    onAdd(inputValue);
+    onAdd(inputValue, selectValue);
+  };
+
+  const onDorpListSelect = (val) => {
+    setSelectValue(val);
   };
 
   const onMainInputChange = (e) => {
@@ -19,9 +25,7 @@ const KindergartenForm = ({ onAdd }) => {
   };
   return (
     <div>
-      <Title className="price-text" level={5}>
-        اضافة روضة
-      </Title>
+      <Title level={5}>اضافة روضة</Title>
       <hr />
       <h3>
         اسم الروضة:
@@ -31,6 +35,20 @@ const KindergartenForm = ({ onAdd }) => {
           width="471px"
           onChange={onMainInputChange}
         />
+      </h3>
+      <h3>
+        وصف عن الروضية :
+        <MainInput
+          type="textArea"
+          height="123px"
+          width="471px"
+          placeholder="أدخل اسم الروضة"
+          onChange={onMainInputChange}
+        />
+      </h3>
+      <h3>
+        تفاصيل المكان :
+        <DorpList options={dorpListOptions} onSelect={onDorpListSelect} />
       </h3>
       <MainButton
         className="Search-btn red-Search-btn"
@@ -61,4 +79,11 @@ export default KindergartenForm;
 
 KindergartenForm.propTypes = {
   onAdd: PropTypes.func.isRequired,
+  dorpListOptions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      value: PropTypes.string,
+      disabled: PropTypes.bool,
+    })
+  ).isRequired,
 };

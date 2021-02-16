@@ -6,7 +6,9 @@ import './style.css';
 
 const App = () => (
   <Router>
-    <KindergartenForm />
+    <KindergartenForm
+      dorpListOptions={[{ value: 'غزة', id: 1, disabled: false }]}
+    />
   </Router>
 );
 
