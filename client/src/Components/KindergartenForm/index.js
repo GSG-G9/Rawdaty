@@ -8,12 +8,17 @@ import MainButton from '../Common/MainButton';
 
 const { Title } = Typography;
 
-const KindergartenForm = ({ onAdd, dorpListOptions }) => {
+const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
   const [selectValue, setSelectValue] = useState({});
+  const [sliderValue, setSliderValue] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
   const onClick = () => {
-    onAdd(inputValue, selectValue);
+    onAdd(inputValue, sliderValue, selectValue);
+  };
+
+  const onSliderChange = (val) => {
+    setSliderValue(val);
   };
 
   const onDorpListSelect = (val) => {
@@ -68,6 +73,16 @@ const KindergartenForm = ({ onAdd, dorpListOptions }) => {
           onChange={onMainInputChange}
         />
       </h3>
+      <h3>
+        رسوم الطفل :
+        <MainInput
+          type="rangeSlider"
+          width="200px"
+          onSliderChange={onSliderChange}
+          min={sliderMin}
+          max={sliderMax}
+        />
+      </h3>
       <MainButton
         className="Search-btn red-Search-btn"
         onClick={onClick}
@@ -95,8 +110,15 @@ const KindergartenForm = ({ onAdd, dorpListOptions }) => {
 
 export default KindergartenForm;
 
+KindergartenForm.defaultProps = {
+  sliderMin: 500,
+  sliderMax: 2000,
+};
+
 KindergartenForm.propTypes = {
   onAdd: PropTypes.func.isRequired,
+  sliderMin: PropTypes.number,
+  sliderMax: PropTypes.number,
   dorpListOptions: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
