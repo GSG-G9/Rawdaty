@@ -28,22 +28,8 @@ const addKindergartenQuery = ({
       longitude,
       minPrice,
       maxPrice,
-      periods
-        .split('')
-        .map((e) => {
-          if (e === '[') return '{';
-          if (e === ']') return '}';
-          return null;
-        })
-        .join(''),
-      imagesGallery
-        .split('')
-        .map((e) => {
-          if (e === '[') return '{';
-          if (e === ']') return '}';
-          return null;
-        })
-        .join(''),
+      periods,
+      imagesGallery,
     ],
   };
   return connection.query(sql);

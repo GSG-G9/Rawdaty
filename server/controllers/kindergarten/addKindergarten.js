@@ -5,11 +5,11 @@ const { addKindergartenSchema } = require('../../utils/validation');
 const addKindergarten = async (req, res, next) => {
   try {
     // const {userId} = req;
-    console.log(req.body);
     const userId = 2;
     const validatdData = await addKindergartenSchema.validate(req.body, {
       abortEarly: false,
     });
+    // console.log(validatdData);
     await addKindergartenQuery({
       ...validatdData,
       userId,
