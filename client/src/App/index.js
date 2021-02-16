@@ -10,11 +10,11 @@ const App = () => (
   <Router>
     <NavBar userName="Alaa" isAdmin={false} />
     <Switch>
-      <Route exact to="/">
-        <Home />
-      </Route>
       <Route to="/signup">
         <Signup />
+      </Route>
+      <Route exact to="/">
+        <Home />
       </Route>
     </Switch>
     <Footer />
