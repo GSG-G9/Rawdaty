@@ -42,7 +42,6 @@ const KindergartenForm = ({ onAdd, dorpListOptions }) => {
           type="textArea"
           height="123px"
           width="471px"
-          placeholder="أدخل اسم الروضة"
           onChange={onMainInputChange}
         />
       </h3>
@@ -56,7 +55,6 @@ const KindergartenForm = ({ onAdd, dorpListOptions }) => {
           type="text"
           height="48px"
           width="471px"
-          placeholder="أدخل اسم الروضة"
           onChange={onMainInputChange}
         />
       </h3>
@@ -67,7 +65,6 @@ const KindergartenForm = ({ onAdd, dorpListOptions }) => {
           type="text"
           height="48px"
           width="471px"
-          placeholder="أدخل اسم الروضة"
           onChange={onMainInputChange}
         />
       </h3>
