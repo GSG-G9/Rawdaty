@@ -21,23 +21,20 @@ const Signup = () => {
   const history = useHistory();
 
   const onFinish = async ({ username, email, password, confirm }) => {
-    console.log({ username, email, password, confirm });
     try {
       setError();
       setSuccess(false);
       setLoaded(true);
-      const { data } = await Axios.post(`/api/v1/signup`, {
+      await Axios.post(`/api/v1/signup`, {
         userName: username.trim(),
         email: email.trim(),
         password,
         confirmPassword: confirm,
       });
-      console.log(data);
       setLoaded(false);
       setSuccess(true);
       history.push('/');
     } catch (err) {
-      console.log(err);
       let e;
       if (err.response.data.message === 'You are registered') {
         e = 'البريد الالكتروني موجود بالفعل !!';
