@@ -274,16 +274,16 @@ describe('Post locations', () => {
     expect(error).toBe('Validation Error');
   });
 
-  // test('Should return error 401 when token in wrong', async () => {
-  //   expect.assertions(1);
-  //   const res = await request(app)
-  //     .post('/api/v1/locations')
-  //     .set('Cookie', `${token}z`)
-  //     .send({ mainLocation: 'غزة' })
-  //     .expect(401);
-  //   const { message } = res.body;
-  //   expect(message).toBe('Unauthorized User');
-  // });
+  test('Should return error 401 when token in wrong', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/locations')
+      .set('Cookie', `${token}z`)
+      .send({ mainLocation: 'غزة' })
+      .expect(401);
+    const { message } = res.body;
+    expect(message).toBe('Unauthorized User');
+  });
 });
 
 describe('Get locations', () => {
