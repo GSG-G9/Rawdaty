@@ -16,7 +16,7 @@ const App = () => (
         path="/kindergarten/:kindergartenId"
         render={(props) => <KindergartenProfilePage {...props} />}
       />
-      <Route exact to="/">
+      <Route exact path="/">
         <Home />
       </Route>
     </Switch>

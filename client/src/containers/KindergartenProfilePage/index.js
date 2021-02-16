@@ -154,15 +154,17 @@ const KindergartenProfilePage = ({ match }) => {
 
                     <div className="carousal-container">
                       <Carousel autoplay adaptiveHeight>
-                        {kindergartenProfile.image_gallery.map((e) => (
-                          <div className="image-container">
-                            <Image
-                              width={400}
-                              src={e}
-                              className="slider-image"
-                            />
-                          </div>
-                        ))}
+                        {JSON.parse(kindergartenProfile.image_gallery).map(
+                          (e) => (
+                            <div className="image-container">
+                              <Image
+                                width={400}
+                                src={e}
+                                className="slider-image"
+                              />
+                            </div>
+                          )
+                        )}
                       </Carousel>
                     </div>
                   </div>
@@ -238,11 +240,15 @@ const KindergartenProfilePage = ({ match }) => {
                   <Image src={time} alt="time" />
                   <span className="info-text periods">
                     الفترة الصباحية{' '}
-                    {`${kindergartenProfile.periods[0][0]} - ${kindergartenProfile.periods[0][1]} `}
-                    {kindergartenProfile.periods[1] ? (
+                    {`${JSON.parse(kindergartenProfile.periods)[0][0]} - ${
+                      JSON.parse(kindergartenProfile.periods)[0][1]
+                    } `}
+                    {JSON.parse(kindergartenProfile.periods)[1] ? (
                       <div>
                         الفترة المسائية
-                        {` :   ${kindergartenProfile.periods[1][0]} - ${kindergartenProfile.periods[1][1]} `}
+                        {` :   ${
+                          JSON.parse(kindergartenProfile.periods)[1][0]
+                        } - ${JSON.parse(kindergartenProfile.periods)[1][1]} `}
                       </div>
                     ) : null}
                   </span>
