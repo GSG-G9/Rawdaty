@@ -5,8 +5,8 @@ const {
   getSpecificKindergarten,
   kindergartenSearch,
 } = require('./kindergarten');
-const { getUsers } = require('./users');
-const { getLocations } = require('./locations');
+const { getUsers, logout, addUsers, login } = require('./users');
+const { getLocations, postLocations } = require('./locations');
 
 module.exports = {
   clientError,
@@ -17,5 +17,9 @@ module.exports = {
   addComments,
   getComments,
   getLocations,
+  postLocations,
   kindergartenSearch,
+  login,
+  addUsers,
+  logout,
 };
