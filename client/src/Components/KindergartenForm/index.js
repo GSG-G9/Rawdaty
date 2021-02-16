@@ -16,6 +16,7 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
   const [inputValue, setInputValue] = useState('');
   const [add, setAdd] = useState(false);
   const [fileList, setFileList] = useState([]);
+  const [pic, setPic] = useState([]);
 
   const onClick = () => {
     onAdd(inputValue, sliderValue, selectValue);
@@ -41,6 +42,10 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
     setFileList(newFileList);
   };
 
+  const onUpload1 = ({ main: onePicture }) => {
+    setPic(onePicture);
+  };
+
   return (
     <Form>
       <Title className="title" level={5}>
@@ -62,8 +67,8 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
             <Form.Item>
               <MainInput
                 type="textArea"
-                textLabel="وصف عن الروضية :"
-                height="123px"
+                textLabel="وصف عن الروضة :"
+                height="75px"
                 width="471px"
                 onChange={onMainInputChange}
               />
@@ -95,7 +100,12 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
           <div className="column">
             <Form.Item className="main-upload">
               <p>اضف صورة للروضة</p>
-              <Upload>
+              <Upload
+                listType="picture"
+                fileList={pic}
+                onChange={onUpload1}
+                maxCount={1}
+              >
                 <MainButton
                   height="48px"
                   width="471px"

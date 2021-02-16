@@ -6,7 +6,7 @@
 
 .title {
   margin: 0 20px;
-  padding: 10px 250px;
+  padding: 5px 250px;
 }
 
 .btn-container {
@@ -14,7 +14,6 @@
   align-content: space-between;
   justify-content: center;
   margin: 0 15px;
-  padding: 12px;
 }
 
 .form-container .ant-btn {
@@ -33,12 +32,12 @@
 
 .slider-input {
   position: relative;
-  top: 342px;
+  top: 249px;
 }
 
 .period2 {
   position: relative;
-  top: 376px;
+  top: 328px;
 }
 
 .main-upload{
