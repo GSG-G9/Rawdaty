@@ -50,6 +50,27 @@ const KindergartenForm = ({ onAdd, dorpListOptions }) => {
         تفاصيل المكان :
         <DorpList options={dorpListOptions} onSelect={onDorpListSelect} />
       </h3>
+      <h3>
+        رقم الحوال:
+        <MainInput
+          type="text"
+          height="48px"
+          width="471px"
+          placeholder="أدخل اسم الروضة"
+          onChange={onMainInputChange}
+        />
+      </h3>
+
+      <h3>
+        فترات الدوام:
+        <MainInput
+          type="text"
+          height="48px"
+          width="471px"
+          placeholder="أدخل اسم الروضة"
+          onChange={onMainInputChange}
+        />
+      </h3>
       <MainButton
         className="Search-btn red-Search-btn"
         onClick={onClick}
