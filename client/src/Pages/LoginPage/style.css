@@ -71,3 +71,13 @@
   line-height: 54px;
   font-size: 19.5px;
 }
+
+#form-container .ant-alert {
+  width: 470px;
+  height: 52px;
+  margin-bottom:10px ;
+}
+
+#form-container .ant-alert-message{
+  font-size: 18px;
+}

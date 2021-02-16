@@ -1,6 +1,6 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Row, Col, Typography, Form, notification } from 'antd';
+import React, { useState } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
+import { Row, Col, Typography, Form, Alert } from 'antd';
 import axios from 'axios';
 
 import MainInput from '../../Components/Common/MainInput';
@@ -11,16 +11,21 @@ import './style.css';
 const { Title } = Typography;
 
 const LoginPage = () => {
-  const onFinish = async (values) => {
+  const [alertError, setAlertError] = useState('');
+  const location = useHistory();
+
+  const onSubmit = async (values) => {
     try {
-      const {
-        data: { data },
-      } = axios.post(`/api/v1/login`, values);
-      console.log(data);
+      await axios.post(`/api/v1/login`, values);
+      location.push('/');
     } catch (error) {
-      notification.open({
-        message: 'حدث خطأ في السيرفر, يرجى المحاولة لاحقا',
-      });
+      if (error.response) {
+        if (error.response.status === 400) {
+          setAlertError('البريد الإلكتروني أو كلمة المرور غير صحيحتان');
+        } else {
+          setAlertError('حدث خطأ في السيرفر, يرجى المحاولة لاحقا');
+        }
+      }
     }
   };
 
@@ -31,7 +36,7 @@ const LoginPage = () => {
           id="form-container"
           name="login"
           initialValues={{ remember: true }}
-          onFinish={onFinish}
+          onFinish={onSubmit}
         >
           <Title id="title" level={1}>
             روضتـــي
@@ -39,6 +44,10 @@ const LoginPage = () => {
           <Title level={1} style={{ marginTop: 0, color: '#5A5A5A' }}>
             مرحبا بعودتك
           </Title>
+          {alertError && (
+            <Alert id="alert" message={alertError} type="error" showIcon />
+          )}
+
           <Form.Item
             name="email"
             rules={[

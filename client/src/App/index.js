@@ -24,17 +24,13 @@ const App = () => {
       //   data: { data },
       // } = await axios.get('/api/v1/me');
       const data = {
-        id: 1,
-        userName: 'أحمد',
-        isAdmin: 'false',
-        kindergartens: [
-          {
-            id: 1,
-            kindergartenName: 'الفجر',
-          },
+        id: 2,
+        user_name: 'حلا محمد حسن',
+        is_admin: 'false',
+        kindergartensData: [
           {
             id: 2,
-            kindergartenName: 'الزهراء',
+            kindergarten_name: 'روضة البسمة الجميلة',
           },
         ],
       };
@@ -53,21 +49,19 @@ const App = () => {
     <Router>
       <Switch>
         <AuthContext.Provider value={{ role, userData }}>
-          <Route path="/">
-            <NavBar userName={userData.userName} isLogged={Boolean(role)} />
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
+          <Route exact path="/">
+            <NavBar userName={userData.user_name} isLogged={Boolean(role)} />
+            <Home />
             <Footer />
+          </Route>
+          <Route exact path="/login">
+            <LoginPage />
           </Route>
 
           <Route path="/dashboard">
             {role === 'admin' ? (
               <>
-                <NavBar userName={userData.userName} isLogged isAdmin />
+                <NavBar userName={userData.user_name} isLogged isAdmin />
                 <Route exact path="/dashboard/all">
                   all
                 </Route>
