@@ -38,12 +38,6 @@ const Signup = () => {
       let e;
       if (err.response.data.message === 'You are registered') {
         e = 'البريد الالكتروني موجود بالفعل !!';
-      } else if (
-        err.response.data.message === 'userName must be at least 5 characters'
-      ) {
-        e = '   اسم المستخدم يجب ان يتكون على الاقل من 5 حروف !!';
-      } else if (err.response.data.error === 'Validation Error') {
-        e = err.response.data.message;
       } else {
         e = 'حصل خطأ غير متوقع حاول مجددا';
       }
