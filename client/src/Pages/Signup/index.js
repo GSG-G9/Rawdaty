@@ -1,45 +1,57 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Axios from 'axios';
-import { Image, Form, Button, Input, Typography, Spin, Alert } from 'antd';
-import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { Image, Form, Button, Input, Typography, Result, Alert } from 'antd';
+import {
+  EyeInvisibleOutlined,
+  EyeTwoTone,
+  SyncOutlined,
+} from '@ant-design/icons';
 import MainInput from '../../Components/Common/MainInput';
 import signupphoto from '../../assets/img/signup-photo.png';
+
 import './style.css';
 
 const { Title } = Typography;
 
 const Signup = () => {
   const [loaded, setLoaded] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [error, setError] = useState();
   const history = useHistory();
 
   const onFinish = async ({ username, email, password, confirm }) => {
     console.log({ username, email, password, confirm });
     try {
+      setError();
+      setSuccess(false);
       setLoaded(true);
-      await Axios.post(`/api/v1/signup`, {
+      const { data } = await Axios.post(`/api/v1/signup`, {
         userName: username.trim(),
         email: email.trim(),
         password,
         confirmPassword: confirm,
       });
+      console.log(data);
       setLoaded(false);
+      setSuccess(true);
       history.push('/');
     } catch (err) {
+      console.log(err);
       let e;
-      if (err.message) {
-        switch (err.message) {
-          case 'You are registered':
-            e = 'البريد الالكتروني موجود بالفعل !!';
-            break;
-
-          default:
-            e = 'حصل خطأ غير متوقع حاول مجددا';
-            setLoaded(false);
-            setError(e);
-        }
+      if (err.response.data.message === 'You are registered') {
+        e = 'البريد الالكتروني موجود بالفعل !!';
+      } else if (
+        err.response.data.message === 'userName must be at least 5 characters'
+      ) {
+        e = '   اسم المستخدم يجب ان يتكون على الاقل من 5 حروف !!';
+      } else if (err.response.data.error === 'Validation Error') {
+        e = err.response.data.message;
+      } else {
+        e = 'حصل خطأ غير متوقع حاول مجددا';
       }
+      setLoaded(false);
+      setError(e);
     }
   };
   return (
@@ -51,12 +63,19 @@ const Signup = () => {
         <Title level={1} className="navbar-logo-div-title">
           روضــتـــي
         </Title>
+        {success && <Result status="success" title="تم تسجيل حسابك بنجاح" />}
         <Title level={3}>إنشاء حساب جديد</Title>
         <Form layout="vertical" size="large" onFinish={onFinish}>
           <Form.Item
             name="username"
             label="اسم المستخدم"
-            rules={[{ required: true, message: 'Please input your username!' }]}
+            rules={[
+              { required: true, message: 'الرجاء إدخال اسم المستخدم' },
+              {
+                min: 5,
+                message: 'اسم المستخدم يجب أن يتكون من 5 حروف على الأقل',
+              },
+            ]}
           >
             <MainInput type="text" />
           </Form.Item>
@@ -67,7 +86,7 @@ const Signup = () => {
               {
                 required: true,
                 type: 'email',
-                message: 'The input is not valid E-mail!',
+                message: 'الرجاء إدخال  بريد الكتروني صحيح',
               },
             ]}
           >
@@ -77,7 +96,13 @@ const Signup = () => {
           <Form.Item
             name="password"
             label="كلمة المرور"
-            rules={[{ required: true, message: 'Please input your password!' }]}
+            rules={[
+              { required: true, message: 'الرجاء إدخال كلمة المرور' },
+              {
+                min: 8,
+                message: 'كلمة المرور يجب أن تتكون من 8 حروف او أرقام',
+              },
+            ]}
           >
             <Input.Password
               iconRender={(visible) =>
@@ -94,14 +119,14 @@ const Signup = () => {
             rules={[
               {
                 required: true,
-                message: 'Please confirm your password!',
+                message: 'الرجاء تأكيد كلمة المرور',
               },
               ({ getFieldValue }) => ({
                 validator(_, value) {
                   if (!value || getFieldValue('password') === value) {
                     return Promise.resolve();
                   }
-                  return Promise.reject(setError('كلمات المرور غير متطابقة '));
+                  return Promise.reject(Error('كلمات المرور غير متطابقة'));
                 },
               }),
             ]}
@@ -116,7 +141,7 @@ const Signup = () => {
           <Form.Item>
             <Button type="primary" htmlType="submit" block id="signup">
               {loaded ? (
-                <Spin />
+                <SyncOutlined spin />
               ) : (
                 <Title level={5} className="signup-text">
                   إنشاء حساب حديد
@@ -124,7 +149,14 @@ const Signup = () => {
               )}
             </Button>
           </Form.Item>
-          {error && <Alert message={error} type="error" />}
+
+          {error && (
+            <Alert
+              message={error}
+              type="error"
+              style={{ marginBottom: '20px' }}
+            />
+          )}
         </Form>
         <Link to="/">
           <Title level={4} className="navbar-logo-div-title">
