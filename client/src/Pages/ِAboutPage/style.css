@@ -1,0 +1,37 @@
+.component_container {
+  display: flex;
+  margin: 50px 82px 100px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.content-container {
+  padding-left: 100px;
+  width: 70%;
+}
+@media only screen and (max-width: 720px) {
+  .component_container {
+    flex-direction: column-reverse;
+    margin: 60px 0;
+    text-align: center;
+  }
+  .content-container {
+    margin: 40px 0;
+    width: 100%;
+    padding: 0 50px;
+  }
+}
+.p_title {
+  border-radius: 100%;
+  font-size: 40px !important;
+}
+
+.content {
+  font-size: 22px;
+  line-height: 38px;
+}
+
+.text_image {
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+}
