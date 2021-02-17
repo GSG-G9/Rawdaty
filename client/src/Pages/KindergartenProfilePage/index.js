@@ -57,7 +57,6 @@ const KindergartenProfilePage = ({ match }) => {
         `/api/v1/kindergarten/${id}`
       );
       setKindergartenProfile(kindergartenData.data[0]);
-      // getKindergartenComments(id);
     } catch (err) {
       let e;
       if (
@@ -240,6 +239,7 @@ const KindergartenProfilePage = ({ match }) => {
                   <Image
                     src={price}
                     alt="price"
+                    preview={false}
                     style={{ width: '20px', height: '20px' }}
                   />
                   <span className="info-text">
