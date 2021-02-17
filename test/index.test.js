@@ -5,9 +5,13 @@ const {
   getKindergartenById,
   addCommentsQuery,
   getCommentsQuery,
+  addUsersQuery,
 } = require('../server/database/queries');
 
-beforeAll(() => dbBuild());
+const token =
+  'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzQWRtaW4iOiJ0cnVlIiwiaWF0IjoxNjEzNDA1MzA0fQ.mBtUvxmAXD3w6Fx9g39z1Ip2J_nmJQC0Ef2wrHtdTYA';
+
+beforeEach(() => dbBuild());
 afterAll(() => connection.end());
 
 describe('Get all users', () => {
@@ -44,17 +48,9 @@ describe('Testing get kindergarten by id query', () => {
       phone_number: '0599123456',
       min_price: 1000,
       max_price: 2000,
-      periods: [['7:00', '11:00']],
-      image_gallery: [
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126072436_2810042115930329_426976181002437064_o.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=UX2zxNzPBTYAX_XAYLE&_nc_ht=scontent.fgza2-1.fna&oh=72a8ef5d8369f7e183116f4423bad872&oe=604613F1',
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p526x395/126362711_2810037339264140_8115186378406081155_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=1pa0nWqLMVQAX8xj-8Z&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=43ba32d04a1478c83ca4cee8950955f9&oe=6045D9DF',
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p180x540/125246489_2806470342954173_5557632858147020336_o.jpg?_nc_cat=106&ccb=2&_nc_sid=e3f864&_nc_ohc=ZGPkuyaJoUEAX9lkFkC&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=0a5795c9d04ed69df0ecf950260a8240&oe=60475C85',
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/127711338_2816934215241119_820060672107449619_o.jpg?_nc_cat=110&ccb=2&_nc_sid=730e14&_nc_ohc=lj0hKeD_FswAX-IthGI&_nc_ht=scontent.fgza2-1.fna&oh=ff73fc70463202e07ef1ab8945b1aaf6&oe=6047D28E',
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/125969111_2810046942596513_7374678634903478541_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=26lBVKEuxXgAX-LkaQx&_nc_ht=scontent.fgza2-1.fna&oh=98b4dfd19c0ec101fab0c68fcafb2ed7&oe=60489661',
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p526x395/126221172_2810852509182623_3908586823989526775_o.jpg?_nc_cat=104&ccb=2&_nc_sid=730e14&_nc_ohc=r4JC03VXovYAX-ZDyZv&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=a04d43782df65a5367387fa7d876a6cc&oe=6047FCA7',
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126420691_2810858432515364_8382015493325068832_o.jpg?_nc_cat=102&ccb=2&_nc_sid=730e14&_nc_ohc=8m_uU2uLr9kAX-TeYbI&_nc_ht=scontent.fgza2-1.fna&oh=8b17321eb157fe3c7a9d7c09ba6182bc&oe=604782E5',
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126361201_2810861959181678_2949636133222938705_o.jpg?_nc_cat=107&ccb=2&_nc_sid=e3f864&_nc_ohc=xj63fLB5DpYAX8g2PTJ&_nc_ht=scontent.fgza2-1.fna&oh=88ac8fb67a2c9c87ee2ed8940f2c14fb&oe=60451FF9',
-      ],
+      periods: '[["07:00:00","12:00:00"]]',
+      image_gallery:
+        '["https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126071395/126362711_2810037339264140_8115186378406081155_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=1pa0nWqLMVQAX8xj-8Z&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=43ba32d04a1478c83ca4cee8950955f9&oe=6045D9DF","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p180x540/125246489_2806470342954173_5557632858147020336_o.jpg?_nc_cat=106&ccb=2&_nc_sid=e3f864&_nc_ohc=ZGPkuyaJoUEAX9lkFkC&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=0a5795c9d04ed69df0ecf950260a8240&oe=60475C85","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/127711338_2816934215241119_820060672107449619_o.jpg?_nc_cat=110&ccb=2&_nc_sid=730e14&_nc_ohc=lj0hKeD_FswAX-IthGI&_nc_ht=scontent.fgza2-1.fna&oh=ff73fc70463202e07ef1ab8945b1aaf6&oe=6047D28E","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/125969111_2810046942596513_7374678634903478541_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=26lBVKEuxXgAX-LkaQx&_nc_ht=scontent.fgza2-1.fna&oh=98b4dfd19c0ec101fab0c68fcafb2ed7&oe=60489661","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p526x395/126221172_2810852509182623_3908586823989526775_o.jpg?_nc_cat=104&ccb=2&_nc_sid=730e14&_nc_ohc=r4JC03VXovYAX-ZDyZv&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=a04d43782df65a5367387fa7d876a6cc&oe=6047FCA7","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126420691_2810858432515364_8382015493325068832_o.jpg?_nc_cat=102&ccb=2&_nc_sid=730e14&_nc_ohc=8m_uU2uLr9kAX-TeYbI&_nc_ht=scontent.fgza2-1.fna&oh=8b17321eb157fe3c7a9d7c09ba6182bc&oe=604782E5","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126361201_2810861959181678_2949636133222938705_o.jpg?_nc_cat=107&ccb=2&_nc_sid=e3f864&_nc_ohc=xj63fLB5DpYAX8g2PTJ&_nc_ht=scontent.fgza2-1.fna&oh=88ac8fb67a2c9c87ee2ed8940f2c14fb&oe=60451FF9"]',
       location_sub: 'الرمال الجنوبي',
       location_main: 'غزة',
       rating_count: '4',
@@ -215,19 +211,11 @@ describe('Get all kindergartens', () => {
       longitude: null,
       min_price: 1000,
       max_price: 2000,
-      periods: [['7:00', '11:00']],
+      periods: '[["07:00:00","12:00:00"]]',
       location_sub: 'الرمال الجنوبي',
       location_main: 'غزة',
-      image_gallery: [
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126072436_2810042115930329_426976181002437064_o.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=UX2zxNzPBTYAX_XAYLE&_nc_ht=scontent.fgza2-1.fna&oh=72a8ef5d8369f7e183116f4423bad872&oe=604613F1',
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p526x395/126362711_2810037339264140_8115186378406081155_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=1pa0nWqLMVQAX8xj-8Z&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=43ba32d04a1478c83ca4cee8950955f9&oe=6045D9DF',
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p180x540/125246489_2806470342954173_5557632858147020336_o.jpg?_nc_cat=106&ccb=2&_nc_sid=e3f864&_nc_ohc=ZGPkuyaJoUEAX9lkFkC&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=0a5795c9d04ed69df0ecf950260a8240&oe=60475C85',
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/127711338_2816934215241119_820060672107449619_o.jpg?_nc_cat=110&ccb=2&_nc_sid=730e14&_nc_ohc=lj0hKeD_FswAX-IthGI&_nc_ht=scontent.fgza2-1.fna&oh=ff73fc70463202e07ef1ab8945b1aaf6&oe=6047D28E',
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/125969111_2810046942596513_7374678634903478541_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=26lBVKEuxXgAX-LkaQx&_nc_ht=scontent.fgza2-1.fna&oh=98b4dfd19c0ec101fab0c68fcafb2ed7&oe=60489661',
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p526x395/126221172_2810852509182623_3908586823989526775_o.jpg?_nc_cat=104&ccb=2&_nc_sid=730e14&_nc_ohc=r4JC03VXovYAX-ZDyZv&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=a04d43782df65a5367387fa7d876a6cc&oe=6047FCA7',
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126420691_2810858432515364_8382015493325068832_o.jpg?_nc_cat=102&ccb=2&_nc_sid=730e14&_nc_ohc=8m_uU2uLr9kAX-TeYbI&_nc_ht=scontent.fgza2-1.fna&oh=8b17321eb157fe3c7a9d7c09ba6182bc&oe=604782E5',
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126361201_2810861959181678_2949636133222938705_o.jpg?_nc_cat=107&ccb=2&_nc_sid=e3f864&_nc_ohc=xj63fLB5DpYAX8g2PTJ&_nc_ht=scontent.fgza2-1.fna&oh=88ac8fb67a2c9c87ee2ed8940f2c14fb&oe=60451FF9',
-      ],
+      image_gallery:
+        '["https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126071395/126362711_2810037339264140_8115186378406081155_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=1pa0nWqLMVQAX8xj-8Z&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=43ba32d04a1478c83ca4cee8950955f9&oe=6045D9DF","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p180x540/125246489_2806470342954173_5557632858147020336_o.jpg?_nc_cat=106&ccb=2&_nc_sid=e3f864&_nc_ohc=ZGPkuyaJoUEAX9lkFkC&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=0a5795c9d04ed69df0ecf950260a8240&oe=60475C85","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/127711338_2816934215241119_820060672107449619_o.jpg?_nc_cat=110&ccb=2&_nc_sid=730e14&_nc_ohc=lj0hKeD_FswAX-IthGI&_nc_ht=scontent.fgza2-1.fna&oh=ff73fc70463202e07ef1ab8945b1aaf6&oe=6047D28E","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/125969111_2810046942596513_7374678634903478541_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=26lBVKEuxXgAX-LkaQx&_nc_ht=scontent.fgza2-1.fna&oh=98b4dfd19c0ec101fab0c68fcafb2ed7&oe=60489661","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p526x395/126221172_2810852509182623_3908586823989526775_o.jpg?_nc_cat=104&ccb=2&_nc_sid=730e14&_nc_ohc=r4JC03VXovYAX-ZDyZv&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=a04d43782df65a5367387fa7d876a6cc&oe=6047FCA7","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126420691_2810858432515364_8382015493325068832_o.jpg?_nc_cat=102&ccb=2&_nc_sid=730e14&_nc_ohc=8m_uU2uLr9kAX-TeYbI&_nc_ht=scontent.fgza2-1.fna&oh=8b17321eb157fe3c7a9d7c09ba6182bc&oe=604782E5","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126361201_2810861959181678_2949636133222938705_o.jpg?_nc_cat=107&ccb=2&_nc_sid=e3f864&_nc_ohc=xj63fLB5DpYAX8g2PTJ&_nc_ht=scontent.fgza2-1.fna&oh=88ac8fb67a2c9c87ee2ed8940f2c14fb&oe=60451FF9"]',
       request_status: 'approved',
       is_enable: 'true',
       rating_average: '4.2500000000000000',
@@ -243,27 +231,54 @@ describe('Get all kindergartens', () => {
 });
 
 // test the route /locations
+describe('Post locations', () => {
+  test('Route post /locations status 201', async () => {
+    expect.assertions(1);
+
+    const res = await request(app)
+      .post('/api/v1/locations')
+      .send({ mainLocation: 'غزة', subLocation: 'الشجاعية' })
+      .set('Cookie', token)
+      .expect(201)
+      .expect('Content-Type', /json/);
+    expect(res.body.data[0]).toEqual({
+      id: 24,
+      location_sub: 'الشجاعية',
+      location_main: 'غزة',
+    });
+  });
+
+  test('Should return error 400 when sub or main locations are not inserted', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/locations')
+      .set('Cookie', token)
+      .send({ mainLocation: 'غزة' })
+      .expect(400);
+    const { error } = res.body;
+    expect(error).toBe('Validation Error');
+  });
+
+  test('Should return error 401 when token in wrong', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/locations')
+      .set('Cookie', `${token}z`)
+      .send({ mainLocation: 'غزة' })
+      .expect(401);
+    const { message } = res.body;
+    expect(message).toBe('Unauthorized User');
+  });
+});
+
 describe('Get locations', () => {
-  test('Route /users status 200, json header', async () => {
+  test('Route get /locations status 200, json header', async () => {
     expect.assertions(1);
     const res = await request(app)
       .get('/api/v1/locations')
       .expect(200)
       .expect('Content-Type', /json/);
     expect(res.body.data).toHaveLength(23);
-  });
-
-  test('should return an object contains id, sub and main locations', async () => {
-    expect.assertions(1);
-    const res = await request(app)
-      .get('/api/v1/locations')
-      .expect(200)
-      .expect('Content-Type', /json/);
-    expect(res.body.data[0]).toEqual({
-      id: 1,
-      location_sub: 'الرمال الجنوبي',
-      location_main: 'غزة',
-    });
   });
 });
 
@@ -279,6 +294,45 @@ describe('Testing get comments by kindergarten id query', () => {
     getCommentsQuery(1)
       .then((result) => expect(result.rows).toHaveLength(4))
       .catch());
+});
+
+// test router Post /kindergarten
+describe('Test the route POST /kindergarten', () => {
+  test('should return status code 201 and data length 1 when given POST  /kindergarten', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/kindergarten')
+      .set('Cookie', token)
+      .send({
+        kindergartenName: 'روضة الإبداع التعليمية',
+        userId: 1,
+        coverImage:
+          'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/127563203_2816927261908481_825163598039189311_o.jpg _nc_cat=100&ccb=2&_nc_sid=e3f864&_nc_ohc=EOam1iTQLIcAX8jrnEj&_nc_ht=scontent.fgza2-1.fna&oh=e1cef81bf1cebbd72a6c1f1af651e01f&oe=604638FB',
+        description:
+          'نعملُ على إنشاء جيل رائع من خلال تطوير كافة مهاراتهم الفكرية والنفسية بأساليب علمية وتربوية',
+        locationId: 1,
+        phoneNumber: 599123456,
+        minPrice: 1000,
+        maxPrice: 2000,
+        periods: `[
+          ['07:00:00', '11:00:00'],
+          ['12:00:00', '16:00:00'],
+        ]`,
+        imagesGallery: `[
+          'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126072436_2810042115930329_426976181002437064_o.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=UX2zxNzPBTYAX_XAYLE&_nc_ht=scontent.fgza2-1.fna&oh=72a8ef5d8369f7e183116f4423bad872&oe=604613F1',
+          'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p526x395/126362711_2810037339264140_8115186378406081155_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=1pa0nWqLMVQAX8xj-8Z&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=43ba32d04a1478c83ca4cee8950955f9&oe=6045D9DF',
+          'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p180x540/125246489_2806470342954173_5557632858147020336_o.jpg?_nc_cat=106&ccb=2&_nc_sid=e3f864&_nc_ohc=ZGPkuyaJoUEAX9lkFkC&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=0a5795c9d04ed69df0ecf950260a8240&oe=60475C85',
+          'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/127711338_2816934215241119_820060672107449619_o.jpg?_nc_cat=110&ccb=2&_nc_sid=730e14&_nc_ohc=lj0hKeD_FswAX-IthGI&_nc_ht=scontent.fgza2-1.fna&oh=ff73fc70463202e07ef1ab8945b1aaf6&oe=6047D28E',
+          'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/125969111_2810046942596513_7374678634903478541_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=26lBVKEuxXgAX-LkaQx&_nc_ht=scontent.fgza2-1.fna&oh=98b4dfd19c0ec101fab0c68fcafb2ed7&oe=60489661',
+          'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p526x395/126221172_2810852509182623_3908586823989526775_o.jpg?_nc_cat=104&ccb=2&_nc_sid=730e14&_nc_ohc=r4JC03VXovYAX-ZDyZv&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=a04d43782df65a5367387fa7d876a6cc&oe=6047FCA7',
+          'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126420691_2810858432515364_8382015493325068832_o.jpg?_nc_cat=102&ccb=2&_nc_sid=730e14&_nc_ohc=8m_uU2uLr9kAX-TeYbI&_nc_ht=scontent.fgza2-1.fna&oh=8b17321eb157fe3c7a9d7c09ba6182bc&oe=604782E5',
+          'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126361201_2810861959181678_2949636133222938705_o.jpg?_nc_cat=107&ccb=2&_nc_sid=e3f864&_nc_ohc=xj63fLB5DpYAX8g2PTJ&_nc_ht=scontent.fgza2-1.fna&oh=88ac8fb67a2c9c87ee2ed8940f2c14fb&oe=60451FF9',
+        ]`,
+      })
+      .expect(201);
+    const { message } = res.body;
+    expect(message).toBe('Kindergarten has been added successfully');
+  });
 });
 
 // test the route /kindergarten/:kindergartenId/comments
@@ -320,7 +374,7 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
       .get('/api/v1/kindergarten/2/comments')
       .expect(200);
     const { data } = res.body;
-    expect(data).toHaveLength(5);
+    expect(data).toHaveLength(2);
   });
 
   test('should return status code 200 and expected data when given GET  /kindergarten/1/comments', async () => {
@@ -388,5 +442,148 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
       .expect(404);
     const { message } = res.body;
     expect(message).toBe('There is no comments for this id');
+  });
+});
+
+describe('delete /kindergarten/:kindergartenId', () => {
+  test('should return status code 200 and message = Kindergarten deleted successfully', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .delete('/api/v1/kindergarten/1')
+      .set('Cookie', token)
+      .expect(200)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message).toBe('Kindergarten deleted successfully');
+  });
+
+  test('should return status code 404 when Delete  /kindergarten/20', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .delete('/api/v1/kindergarten/20')
+      .set('Cookie', token)
+      .expect(404)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message).toBe('There is no kindergarten with this id');
+  });
+
+  test('should return status code 400 and validation error  when try to delete kindergarten its id is not valid', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .delete('/api/v1/kindergarten/0/')
+      .set('Cookie', token)
+      .expect('Content-Type', /json/)
+      .expect(400);
+    const { error } = res.body;
+    expect(error).toBe('Validation Error');
+  });
+});
+
+describe('login endPoint', () => {
+  test('Route /login, status 200, json header, message = logged in successfully', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/login')
+      .send({ email: 'hala@hala.com', password: 'hala@hala.com' })
+      .expect(200)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message).toBe('logged in successfully');
+  });
+
+  test('Route /login, status 400, json header, message = email must be a valid email', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/login')
+      .send({ email: 'halahala.com', password: 'hala@hala.com' })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message[0]).toBe('email must be a valid email');
+  });
+
+  test('Route /login, status 400, json header, message = Password is too short - should be 8 chars minimum.', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/login')
+      .send({ email: 'hala@hala.com', password: '1234' })
+      .expect(400)
+      .expect('Content-Type', /json/);
+    const { message } = res.body;
+    expect(message[0]).toBe(
+      'Password is too short - should be 8 chars minimum.'
+    );
+  });
+});
+
+// test the add user query
+describe('Testing add users query', () => {
+  test('Should return data length 1', () =>
+    addUsersQuery('سيف', 'sa.sa.com', '123456789', '123456789')
+      .then((result) => expect(result.rows).toHaveLength(1))
+      .catch());
+});
+
+// test the route /kindergarten/:kindergartenId/comments
+describe('Test the route POST /signup', () => {
+  test('should return status code 201 and data length 1 when given POST  /signup', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/signup')
+      .send({
+        userName: '1محمد',
+        email: 'm@m.com',
+        password: '123456789',
+        confirmPassword: '123456789',
+      })
+      .expect(201);
+    const { data } = res.body;
+    expect(data).toHaveLength(1);
+  });
+
+  test('should return status code 400 and validation error message when given not valid email POST  /signup', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/signup')
+      .send({
+        userName: '1محمد',
+        email: 'mm',
+        password: '123456789',
+        confirmPassword: '123456789',
+      })
+      .expect(400);
+    const { error } = res.body;
+    expect(error).toBe('Validation Error');
+  });
+
+  test('should return status code 400 and validation error message when given not matched passwords POST  /signup', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/signup')
+      .send({
+        userName: '1محمد',
+        email: 'm@m.net',
+        password: '123456789',
+        confirmPassword: '1234567',
+      })
+      .expect(400);
+    const { error } = res.body;
+    expect(error).toBe('Validation Error');
+  });
+
+  test('should return status code 401 and validation error message when given an exist email POST  /signup', async () => {
+    expect.assertions(1);
+    const res = await request(app)
+      .post('/api/v1/signup')
+      .send({
+        userName: '1محمد',
+        email: 'israa@israa.com',
+        password: '123456789',
+        confirmPassword: '123456789',
+      })
+      .expect(401);
+    const { message } = res.body;
+    expect(message).toBe('You are registered');
   });
 });

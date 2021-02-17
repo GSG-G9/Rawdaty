@@ -16,7 +16,7 @@ const NavTap = ({
   ...otherMenuProps
 }) => (
   <>
-    <Menu mode="horizontal" {...otherMenuProps}>
+    <Menu id="nav-tap" mode="horizontal" {...otherMenuProps}>
       <Menu.Item key="1" icon={<Home className="icon" />}>
         <NavLink exact to="/" className="tap">
           الرئيسية

@@ -76,6 +76,11 @@ const MainInput = ({
         />
       );
       break;
+    case 'password':
+      input = (
+        <Input.Password id="password" style={style} {...otherInputProps} />
+      );
+      break;
     default:
       input = <></>;
   }
