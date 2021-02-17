@@ -82,6 +82,7 @@ const KindergartenProfilePage = ({ match }) => {
         }
       );
       if (data.length !== 0) {
+        // getKindergartenComments(kindergartenId);
         message.success('تم إضافة التعليق بنجاح');
       }
     } catch (err) {
