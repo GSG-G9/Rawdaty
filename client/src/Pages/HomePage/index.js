@@ -38,6 +38,7 @@ const HomePage = () => {
       source.cancel('clean up axios');
     };
   }, []);
+
   return (
     <div>
       <div className="header-image">

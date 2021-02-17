@@ -6,6 +6,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import axios from 'axios';
+import { notification } from 'antd';
 
 import NavBar from '../Components/Layout/Navbar';
 import Footer from '../Components/Layout/Footer';
@@ -21,7 +22,6 @@ const App = () => {
   const [userData, setUserData] = useState({});
   const [isOK, setIsOk] = useState(false);
   const [role, setRole] = useState(null);
-
   const checkAuth = async () => {
     try {
       const {
@@ -30,8 +30,9 @@ const App = () => {
       setUserData(data);
       setRole(data.is_admin === 'true' ? 'admin' : 'user');
       setIsOk(true);
-    } catch (err) {
+    } catch (error) {
       setRole(null);
+      setUserData({});
     }
   };
 
@@ -45,11 +46,17 @@ const App = () => {
 
   const logout = async () => {
     try {
+      const source = axios.CancelToken.source();
       await axios.get('/api/v1/logout');
       setRole(null);
       setUserData({});
+      return () => {
+        source.cancel('clean up axios');
+      };
     } catch (err) {
-      console.log('حدث خطء');
+      return notification.open({
+        message: 'حدث خطأ في السيرفر, يرجى المحاولة لاحقا',
+      });
     }
   };
 
@@ -58,17 +65,25 @@ const App = () => {
       <Switch>
         <AuthContext.Provider value={{ role, userData, checkAuth }}>
           <LogoutContext.Provider value={{ logout }}>
-            <Route exact path="/">
+            <Route exact path={['/', '/about', '/profile/:id', '/search']}>
               <NavBar />
-              <Home />
-              <Footer />
             </Route>
+
+            <Route exact path="/">
+              <Home />
+            </Route>
+
+            <Route exact path="/profile/:id" />
 
             <Route exact path="/login">
               {!role ? <LoginPage /> : <Redirect to="/" />}
             </Route>
 
             <Route exact path="/sign-up" />
+
+            <Route exact path={['/', '/about', '/profile/:id', '/search']}>
+              <Footer />
+            </Route>
 
             {isOK && role === 'admin' && (
               <Route path="/dashboard">
@@ -93,10 +108,6 @@ const App = () => {
                 </div>
               </Route>
             )}
-
-            <Route>
-              <dev>hi</dev>
-            </Route>
           </LogoutContext.Provider>
         </AuthContext.Provider>
       </Switch>
