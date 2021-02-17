@@ -407,20 +407,22 @@ describe('Test the route /kindergarten/:kindergartenId/comments', () => {
 });
 
 describe('delete /kindergarten/:kindergartenId', () => {
-  test('should return status code 200 and msg = kindergarten was deleted', async () => {
+  test('should return status code 200 and message = Kindergarten deleted successfully', async () => {
     expect.assertions(1);
     const res = await request(app)
       .delete('/api/v1/kindergarten/1')
+      .set('Cookie', token)
       .expect(200)
       .expect('Content-Type', /json/);
-    const { msg } = res.body;
-    expect(msg).toBe('kindergarten was deleted');
+    const { message } = res.body;
+    expect(message).toBe('Kindergarten deleted successfully');
   });
 
   test('should return status code 404 when Delete  /kindergarten/20', async () => {
     expect.assertions(1);
     const res = await request(app)
       .delete('/api/v1/kindergarten/20')
+      .set('Cookie', token)
       .expect(404)
       .expect('Content-Type', /json/);
     const { message } = res.body;
@@ -431,6 +433,7 @@ describe('delete /kindergarten/:kindergartenId', () => {
     expect.assertions(1);
     const res = await request(app)
       .delete('/api/v1/kindergarten/0/')
+      .set('Cookie', token)
       .expect('Content-Type', /json/)
       .expect(400);
     const { error } = res.body;

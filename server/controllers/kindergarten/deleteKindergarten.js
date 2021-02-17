@@ -7,9 +7,12 @@ const getKindergarten = async (req, res, next) => {
     const { kindergartenId } = await kindergartenIdSchema.validate(req.params, {
       abortEarly: false,
     });
-    const { rows } = await deleteKindergartenQuery(kindergartenId);
-    if (rows.length !== 0) {
-      res.json({ statusCode: 200, msg: 'kindergarten was deleted' });
+    const { rowCount } = await deleteKindergartenQuery(kindergartenId);
+    if (rowCount === 1) {
+      res.json({
+        statusCode: 200,
+        message: 'Kindergarten deleted successfully',
+      });
     } else {
       next(
         boomify(404, 'Deleted error', 'There is no kindergarten with this id')
