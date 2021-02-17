@@ -5,6 +5,12 @@
   font-size: 15px;
 }
 
+body{
+  /* To remove the antd modal effect on the page */
+  overflow:auto !important;
+  width:100% !important;
+}
+
 :root {
   --main-color: #739c98;
   --main-white: #ffffff;
