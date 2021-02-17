@@ -37,9 +37,6 @@ const LoginPage = () => {
           if (isOk) {
             checkAuth();
           }
-          // if (role) {
-          //   return <Redirect to="/" />;
-          // }
           return (
             <Row id="Login-container">
               <Col id="container" span={12}>

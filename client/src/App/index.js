@@ -78,15 +78,15 @@ const App = () => {
               <About />
             </Route>
 
-            <Route exact path="/profile/:id" />
+            <Route exact path="/kindergarten/:id" />
 
             <Route exact path="/login">
               {!role ? <LoginPage /> : <Redirect to="/" />}
             </Route>
 
-            <Route exact path="/sign-up" />
+            <Route exact path="/signup" />
 
-            <Route exact path={['/', '/about', '/profile/:id', '/search']}>
+            <Route exact path={['/', '/about', '/kindergarten/:id', '/search']}>
               <Footer />
             </Route>
 

@@ -13,7 +13,6 @@ import LogoutContext from '../../../Context/LogoutContext';
 import './style.css';
 
 const { Title } = Typography;
-// const { Text, Title } = Typography;
 const { SubMenu } = Menu;
 
 const NavBar = () => {
