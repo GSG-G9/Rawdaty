@@ -122,7 +122,7 @@ const KindergartenProfilePage = ({ match }) => {
         ) : kindergartenProfile ? (
           <div>
             <Image
-              width="100vw"
+              width="100%"
               height="414px"
               className="cover-image"
               src={kindergartenProfile.cover_image}
@@ -168,11 +168,7 @@ const KindergartenProfilePage = ({ match }) => {
                         {JSON.parse(kindergartenProfile.image_gallery).map(
                           (e) => (
                             <div className="image-container">
-                              <Image
-                                width={400}
-                                src={e}
-                                className="slider-image"
-                              />
+                              <Image src={e} className="slider-image" />
                             </div>
                           )
                         )}
