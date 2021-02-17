@@ -169,11 +169,7 @@ const KindergartenProfilePage = ({ match }) => {
                         {JSON.parse(kindergartenProfile.image_gallery).map(
                           (e) => (
                             <div className="image-container">
-                              <Image
-                                width={400}
-                                src={e}
-                                className="slider-image"
-                              />
+                              <Image src={e} className="slider-image" />
                             </div>
                           )
                         )}
