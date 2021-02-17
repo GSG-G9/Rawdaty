@@ -21,7 +21,7 @@ const CommentContainer = ({ data, isAdmin }) => {
 
   useEffect(() => {
     loopWithSlice(0, commentsPerPage);
-  }, []);
+  }, [data]);
 
   return (
     <div>

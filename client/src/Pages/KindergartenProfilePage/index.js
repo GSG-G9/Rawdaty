@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import propTypes from 'prop-types';
 
-import { Alert, Typography, Image, Carousel, Form, Button } from 'antd';
+import {
+  Alert,
+  Typography,
+  Image,
+  Carousel,
+  Form,
+  Button,
+  message,
+} from 'antd';
 import Spinner from '../../Components/Common/Spinner';
 import Rating from '../../Components/Common/Rating';
 import MainInput from '../../Components/Common/MainInput';
@@ -27,14 +35,14 @@ const KindergartenProfilePage = ({ match }) => {
   // fetch all comments on this kindergarten
   const getKindergartenComments = async (id) => {
     try {
-      const { data: kindergartenReview } = await Axios.get(
+      const { data: kindergartenReview } = await axios.get(
         `/api/v1/kindergarten/${id}/comments`
       );
       setKindergartenComments(kindergartenReview.data);
     } catch (err) {
       let e;
-      if (err.message === 'There is no kindergarten with this id') {
-        e = 'لا يوجد روضة بهذا المعرف';
+      if (err.response.data.message === 'There is no comments for this id') {
+        e = null;
       } else {
         e = 'تعذر جلب بيانات الروضة ';
       }
@@ -45,14 +53,16 @@ const KindergartenProfilePage = ({ match }) => {
   // Fetch kindergarten data
   const getKindergartenData = async (id) => {
     try {
-      const { data: kindergartenData } = await Axios.get(
+      const { data: kindergartenData } = await axios.get(
         `/api/v1/kindergarten/${id}`
       );
       setKindergartenProfile(kindergartenData.data[0]);
       // getKindergartenComments(id);
     } catch (err) {
       let e;
-      if (err.message === 'There is no kindergarten with this id') {
+      if (
+        err.response.data.message === 'There is no kindergarten with this id'
+      ) {
         e = 'لا يوجد روضة بهذا المعرف';
       } else {
         e = 'تعذر جلب بيانات الروضة ';
@@ -64,7 +74,7 @@ const KindergartenProfilePage = ({ match }) => {
   // add a new comment
   const onFinish = async ({ userName, comment }) => {
     try {
-      const { data } = await Axios.post(
+      const { data } = await axios.post(
         `/api/v1/kindergarten/${kindergartenId}/comments`,
         {
           userName,
@@ -74,6 +84,7 @@ const KindergartenProfilePage = ({ match }) => {
       );
       if (data.length !== 0) {
         getKindergartenComments(kindergartenId);
+        message.success('تم إضافة التعليق بنجاح');
       }
     } catch (err) {
       let e;
@@ -82,7 +93,7 @@ const KindergartenProfilePage = ({ match }) => {
       } else {
         e = 'تعذر  ارسال التعليق  ';
       }
-      setError(e);
+      message.error(e);
     }
   };
 
@@ -90,13 +101,13 @@ const KindergartenProfilePage = ({ match }) => {
   useEffect(() => {
     let isActive = true;
     if (isActive) {
-      getKindergartenData(kindergartenId);
       getKindergartenComments(kindergartenId);
+      getKindergartenData(kindergartenId);
     }
     return () => {
       isActive = false;
     };
-  }, [kindergartenId]);
+  }, []);
 
   return (
     <div className="profile-container">
@@ -113,7 +124,7 @@ const KindergartenProfilePage = ({ match }) => {
           <div>
             <Image
               width="100vw"
-              height="40vh"
+              height="414px"
               className="cover-image"
               src={kindergartenProfile.cover_image}
               preview={false}
@@ -137,7 +148,7 @@ const KindergartenProfilePage = ({ match }) => {
                     </span>
 
                     <span className="reviewer">
-                      <Image src={commentIcon} alt="comment" />
+                      <Image src={commentIcon} alt="comment" preview={false} />
                       <span className="info-text">
                         {kindergartenProfile.rating_count} مراجعات
                       </span>
@@ -218,7 +229,7 @@ const KindergartenProfilePage = ({ match }) => {
                   معلومات عنا
                 </Title>
                 <div className="sub-info">
-                  <Image src={locationIcon} alt="location" />
+                  <Image src={locationIcon} alt="location" preview={false} />
 
                   <span className="info-text">
                     {`${kindergartenProfile.location_main}  - ${kindergartenProfile.location_sub} `}
@@ -238,7 +249,7 @@ const KindergartenProfilePage = ({ match }) => {
                 </div>
                 <br />
                 <div className="period">
-                  <Image src={time} alt="time" />
+                  <Image src={time} alt="time" preview={false} />
                   <span className="info-text periods">
                     الفترة الصباحية{' '}
                     {`${JSON.parse(kindergartenProfile.periods)[0][0]} - ${
@@ -256,7 +267,7 @@ const KindergartenProfilePage = ({ match }) => {
                 </div>
                 <div>
                   <br />
-                  <Image src={phone} alt="phone" />
+                  <Image src={phone} alt="phone" preview={false} />
                   <span className="info-text">
                     {kindergartenProfile.phone_number}
                   </span>
