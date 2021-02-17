@@ -7,7 +7,7 @@ import { ReactComponent as About } from '../../../assets/icons/about.svg';
 import { ReactComponent as Search } from '../../../assets/icons/search.svg';
 
 const NavTap = () => (
-  <Menu mode="horizontal" defaultSelectedKeys={['1']}>
+  <Menu id="nav-tap" mode="horizontal" defaultSelectedKeys={['1']}>
     <Menu.Item key="1" icon={<Home className="icon" />}>
       <NavLink exact to="/" className="tap">
         الرئيسية

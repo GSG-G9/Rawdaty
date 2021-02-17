@@ -20,7 +20,7 @@ const MainButton = ({
     onClick={onClick}
     style={!isDelete ? { ...otherStyleProps } : null}
     danger={isDelete}
-    htmlType
+    htmlType={htmlType}
   >
     {children}
   </Button>
