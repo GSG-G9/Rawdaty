@@ -315,6 +315,7 @@ describe('Test the route POST /kindergarten', () => {
     expect.assertions(1);
     const res = await request(app)
       .post('/api/v1/kindergarten')
+      .set('Cookie', token)
       .send({
         kindergartenName: 'روضة الإبداع التعليمية',
         userId: 1,
