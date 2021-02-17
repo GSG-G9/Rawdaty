@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Comment from '../Common/Comment';
 import MainButton from '../Common/MainButton';
 
+import './style.css';
+
 const CommentContainer = ({ data, isAdmin }) => {
   const commentsPerPage = 3;
   const [limit, setLimit] = useState(commentsPerPage);
@@ -14,7 +16,7 @@ const CommentContainer = ({ data, isAdmin }) => {
 
   return (
     <div>
-      <ul>
+      <ul className="list">
         {data.length !== 0 ? (
           data.slice(0, limit).map((item) => (
             <li key={item.id}>
