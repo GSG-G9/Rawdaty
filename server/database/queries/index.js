@@ -5,6 +5,7 @@ const {
   getKindergartenId,
   getKindergartenSearch,
   addKindergartenQuery,
+  deleteKindergartenQuery,
   getKindergartensByUserId,
 } = require('./kindergarten');
 const {
@@ -22,6 +23,7 @@ module.exports = {
   getKindergartenById,
   addCommentsQuery,
   getKindergartenId,
+  deleteKindergartenQuery,
   getCommentsQuery,
   getUsersQuery,
   getLocationsQuery,
