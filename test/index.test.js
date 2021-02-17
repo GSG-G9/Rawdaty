@@ -312,7 +312,7 @@ describe('Testing get comments by kindergarten id query', () => {
 // test router Post /kindergarten
 describe('Test the route POST /kindergarten', () => {
   test('should return status code 201 and data length 1 when given POST  /kindergarten', async () => {
-    expect.assertions(0);
+    expect.assertions(1);
     const res = await request(app)
       .post('/api/v1/kindergarten')
       .send({
@@ -322,11 +322,14 @@ describe('Test the route POST /kindergarten', () => {
           'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/127563203_2816927261908481_825163598039189311_o.jpg _nc_cat=100&ccb=2&_nc_sid=e3f864&_nc_ohc=EOam1iTQLIcAX8jrnEj&_nc_ht=scontent.fgza2-1.fna&oh=e1cef81bf1cebbd72a6c1f1af651e01f&oe=604638FB',
         description:
           'نعملُ على إنشاء جيل رائع من خلال تطوير كافة مهاراتهم الفكرية والنفسية بأساليب علمية وتربوية',
-        locationId: '1',
-        phoneNumber: '0599123456',
-        minPrice: '1000',
-        maxPrice: '2000',
-        periods: `[['7:00', '11:00']]`,
+        locationId: 1,
+        phoneNumber: 599123456,
+        minPrice: 1000,
+        maxPrice: 2000,
+        periods: `[
+          ['07:00:00', '11:00:00'],
+          ['12:00:00', '16:00:00'],
+        ]`,
         imagesGallery: `[
           'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126072436_2810042115930329_426976181002437064_o.jpg?_nc_cat=105&ccb=2&_nc_sid=730e14&_nc_ohc=UX2zxNzPBTYAX_XAYLE&_nc_ht=scontent.fgza2-1.fna&oh=72a8ef5d8369f7e183116f4423bad872&oe=604613F1',
           'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p526x395/126362711_2810037339264140_8115186378406081155_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=1pa0nWqLMVQAX8xj-8Z&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=43ba32d04a1478c83ca4cee8950955f9&oe=6045D9DF',
@@ -339,8 +342,8 @@ describe('Test the route POST /kindergarten', () => {
         ]`,
       })
       .expect(201);
-    const { data } = res.body;
-    expect(data).toHaveLength(1);
+    const { message } = res.body;
+    expect(message).toBe('Kindergarten has been added successfully');
   });
 });
 

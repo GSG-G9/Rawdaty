@@ -16,7 +16,7 @@ const addKindergartenQuery = ({
 }) => {
   const sql = {
     text:
-      "INSERT INTO kindergartens (kindergarten_name, user_id, cover_image, description,location_id, phone_number, latitude, longitude, min_price, max_price, periods, image_gallery, request_status, is_enable) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9 , $10, $11 , $12, 'approved' , 'true') ",
+      "INSERT INTO kindergartens (kindergarten_name, user_id, cover_image, description,location_id, phone_number, latitude, longitude, min_price, max_price, periods, image_gallery, request_status, is_enable) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9 , $10, $11 , $12, 'approved' , 'true') RETURNING * ",
     values: [
       kindergartenName,
       userId,

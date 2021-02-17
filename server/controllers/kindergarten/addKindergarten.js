@@ -8,8 +8,7 @@ const addKindergarten = async (req, res, next) => {
     const validatdData = await addKindergartenSchema.validate(req.body, {
       abortEarly: false,
     });
-    // console.log(validatdData);
-    await addKindergartenQuery({
+    const { rows: data } = await addKindergartenQuery({
       ...validatdData,
       userId,
     });
@@ -17,8 +16,10 @@ const addKindergarten = async (req, res, next) => {
     res.status(201).json({
       statusCode: 201,
       message: 'Kindergarten has been added successfully',
+      data: data[0],
     });
   } catch (error) {
+    console.log(error.errors);
     next(
       error.name === 'ValidationError'
         ? boomify(400, 'ValidationError', error.errors)
