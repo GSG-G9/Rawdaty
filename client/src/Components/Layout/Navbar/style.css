@@ -20,10 +20,16 @@
 }
 
 .navbar-logo-div-title {
-  color: #739c98 !important;
+  color: #739c98;
   font-weight: bold;
-  font-size: revert;
-  margin-bottom: -6px !important;
+  font-size: 38px;
+  margin-bottom: -6px;
+  font-weight: 600;
+  line-height: 1.23;
+}
+
+.navbar-logo-div-title:hover {
+  color: #739c98;
 }
 
 .navbar-taps-div {
@@ -42,6 +48,7 @@
 .drop-down-div {
   min-width: 60px;
   margin-top: 5px !important;
+  cursor: pointer;
 }
 
 .user-name {
@@ -64,7 +71,22 @@
 .admin-div-name {
   display: flex;
 }
+
 .admin-title-name {
   padding-top: 13px;
   padding-left: 12px;
+}
+
+.ant-dropdown-menu-submenu-expand-icon {
+  left: 0px;
+  right: auto !important;
+}
+
+.ant-menu-item {
+  display: inline-block !important;
+}
+
+#nav-tap {
+  height: 60px;
+  min-width: 354px;
 }

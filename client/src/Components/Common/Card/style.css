@@ -1,15 +1,15 @@
-.location-price{
+.location-price {
   display: flex;
   justify-content: space-between;
   color: var(--main-color-font);
   margin-top: 10px;
 }
 
-.bold-style{
+.bold-style {
   font-weight: bold;
 }
 
-.card-title{
+.card-title {
   font-weight: bold;
   font-size: 20px;
   color: var(--main-color-font);
@@ -19,23 +19,23 @@
 .location-price h3 {
   display: inline;
   margin: 0;
-  color: var(--main-color-font) ;
+  color: var(--main-color-font);
   font-weight: bold;
 }
 
-.reviewers{
+.reviewers {
   display: inline;
   padding: 10px;
-  color: var(--main-color-font) ;
+  color: var(--main-color-font);
 }
 
-.card{
+.card {
   width: 300px;
   border-radius: var(--border-radius) !important;
-  box-shadow: var(--card-shadow) ;
+  box-shadow: var(--card-shadow);
 }
 
-.card-cover{
+.card-cover {
   height: 250px;
   border-radius: var(--border-radius);
   margin: 15px;
@@ -44,6 +44,6 @@
   background-size: cover;
 }
 
-.card .ant-card-body{
+.card .ant-card-body {
   padding-top: 10px !important;
 }
