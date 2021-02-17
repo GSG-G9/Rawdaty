@@ -1,12 +1,11 @@
 import React from 'react';
 import aboutImg from '../../assets/img/about.jpg';
+import Header from '../../Components/Header';
 import './style.css';
 
 const AboutPage = () => (
   <>
-    <div className="header_image">
-      <p className="header_title"> ماذا تعرف عن روضتي ؟</p>
-    </div>
+    <Header title="ماذا تعرف عن روضتي ؟" />
     <div className="component_container">
       <div className="content-container">
         <h1 className="p_title">ما هي منصة روضتي ؟</h1>
