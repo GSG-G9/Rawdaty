@@ -52,7 +52,7 @@ const NavBar = () => {
                       kindergartensData.map(
                         ({ id, kindergarten_name: name }) => (
                           <Menu.Item key={id} className="drop-down-list-span">
-                            <Link to={`/profile/${id}`}>{name}</Link>
+                            <Link to={`/kindergarten/${id}`}>{name}</Link>
                           </Menu.Item>
                         )
                       )}
