@@ -24,13 +24,13 @@ const KindergartenProfilePage = ({ match }) => {
   const [rating, setRating] = useState(0);
   const { kindergartenId } = match.params;
 
-  // Fetch kindergarten data
-  const getKindergartenData = async (id) => {
+  // fetch all comments on this kindergarten
+  const getKindergartenComments = async (id) => {
     try {
-      const { data: kindergartenData } = await Axios.get(
-        `/api/v1/kindergarten/${id}`
+      const { data: kindergartenReview } = await Axios.get(
+        `/api/v1/kindergarten/${id}/comments`
       );
-      setKindergartenProfile(kindergartenData.data[0]);
+      setKindergartenComments(kindergartenReview.data);
     } catch (err) {
       let e;
       if (err.message === 'There is no kindergarten with this id') {
@@ -42,13 +42,14 @@ const KindergartenProfilePage = ({ match }) => {
     }
   };
 
-  // fetch all comments on this kindergarten
-  const getKindergartenComments = async (id) => {
+  // Fetch kindergarten data
+  const getKindergartenData = async (id) => {
     try {
-      const { data: kindergartenReview } = await Axios.get(
-        `/api/v1/kindergarten/${id}/comments`
+      const { data: kindergartenData } = await Axios.get(
+        `/api/v1/kindergarten/${id}`
       );
-      setKindergartenComments(kindergartenReview.data);
+      setKindergartenProfile(kindergartenData.data[0]);
+      // getKindergartenComments(id);
     } catch (err) {
       let e;
       if (err.message === 'There is no kindergarten with this id') {
@@ -111,8 +112,8 @@ const KindergartenProfilePage = ({ match }) => {
         ) : kindergartenProfile ? (
           <div>
             <Image
-              width="100%"
-              height="400px"
+              width="100vw"
+              height="40vh"
               className="cover-image"
               src={kindergartenProfile.cover_image}
               preview={false}
@@ -274,7 +275,7 @@ const KindergartenProfilePage = ({ match }) => {
 KindergartenProfilePage.propTypes = {
   match: propTypes.shape({
     params: propTypes.shape({
-      kindergartenId: propTypes.number,
+      kindergartenId: propTypes.string,
     }).isRequired,
   }).isRequired,
 };

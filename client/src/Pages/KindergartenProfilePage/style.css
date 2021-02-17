@@ -3,14 +3,14 @@
   color: var(--main-color-font);
   }
 
- .cover-image{
+ .ant-image-img .ant-image .cover-image {
    object-fit: cover;  
+  
  }
 
 .profile-sub-container{
   display : flex;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 .period{
@@ -60,7 +60,6 @@
 .information{
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
   width: fit-content;
   height: fit-content;
@@ -120,3 +119,39 @@
 .rev-text{
   color:#69938F;
 }
+
+@media only screen and (max-width: 720px) {
+  .profile-sub-container{
+    display : flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .right-container{
+    width:90%;
+    margin: 25px 50px 0px 50px;
+ 
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .profile-sub-container{
+    display : flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .right-container{
+    width:90%;
+    margin: 25px 50px 0px 50px;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1000px) {
+  .right-container{
+    width:60%;
+    margin: 25px 10px 0px 5px;
+  }
+  .information{
+    width: 30%;
+    margin: 25px 5px 75px 5px;
+  }
+ }
