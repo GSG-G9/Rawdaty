@@ -5,7 +5,6 @@ const addKindergartenSchema = object({
   coverImage: mixed().required(),
   description: mixed().required(),
   locationId: number(),
-  location_id: number().positive(),
   phoneNumber: number().positive().required(),
   latitude: number(),
   longitude: number(),
