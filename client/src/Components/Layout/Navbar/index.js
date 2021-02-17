@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation, NavLink } from 'react-router-dom';
 import { Image, Menu, Dropdown, Typography, Modal } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 
@@ -20,7 +20,7 @@ const NavBar = () => {
   const location = useHistory();
   const { pathname } = useLocation();
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
-  console.log(pathname);
+
   const handleAddModalOk = () => {
     setIsAddModalVisible(false);
   };
@@ -34,7 +34,6 @@ const NavBar = () => {
       {({ role, userData: { user_name: userName, kindergartensData } }) => (
         <LogoutContext.Consumer>
           {({ logout }) => {
-            // console.log(kindergartensData);
             const MainButtonHandler = () => {
               if (role) {
                 setIsAddModalVisible(true);
@@ -71,9 +70,9 @@ const NavBar = () => {
               <>
                 <div className="navbar">
                   <div className="navbar-logo-div">
-                    <Title level={1} className="navbar-logo-div-title">
+                    <NavLink to="/" className="navbar-logo-div-title">
                       روضــتـــي
-                    </Title>
+                    </NavLink>
                   </div>
                   {role === 'admin' && pathname.includes('/dashboard') ? (
                     <div className="admin-div-name">

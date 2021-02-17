@@ -28,10 +28,8 @@ const App = () => {
         data: { data },
       } = await axios.get('/api/v1/getAuthUser');
       setUserData(data);
-      console.log({ dd: data.is_admin });
       setRole(data.is_admin === 'true' ? 'admin' : 'user');
       setIsOk(true);
-      console.log(role);
     } catch (err) {
       setRole(null);
     }
@@ -60,24 +58,20 @@ const App = () => {
       <Switch>
         <AuthContext.Provider value={{ role, userData, checkAuth }}>
           <LogoutContext.Provider value={{ logout }}>
-            <NavBar />
             <Route exact path="/">
+              <NavBar />
               <Home />
+              <Footer />
             </Route>
-            <Footer />
 
             <Route exact path="/login">
               {!role ? <LoginPage /> : <Redirect to="/" />}
             </Route>
 
-            <Route exact path="/sign-up">
-              {!role ? <LoginPage /> : <Redirect to="/" />}
-            </Route>
+            <Route exact path="/sign-up" />
 
-            <Route path="/dashboard">
-              {isOK && role !== 'admin' ? (
-                <Redirect to="/" />
-              ) : (
+            {isOK && role === 'admin' && (
+              <Route path="/dashboard">
                 <div
                   style={{
                     display: 'flex',
@@ -97,7 +91,11 @@ const App = () => {
                     <Route exact path="/dashboard/notification" />
                   </div>
                 </div>
-              )}
+              </Route>
+            )}
+
+            <Route>
+              <dev>hi</dev>
             </Route>
           </LogoutContext.Provider>
         </AuthContext.Provider>

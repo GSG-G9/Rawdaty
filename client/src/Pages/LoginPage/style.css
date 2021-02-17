@@ -33,6 +33,7 @@
 #form-container > #title {
   color: var(--main-color);
   font-size: 64px;
+  font-weight: bold;
 }
 
 .input {

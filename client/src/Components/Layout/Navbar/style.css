@@ -20,10 +20,16 @@
 }
 
 .navbar-logo-div-title {
-  color: #739c98 !important;
+  color: #739c98 ;
   font-weight: bold;
-  font-size: revert;
-  margin-bottom: -6px !important;
+  font-size: 38px;
+  margin-bottom: -6px ;
+  font-weight: 600;
+  line-height: 1.23;
+}
+
+.navbar-logo-div-title:hover {
+  color: #739c98 ;
 }
 
 .navbar-taps-div {
