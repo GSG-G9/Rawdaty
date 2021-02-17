@@ -123,7 +123,7 @@ const KindergartenProfilePage = ({ match }) => {
         ) : kindergartenProfile ? (
           <div>
             <Image
-              width="100vw"
+              width="100%"
               height="414px"
               className="cover-image"
               src={kindergartenProfile.cover_image}
