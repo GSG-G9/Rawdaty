@@ -3,6 +3,7 @@ const getKindergartenById = require('./getKindergartenById');
 const getKindergartenId = require('./getKindergartenId');
 const getKindergartenSearch = require('./getKindergartenSearch');
 const addKindergartenQuery = require('./addKindergartenQuery');
+const getKindergartensByUserId = require('./getKindergartensByUserId');
 
 module.exports = {
   getKindergartenQuery,
@@ -10,4 +11,5 @@ module.exports = {
   getKindergartenById,
   getKindergartenId,
   getKindergartenSearch,
+  getKindergartensByUserId,
 };

@@ -4,8 +4,7 @@ const { addKindergartenSchema } = require('../../utils/validation');
 
 const addKindergarten = async (req, res, next) => {
   try {
-    // const {userId} = req;
-    const userId = 2;
+    const { userId } = req;
     const validatdData = await addKindergartenSchema.validate(req.body, {
       abortEarly: false,
     });
