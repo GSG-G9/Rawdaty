@@ -5,6 +5,7 @@ import { message } from 'antd';
 import Search from '../../Components/Search';
 import CardContainer from '../../Components/CardContainer';
 import Spinner from '../../Components/Common/Spinner';
+import Header from '../../Components/Header';
 import './style.css';
 
 const HomePage = () => {
@@ -41,11 +42,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <div className="header-image">
-        <p className="header-image-title">
-          المنصة الأولى لمساعدتكم في اختيار روضة أبنائكم
-        </p>
-      </div>
+      <Header title="المنصة الأولى لمساعدتكم في اختيار روضة أبنائكم" />
       <div className="imported-component-container">
         <Search dorpListOptions={[{ id: 2, value: 'asda', disabled: false }]} />
         {loading ? <Spinner /> : <CardContainer data={kindergartensData} />}

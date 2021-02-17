@@ -15,6 +15,7 @@ import Home from '../Pages/HomePage';
 import LoginPage from '../Pages/LoginPage';
 import AuthContext from '../Context/AuthContext';
 import LogoutContext from '../Context/LogoutContext';
+import About from '../Pages/ِAboutPage';
 
 import './style.css';
 
@@ -71,6 +72,10 @@ const App = () => {
 
             <Route exact path="/">
               <Home />
+            </Route>
+
+            <Route path="/about">
+              <About />
             </Route>
 
             <Route exact path="/profile/:id" />

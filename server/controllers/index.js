@@ -4,6 +4,7 @@ const {
   getKindergarten,
   getSpecificKindergarten,
   kindergartenSearch,
+  addKindergarten,
   deleteKindergarten,
 } = require('./kindergarten');
 const { getUsers, logout, addUsers, login, getAuthUser } = require('./users');
@@ -20,6 +21,7 @@ module.exports = {
   getLocations,
   postLocations,
   kindergartenSearch,
+  addKindergarten,
   deleteKindergarten,
   login,
   addUsers,
