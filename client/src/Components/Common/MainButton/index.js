@@ -9,6 +9,7 @@ const MainButton = ({
   size,
   id,
   className,
+  htmlType,
   ...otherStyleProps
 }) => (
   <Button
@@ -19,12 +20,14 @@ const MainButton = ({
     onClick={onClick}
     style={!isDelete ? { ...otherStyleProps } : null}
     danger={isDelete}
+    htmlType={htmlType}
   >
     {children}
   </Button>
 );
 
 MainButton.defaultProps = {
+  onClick: () => {},
   children: 'إرسال',
   backgroundColor: 'var(--main-color)',
   border: 'var(--button-border)',
@@ -33,10 +36,11 @@ MainButton.defaultProps = {
   size: 'large',
   id: '',
   className: '',
+  htmlType: '',
 };
 
 MainButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   children: PropTypes.string,
   isDelete: PropTypes.bool,
   backgroundColor: PropTypes.string,
@@ -45,6 +49,7 @@ MainButton.propTypes = {
   size: PropTypes.string,
   id: PropTypes.string,
   className: PropTypes.string,
+  htmlType: PropTypes.string,
 };
 
 export default MainButton;

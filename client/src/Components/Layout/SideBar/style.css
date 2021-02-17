@@ -9,6 +9,7 @@
     'logOut';
   grid-template-columns: 1fr;
   grid-template-rows: 111px auto 50px;
+  width: 100%;
 }
 
 .side-Bar .ant-menu {
