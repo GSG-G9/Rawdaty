@@ -15,17 +15,17 @@
 
 .input-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
 }
 
 .search-options {
+  display: flex;
+  max-height: 52px;
+  background-color: var(--main-white);
   box-shadow: var(--input-shadow);
   border: var(--input-border);
-  display: flex;
-  padding: 8px 15px;
   border-radius: var(--border-radius);
-  max-height: 52px;
+  padding: 8px 15px;
 }
 
 .search-options,

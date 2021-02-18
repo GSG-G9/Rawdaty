@@ -1,7 +1,7 @@
 .container-cards {
- padding-top: 40px;
- padding-bottom: 80px;
+  padding-top: 40px;
 }
+
 .container-cards > ul {
   width: 100%;
   display: flex;
@@ -23,4 +23,8 @@
   padding-top: 10px;
   padding-bottom: 5px;
   color: var(--main-color);
+}
+
+.search-results {
+  min-height:calc(100vh - 409.9px)
 }
