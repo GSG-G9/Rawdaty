@@ -1,0 +1,11 @@
+.search-top {
+  display: flex;
+  background: #739c98;
+  height: 201px;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-results{
+  margin: 45px;
+}
