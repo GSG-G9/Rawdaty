@@ -9,6 +9,7 @@ import NavTap from '../../Common/NavTap';
 import logoutIcon from '../../../assets/icons/logout.svg';
 import AuthContext from '../../../Context/AuthContext';
 import LogoutContext from '../../../Context/LogoutContext';
+import KindergartenForm from '../../KindergartenForm';
 
 import './style.css';
 
@@ -113,14 +114,17 @@ const NavBar = () => {
                   )}
                 </div>
                 <Modal
-                  title="Basic Modal"
+                  id="add-modal"
                   visible={isAddModalVisible}
                   onOk={handleAddModalOk}
                   onCancel={handleAddModalCancel}
                 >
-                  <p>Some contents...</p>
-                  <p>Some contents...</p>
-                  <p>Some contents...</p>
+                  <KindergartenForm
+                    dorpListOptions={[{ value: 'غزة', id: 1, disabled: false }]}
+                    onAdd={(w) => {
+                      console.log(w);
+                    }}
+                  />
                 </Modal>
               </>
             );

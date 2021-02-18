@@ -1,166 +1,215 @@
 import React, { useState } from 'react';
-import { Typography, Form, Upload } from 'antd';
-import PropTypes from 'prop-types';
+import { Typography, Form, Row, Col, Upload } from 'antd';
+// import PropTypes from 'prop-types';
+
+// import axios from 'axios';
 import { UploadOutlined } from '@ant-design/icons';
 import './style.css';
 
+// import { UploadOutlined } from '@ant-design/icons';
+import axios from 'axios';
 import MainInput from '../Common/MainInput';
 import DorpList from '../Common/DropList';
 import MainButton from '../Common/MainButton';
 
 const { Title } = Typography;
 
-const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
-  const [selectValue, setSelectValue] = useState({});
-  const [sliderValue, setSliderValue] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+const KindergartenForm = () => {
   const [add, setAdd] = useState(false);
   const [fileList, setFileList] = useState([]);
-  const [pic, setPic] = useState([]);
+  const [minPrice, setMinPrice] = useState(400);
+  const [maxPrice, setMaxPrice] = useState(4000);
+  // const [selectValue, setSelectValue] = useState('');
 
-  const onClick = () => {
-    onAdd(inputValue, sliderValue, selectValue);
+  const onFinish = async (val) => {
+    const {
+      description,
+      kindergartenName,
+      period1,
+      period2,
+      phoneNumber,
+    } = val;
+
+    const periods = [];
+
+    periods.push([
+      period1[0].format('h:mm:ss a'),
+      period1[1].format('h:mm:ss a'),
+    ]);
+
+    if (period2) {
+      periods.push([
+        period1[0].format('h:mm:ss a'),
+        period1[1].format('h:mm:ss a'),
+      ]);
+    }
+    // selectValue;
+    const values = {
+      description,
+      kindergartenName,
+      phoneNumber,
+      coverImage:
+        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/127563203_2816927261908481_825163598039189311_o.jpg?_nc_cat=100&ccb=2&_nc_sid=e3f864&_nc_ohc=EOam1iTQLIcAX8jrnEj&_nc_ht=scontent.fgza2-1.fna&oh=e1cef81bf1cebbd72a6c1f1af651e01f&oe=604638FB',
+      locationId: 2,
+      minPrice,
+      maxPrice,
+      periods: JSON.stringify(periods),
+      imagesGallery:
+        '["https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p526x395/126362711_2810037339264140_8115186378406081155_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=1pa0nWqLMVQAX8xj-8Z&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=43ba32d04a1478c83ca4cee8950955f9&oe=6045D9DF","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p180x540/125246489_2806470342954173_5557632858147020336_o.jpg?_nc_cat=106&ccb=2&_nc_sid=e3f864&_nc_ohc=ZGPkuyaJoUEAX9lkFkC&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=0a5795c9d04ed69df0ecf950260a8240&oe=60475C85","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/127711338_2816934215241119_820060672107449619_o.jpg?_nc_cat=110&ccb=2&_nc_sid=730e14&_nc_ohc=lj0hKeD_FswAX-IthGI&_nc_ht=scontent.fgza2-1.fna&oh=ff73fc70463202e07ef1ab8945b1aaf6&oe=6047D28E","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/125969111_2810046942596513_7374678634903478541_o.jpg?_nc_cat=106&ccb=2&_nc_sid=730e14&_nc_ohc=26lBVKEuxXgAX-LkaQx&_nc_ht=scontent.fgza2-1.fna&oh=98b4dfd19c0ec101fab0c68fcafb2ed7&oe=60489661","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-0/p526x395/126221172_2810852509182623_3908586823989526775_o.jpg?_nc_cat=104&ccb=2&_nc_sid=730e14&_nc_ohc=r4JC03VXovYAX-ZDyZv&_nc_ht=scontent.fgza2-1.fna&tp=6&oh=a04d43782df65a5367387fa7d876a6cc&oe=6047FCA7","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126420691_2810858432515364_8382015493325068832_o.jpg?_nc_cat=102&ccb=2&_nc_sid=730e14&_nc_ohc=8m_uU2uLr9kAX-TeYbI&_nc_ht=scontent.fgza2-1.fna&oh=8b17321eb157fe3c7a9d7c09ba6182bc&oe=604782E5","https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/126361201_2810861959181678_2949636133222938705_o.jpg?_nc_cat=107&ccb=2&_nc_sid=e3f864&_nc_ohc=xj63fLB5DpYAX8g2PTJ&_nc_ht=scontent.fgza2-1.fna&oh=88ac8fb67a2c9c87ee2ed8940f2c14fb&oe=60451FF9"]',
+    };
+    try {
+      const a = await axios.post(`/api/v1/kindergarten`, values);
+      console.log(a);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  const onPriceSliderChange = (val) => {
+    setMinPrice(val[0]);
+    setMaxPrice(val[0]);
+  };
+
+  // const onDorpListSelect = (val) => {
+  //   setSelectValue(val);
+  //   if (val.key !== 'كل المنطقة') {
+  //     setSelectValue(
+  //       options.filter((data) => data.location_sub === val.key)[0].id
+  //     );
+  //   } else {
+  //     setSelectValue('');
+  //   }
+  // };
 
   const onPeriodChange = () => {
     setAdd(true);
   };
 
-  const onSliderChange = (val) => {
-    setSliderValue(val);
-  };
-
-  const onDorpListSelect = (val) => {
-    setSelectValue(val);
-  };
-
-  const onMainInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const onUpload = ({ fileList: newFileList }) => {
+  const onMoreImageUpload = ({ fileList: newFileList }) => {
     setFileList(newFileList);
   };
 
-  const onUpload1 = ({ main: onePicture }) => {
-    setPic(onePicture);
-  };
-
   return (
-    <Form>
+    <Form onFinish={onFinish}>
       <Title className="title" level={5}>
         اضافة روضة
       </Title>
       <hr />
-      <div className="form-container">
-        <div className="row">
-          <div className="column">
-            <Form.Item>
-              <MainInput
-                type="text"
-                textLabel="اسم الروضة :"
+      <Row>
+        <Col span={12}>
+          <Form.Item
+            name="kindergartenName"
+            rules={[{ required: true, message: 'الرجاء إدخال إسم الروضة !' }]}
+          >
+            <MainInput
+              type="text"
+              textLabel="اسم الروضة :"
+              height="48px"
+              width="471px"
+            />
+          </Form.Item>
+          <Form.Item
+            name="description"
+            rules={[{ required: true, message: 'الرجاء إدخل وصف عن الروضة !' }]}
+          >
+            <MainInput
+              type="textArea"
+              textLabel="وصف عن الروضة :"
+              height="75px"
+              width="471px"
+            />
+          </Form.Item>
+
+          <Form.Item
+            name="phoneNumber"
+            rules={[{ required: true, message: 'الرجاء إدخال رقم الجوال !' }]}
+          >
+            <MainInput
+              type="text"
+              textLabel="رقم الحوال :"
+              height="48px"
+              width="471px"
+            />
+          </Form.Item>
+
+          <Form.Item name="period1">
+            <MainInput
+              height="48px"
+              width="471px"
+              textLabel="فترات الدوام :"
+              type="date"
+            />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item
+            className="main-upload"
+            name="caverImage"
+            rules={[{ required: true, message: 'الرجاء اضف صورة للروضة !' }]}
+          >
+            <Upload listType="picture" maxCount={1}>
+              <MainButton
                 height="48px"
                 width="471px"
-                onChange={onMainInputChange}
-              />
-            </Form.Item>
-            <Form.Item>
-              <MainInput
-                type="textArea"
-                textLabel="وصف عن الروضة :"
-                height="75px"
-                width="471px"
-                onChange={onMainInputChange}
-              />
-            </Form.Item>
-            <h3>
-              تفاصيل المكان :
-              <DorpList options={dorpListOptions} onSelect={onDorpListSelect} />
-            </h3>
-            <Form.Item>
-              <MainInput
-                type="text"
-                textLabel="رقم الحوال :"
-                height="48px"
-                width="471px"
-                onChange={onMainInputChange}
-              />
-            </Form.Item>
-            <Form>
-              <Form.Item name="period1">
-                <MainInput
-                  height="48px"
-                  width="471px"
-                  textLabel="فترات الدوام :"
-                  type="date"
-                />
-              </Form.Item>
-            </Form>
-          </div>
-          <div className="column">
-            <Form.Item className="main-upload">
-              <p>اضف صورة للروضة</p>
-              <Upload
-                listType="picture"
-                fileList={pic}
-                onChange={onUpload1}
-                maxCount={1}
+                border="1.6px solid #69938F"
+                backgroundColor="#FFF"
+                color="#000"
               >
-                <MainButton
-                  height="48px"
-                  width="471px"
-                  border="1.6px solid #69938F"
-                  backgroundColor="#FFF"
-                  color="#000"
-                >
-                  تحميل صورة
-                  <UploadOutlined />
-                </MainButton>
-              </Upload>
-            </Form.Item>
-            <Form.Item className="slider-input">
-              <MainInput
-                type="rangeSlider"
-                textLabel="رسوم الطفل :"
-                width="200px"
-                onSliderChange={onSliderChange}
-                min={sliderMin}
-                max={sliderMax}
-              />
-            </Form.Item>
-            <Form.Item className="period2" name="period2">
-              {add ? (
-                <MainInput height="48px" width="471px" type="date" />
-              ) : (
-                <MainButton
-                  type="primary"
-                  height="48px"
-                  width="471px"
-                  htmlType="submit"
-                  onClick={onPeriodChange}
-                >
-                  اضف فترة ثانية +
-                </MainButton>
-              )}
-            </Form.Item>
-          </div>
-        </div>
-      </div>
-      <Form.Item>
-        <Upload
-          className="imgs"
-          listType="picture-card"
-          fileList={fileList}
-          onChange={onUpload}
-        >
+                تحميل صورة
+                <UploadOutlined />
+              </MainButton>
+            </Upload>
+          </Form.Item>
+
+          <Form.Item
+            name="locationId"
+            // rules={[{ required: true, message: 'الرجاء إدخل تفاصيل المكان !' }]}
+          >
+            <h3>تفاصيل المكان :</h3>
+            <DorpList
+              options={[{ value: 'غزة', id: 1, disabled: false }]}
+              // onChange={onDorpListSelect}
+            />
+          </Form.Item>
+
+          <Form.Item name="price">
+            <MainInput
+              type="rangeSlider"
+              textLabel="رسوم الطفل :"
+              width="471px"
+              min={minPrice}
+              max={maxPrice}
+              onChange={onPriceSliderChange}
+            />
+          </Form.Item>
+
+          <Form.Item name="period2">
+            {add ? (
+              <MainInput height="48px" width="471px" type="date" />
+            ) : (
+              <MainButton
+                type="primary"
+                height="48px"
+                width="471px"
+                htmlType="submit"
+                onClick={onPeriodChange}
+              >
+                اضف فترة ثانية +
+              </MainButton>
+            )}
+          </Form.Item>
+        </Col>
+      </Row>
+      <Form.Item name="moreImage">
+        <Upload listType="picture-card" onChange={onMoreImageUpload}>
           {fileList.length < 8 && '+ اضف مزيدا من الصور'}
+          {/* {'+ اضف مزيدا من الصور'} */}
         </Upload>
       </Form.Item>
-      ;
+
       <div className="btn-container">
         <MainButton
           className="btn-container"
-          onClick={onClick}
           height="52px"
           width="122px"
           border="1.6px solid #69938F"
@@ -169,9 +218,10 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
         >
           إضافة
         </MainButton>
+
         <MainButton
           className="btn-container"
-          onClick={onClick}
+          // onClick={onClick}
           height="52px"
           width="122px"
           border="1.6px solid #69938F"
@@ -186,21 +236,3 @@ const KindergartenForm = ({ onAdd, dorpListOptions, sliderMin, sliderMax }) => {
 };
 
 export default KindergartenForm;
-
-KindergartenForm.defaultProps = {
-  sliderMin: 500,
-  sliderMax: 2000,
-};
-
-KindergartenForm.propTypes = {
-  onAdd: PropTypes.func.isRequired,
-  sliderMin: PropTypes.number,
-  sliderMax: PropTypes.number,
-  dorpListOptions: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      value: PropTypes.string,
-      disabled: PropTypes.bool,
-    })
-  ).isRequired,
-};

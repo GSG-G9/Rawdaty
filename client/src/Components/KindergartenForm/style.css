@@ -39,9 +39,13 @@
   position: relative;
   top: 328px;
 }
+/* ant-form-item-control-input */
+.main-upload .ant-row{
+  height: 188px;
+}
 
-.main-upload{
-    position: absolute
+.main-upload .ant-form-item-control-input-content{
+  margin-top: 28px;
 }
 
 .imgs{
@@ -76,3 +80,4 @@
   height: 113px !important;
   border-radius: 5px !important;
 }
+
