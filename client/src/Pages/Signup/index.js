@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import Axios from 'axios';
-import { Image, Form, Button, Input, Typography, Result, Alert } from 'antd';
-import {
-  EyeInvisibleOutlined,
-  EyeTwoTone,
-  SyncOutlined,
-} from '@ant-design/icons';
-import MainInput from '../../Components/Common/MainInput';
-import signupphoto from '../../assets/img/signup-photo.png';
+import { NavLink, useHistory } from 'react-router-dom';
 
-import './style.css';
+import Axios from 'axios';
+import { Row, Col, Form, Typography, Result, Alert } from 'antd';
+import { SyncOutlined } from '@ant-design/icons';
+import MainInput from '../../Components/Common/MainInput';
+import MainButton from '../../Components/Common/MainButton';
 
 const { Title } = Typography;
 
@@ -46,20 +41,22 @@ const Signup = () => {
     }
   };
   return (
-    <div className="container">
-      <div className="image-container">
-        <Image src={signupphoto} preview={false} />
-      </div>
-      <div className="form-container">
-        <Title level={1} className="navbar-logo-div-title">
-          روضــتـــي
-        </Title>
+    <Row className="container">
+      <Col id="left-image" span={12} />
+      <Col id="container" span={12}>
         {success && <Result status="success" title="تم تسجيل حسابك بنجاح" />}
-        <Title level={3}>إنشاء حساب جديد</Title>
-        <Form layout="vertical" size="large" onFinish={onFinish}>
+
+        <Form id="form-container" name="signup" onFinish={onFinish}>
+          <NavLink to="/" id="title">
+            روضــتـــي
+          </NavLink>
+          <Title level={1} style={{ marginTop: 0, color: '#5A5A5A' }}>
+            إنشاء حساب جديد{' '}
+          </Title>
+          {error && <Alert id="alert" message={error} type="error" showIcon />}
+
           <Form.Item
             name="username"
-            label="اسم المستخدم"
             rules={[
               { required: true, message: 'الرجاء إدخال اسم المستخدم' },
               {
@@ -68,25 +65,41 @@ const Signup = () => {
               },
             ]}
           >
-            <MainInput type="text" />
+            <MainInput
+              type="text"
+              textLabel="اسم المستخدم"
+              placeholder="اسم المستخدم "
+              width="470px"
+              height="60px"
+              id="input"
+            />
           </Form.Item>
+
           <Form.Item
             name="email"
-            label="البريد الالكتروني"
             rules={[
               {
                 required: true,
-                type: 'email',
-                message: 'الرجاء إدخال  بريد الكتروني صحيح',
+                message: ' الرجاء إدخال البريد الإلكتروني الخاص بك!',
+              },
+              {
+                pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                message: 'هذا البريد الإلكتروني غير صالح !',
               },
             ]}
           >
-            <MainInput type="text" />
+            <MainInput
+              type="text"
+              textLabel="البريد الإلكتروني"
+              placeholder="example@example.com"
+              width="470px"
+              height="60px"
+              id="input"
+            />
           </Form.Item>
 
           <Form.Item
             name="password"
-            label="كلمة المرور"
             rules={[
               { required: true, message: 'الرجاء إدخال كلمة المرور' },
               {
@@ -95,16 +108,18 @@ const Signup = () => {
               },
             ]}
           >
-            <Input.Password
-              iconRender={(visible) =>
-                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-              }
+            <MainInput
+              type="password"
+              textLabel="كلمة المرور"
+              placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+              width="470px"
+              height="60px"
+              id="input"
             />
           </Form.Item>
 
           <Form.Item
             name="confirm"
-            label="تأكيد كلمة المرور"
             dependencies={['password']}
             hasFeedback
             rules={[
@@ -122,40 +137,37 @@ const Signup = () => {
               }),
             ]}
           >
-            <Input.Password
-              iconRender={(visible) =>
-                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-              }
+            <MainInput
+              type="password"
+              textLabel="تأكيد كلمة المرور"
+              placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+              width="470px"
+              height="60px"
+              id="input"
             />
           </Form.Item>
-
-          <Form.Item>
-            <Button type="primary" htmlType="submit" block id="signup">
-              {loaded ? (
-                <SyncOutlined spin />
-              ) : (
-                <Title level={5} className="signup-text">
-                  إنشاء حساب حديد
-                </Title>
-              )}
-            </Button>
-          </Form.Item>
-
-          {error && (
-            <Alert
-              message={error}
-              type="error"
-              style={{ marginBottom: '20px' }}
-            />
-          )}
+          <MainButton
+            id="login-btn"
+            width="470px"
+            height="55px"
+            htmlType="submit"
+          >
+            {loaded ? (
+              <SyncOutlined spin />
+            ) : (
+              <Title level={5} className="signup-text">
+                إنشاء حساب حديد
+              </Title>
+            )}
+          </MainButton>
+          <div className="sign-up">
+            <NavLink className="sign-up-link" to="/login">
+              تسجيل الدخول
+            </NavLink>
+          </div>
         </Form>
-        <Link to="/">
-          <Title level={4} className="navbar-logo-div-title">
-            تسجيل الدخول
-          </Title>
-        </Link>
-      </div>
-    </div>
+      </Col>
+    </Row>
   );
 };
 export default Signup;

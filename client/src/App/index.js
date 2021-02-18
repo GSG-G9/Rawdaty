@@ -20,6 +20,7 @@ import LogoutContext from '../Context/LogoutContext';
 import About from '../Pages/ِAboutPage';
 
 import './style.css';
+import Signup from '../Pages/Signup';
 
 const App = () => {
   const [userData, setUserData] = useState({});
@@ -90,7 +91,9 @@ const App = () => {
               {!role ? <LoginPage /> : <Redirect to="/" />}
             </Route>
 
-            <Route exact path="/signup" />
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
 
             <Route exact path={['/', '/about', '/kindergarten/:id', '/search']}>
               <Footer />
