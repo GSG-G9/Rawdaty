@@ -19,7 +19,8 @@ const addUsers = async (req, res, next) => {
     }
     const hashedPassword = await hash(password, 10);
     const { rows: data } = await addUsersQuery(userName, email, hashedPassword);
-    const token = sign({ userId: data[0].id });
+    const { id: userId, is_admin: isAdmin } = data[0];
+    const token = await sign({ userId, isAdmin });
     return res
       .cookie('token', token, { httpOnly: true })
       .status(201)

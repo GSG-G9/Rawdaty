@@ -114,7 +114,7 @@ const LoginPage = () => {
                     تسجيل الدخول
                   </MainButton>
                   <div className="sign-up">
-                    <NavLink className="sign-up-link" to="/signup">
+                    <NavLink className="sign-up-link" to="/sign-up">
                       إنشاء حساب جديد
                     </NavLink>
                   </div>
