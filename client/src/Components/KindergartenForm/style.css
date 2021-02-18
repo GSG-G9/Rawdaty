@@ -20,23 +20,6 @@
   border-radius: var(--border-radius);
 }
 
-.drop {
-  position: relative;
-  top: 150px;
-}
-
-.slider-input {
-  position: relative;
-  top: 150px;
-}
-
-.period2 {
-  position: relative;
-  top: 190px;
-}
-.main-upload {
-  position: absolute;
-}
 
 .drop-list {
   width: 150px;
@@ -45,6 +28,10 @@
 /* ant-form-item-control-input */
 .main-upload .ant-row {
   height: 188px;
+}
+
+.ant-row {
+  margin-bottom: 15px !important;
 }
 
 .main-upload .ant-form-item-control-input-content {
@@ -79,4 +66,18 @@
   width: 113px !important;
   height: 113px !important;
   border-radius: 5px !important;
+}
+
+@media only screen and (max-width: 1225px) {
+  .ant-row {
+    flex-flow: column wrap !important;
+    align-items: center !important;
+  }
+  .slider{
+    width: 470px;
+  }
+  .input .slider-label{
+
+    min-width: 96px;
+  }
 }
