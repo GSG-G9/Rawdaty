@@ -68,7 +68,10 @@ const App = () => {
       <Switch>
         <AuthContext.Provider value={{ role, userData, checkAuth }}>
           <LogoutContext.Provider value={{ logout }}>
-            <Route exact path={['/', '/about', '/kindergarten/:id', '/search']}>
+            <Route
+              exact
+              path={['/', '/about', '/kindergarten/:kindergartenId', '/search']}
+            >
               <NavBar />
             </Route>
 
