@@ -116,14 +116,11 @@ const NavBar = () => {
                 <Modal
                   id="add-modal"
                   visible={isAddModalVisible}
-                  onOk={handleAddModalOk}
                   onCancel={handleAddModalCancel}
                 >
                   <KindergartenForm
-                    dorpListOptions={[{ value: 'غزة', id: 1, disabled: false }]}
-                    onAdd={(w) => {
-                      console.log(w);
-                    }}
+                    onDone={handleAddModalOk}
+                    onDiscard={handleAddModalCancel}
                   />
                 </Modal>
               </>
