@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import {
   BrowserRouter as Router,
   Route,
@@ -14,10 +15,12 @@ import KindergartenProfilePage from '../Pages/KindergartenProfilePage';
 
 import SideBar from '../Components/Layout/SideBar';
 import Home from '../Pages/HomePage';
+import Signup from '../Pages/Signup';
 import LoginPage from '../Pages/LoginPage';
 import AuthContext from '../Context/AuthContext';
 import LogoutContext from '../Context/LogoutContext';
 import About from '../Pages/ِAboutPage';
+import SearchPage from '../Pages/SearchPage';
 
 import './style.css';
 
@@ -79,6 +82,10 @@ const App = () => {
               <Home />
             </Route>
 
+            <Route exact path="/search">
+              <SearchPage />
+            </Route>
+
             <Route path="/about">
               <About />
             </Route>
@@ -93,7 +100,9 @@ const App = () => {
               {!role ? <LoginPage /> : <Redirect to="/" />}
             </Route>
 
-            <Route exact path="/signup" />
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
 
             <Route exact path={['/', '/about', '/kindergarten/:id', '/search']}>
               <Footer />
