@@ -8,7 +8,7 @@ import './style.css';
 const { Title } = Typography;
 
 const CardContainer = ({ data, searchText }) => {
-  const numEachPage = 9;
+  const numEachPage = 12;
   const [limit, setLimit] = useState([0, numEachPage]);
 
   return (
