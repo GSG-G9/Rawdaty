@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Typography, Form, Row, Col, Upload } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Typography, Form, Row, Col, Upload, notification } from 'antd';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { UploadOutlined } from '@ant-design/icons';
 
 import MainInput from '../Common/MainInput';
-import DorpList from '../Common/DropList';
+import DropList from '../Common/DropList';
 import MainButton from '../Common/MainButton';
 
 import './style.css';
@@ -17,7 +17,27 @@ const KindergartenForm = ({ onDone, onDiscard }) => {
   const [fileList, setFileList] = useState([]);
   const [minPrice, setMinPrice] = useState(400);
   const [maxPrice, setMaxPrice] = useState(4000);
-  // const [selectValue, setSelectValue] = useState('');
+  const [options, setOptions] = useState([]);
+  const [selectValue, setSelectValue] = useState('');
+
+  useEffect(() => {
+    const source = axios.CancelToken.source();
+
+    axios
+      .get(`/api/v1/locations`)
+      .then(({ data: { data } }) => {
+        setOptions(data);
+      })
+      .catch(() => {
+        notification.open({
+          message: 'حدث خطأ في السيرفر, يرجى المحاولة لاحقا',
+        });
+      });
+
+    return () => {
+      source.cancel('Cancelling in cleanup');
+    };
+  }, []);
 
   const onFinish = async (val) => {
     const {
@@ -41,14 +61,14 @@ const KindergartenForm = ({ onDone, onDiscard }) => {
         period1[1].format('h:mm:ss a'),
       ]);
     }
-    // selectValue;
+
     const values = {
       description,
       kindergartenName,
       phoneNumber,
       coverImage:
         'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/127563203_2816927261908481_825163598039189311_o.jpg?_nc_cat=100&ccb=2&_nc_sid=e3f864&_nc_ohc=EOam1iTQLIcAX8jrnEj&_nc_ht=scontent.fgza2-1.fna&oh=e1cef81bf1cebbd72a6c1f1af651e01f&oe=604638FB',
-      locationId: 2,
+      locationId: selectValue,
       minPrice,
       maxPrice,
       periods: JSON.stringify(periods),
@@ -59,7 +79,9 @@ const KindergartenForm = ({ onDone, onDiscard }) => {
       await axios.post(`/api/v1/kindergarten`, values);
       onDone();
     } catch (error) {
-      console.log(error);
+      notification.open({
+        message: 'حدث خطأ في السيرفر, يرجى المحاولة لاحقا',
+      });
     }
   };
 
@@ -68,16 +90,16 @@ const KindergartenForm = ({ onDone, onDiscard }) => {
     setMaxPrice(val[0]);
   };
 
-  // const onDorpListSelect = (val) => {
-  //   setSelectValue(val);
-  //   if (val.key !== 'كل المنطقة') {
-  //     setSelectValue(
-  //       options.filter((data) => data.location_sub === val.key)[0].id
-  //     );
-  //   } else {
-  //     setSelectValue('');
-  //   }
-  // };
+  const onDorpListSelect = (val) => {
+    setSelectValue(val);
+    if (val.key !== 'كل المنطقة') {
+      setSelectValue(
+        options.filter((data) => data.location_sub === val.key)[0].id
+      );
+    } else {
+      setSelectValue('');
+    }
+  };
 
   const onPeriodChange = () => {
     setAdd(true);
@@ -167,20 +189,17 @@ const KindergartenForm = ({ onDone, onDiscard }) => {
 
           <Form.Item
             name="locationId"
-            // rules={[{ required: true, message: 'الرجاء إدخل تفاصيل المكان !' }]}
+            rules={[{ required: true, message: 'الرجاء إدخل تفاصيل المكان !' }]}
           >
             <h3>تفاصيل المكان :</h3>
-            <DorpList
-              options={[{ value: 'غزة', id: 1, disabled: false }]}
-              // onChange={onDorpListSelect}
-            />
+            <DropList options={options} onChange={onDorpListSelect} />
           </Form.Item>
 
           <Form.Item name="price">
             <MainInput
               type="rangeSlider"
               textLabel="رسوم الطفل :"
-              width="471px"
+              width="450px"
               min={minPrice}
               max={maxPrice}
               onChange={onPriceSliderChange}
