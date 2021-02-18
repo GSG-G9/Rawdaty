@@ -1,47 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { List } from 'antd';
+import React, { useState } from 'react';
+// import { List } from 'antd';
 import PropTypes from 'prop-types';
 import Comment from '../Common/Comment';
 import MainButton from '../Common/MainButton';
 
-const CommentContainer = ({ data, isAdmin }) => {
-  const [commentsToShow, setCommentsToShow] = useState([]);
-  const [next, setNext] = useState(3);
-  const commentsPerPage = 3;
+import './style.css';
 
-  const loopWithSlice = (start, end) => {
-    const slicedComments = data.slice(start, end);
-    setCommentsToShow([...commentsToShow, ...slicedComments]);
-  };
+const CommentContainer = ({ data, isAdmin }) => {
+  const commentsPerPage = 3;
+  const [limit, setLimit] = useState(commentsPerPage);
 
   const handleShowMoreComments = () => {
-    loopWithSlice(next, next + commentsPerPage);
-    setNext(next + commentsPerPage);
+    setLimit(commentsPerPage + limit);
   };
-
-  useEffect(() => {
-    loopWithSlice(0, commentsPerPage);
-  }, []);
 
   return (
     <div>
-      <List
-        split={false}
-        itemLayout="horizontal"
-        dataSource={commentsToShow}
-        renderItem={(item) => (
-          <List.Item>
-            <Comment
-              isAdmin={isAdmin}
-              userName={item.user_name}
-              commentText={item.comment}
-              date={item.create_at}
-              rateValue={item.rating}
-            />
-          </List.Item>
+      <ul className="list">
+        {data.length !== 0 ? (
+          data.slice(0, limit).map((item) => (
+            <li key={item.id}>
+              <Comment
+                isAdmin={isAdmin}
+                userName={item.user_name}
+                commentText={item.comment}
+                date={item.create_at}
+                rateValue={item.rating}
+              />
+            </li>
+          ))
+        ) : (
+          <Comment description="لا يوجد رياض أطفال" />
         )}
-      />
-      {commentsToShow.length < data.length && (
+      </ul>
+
+      {data.length > limit && (
         <MainButton onClick={handleShowMoreComments}>
           عرض المزيد من التعليقات
         </MainButton>

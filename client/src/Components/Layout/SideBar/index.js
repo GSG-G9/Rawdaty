@@ -9,23 +9,16 @@ import {
 } from '@ant-design/icons';
 
 import './style.css';
+import LogoutContext from '../../../Context/LogoutContext';
 
 const { Title } = Typography;
 const { Item } = Menu;
 
-const SideBar = ({ onClick, onLogout }) => {
+const SideBar = ({ onClick }) => {
   const history = useHistory();
 
   const handleItemClick = (to) => {
     history.push(to);
-  };
-
-  const handleLogout = () => {
-    if (typeof onLogout !== 'function') return;
-
-    // handle logout logic
-    onLogout();
-    history.push('/');
   };
 
   const items = [
@@ -50,23 +43,27 @@ const SideBar = ({ onClick, onLogout }) => {
   ];
 
   return (
-    <div className="side-Bar">
-      <Title id="title" level={2}>
-        لوحة التحكم
-      </Title>
+    <LogoutContext.Consumer>
+      {({ logout }) => (
+        <div className="side-Bar">
+          <Title id="title" level={2}>
+            لوحة التحكم
+          </Title>
 
-      <Menu id="menu" onClick={onClick}>
-        {items.map(({ key, icon, to, name }) => (
-          <Item key={key} icon={icon} onClick={() => handleItemClick(to)}>
-            {name}
-          </Item>
-        ))}
-      </Menu>
+          <Menu id="menu" onClick={onClick}>
+            {items.map(({ key, icon, to, name }) => (
+              <Item key={key} icon={icon} onClick={() => handleItemClick(to)}>
+                {name}
+              </Item>
+            ))}
+          </Menu>
 
-      <Button id="log-out" type="link" onClick={handleLogout}>
-        تسجيل الخروج
-      </Button>
-    </div>
+          <Button id="log-out" type="link" onClick={logout}>
+            تسجيل الخروج
+          </Button>
+        </div>
+      )}
+    </LogoutContext.Consumer>
   );
 };
 
@@ -75,7 +72,6 @@ SideBar.defaultProps = {
 };
 
 SideBar.propTypes = {
-  onLogout: PropTypes.func.isRequired,
   onClick: PropTypes.func,
 };
 

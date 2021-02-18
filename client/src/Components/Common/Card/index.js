@@ -22,7 +22,7 @@ const CardComponent = ({
   const history = useHistory();
 
   const handleClick = () => {
-    history.push(`/profile/${id}`);
+    history.push(`/kindergarten/${id}`);
   };
 
   return (

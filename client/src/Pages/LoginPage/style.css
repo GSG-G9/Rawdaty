@@ -1,0 +1,84 @@
+#left-image {
+  height: 100vh;
+  background: url('../../assets/img/login&signUp.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#container {
+  width: 100%;
+}
+
+#form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+  #left-image {
+    display: none;
+  }
+  #container {
+    max-width: 100%;
+    flex: none;
+  }
+  #form-container > #title {
+    margin-top: 50px;
+  }
+}
+
+#form-container > #title {
+  color: var(--main-color);
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.input {
+  margin-bottom: 5  px;
+}
+
+#input {
+  font-size: 26px;
+  border-width: 2.6px;
+}
+
+#form-container .input-label {
+  font-size: 21px;
+}
+
+#login-btn {
+  margin-bottom: 80px;
+  margin-top: 5px;
+}
+
+#login-btn span {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.sign-up {
+  text-align: center;
+  width: 470px;
+  height: 55px;
+  border-top: var(--input-border);
+}
+
+.sign-up-link {
+  font-weight: bold;
+  color: var(--main-color);
+  line-height: 54px;
+  font-size: 19.5px;
+}
+
+#form-container .ant-alert {
+  width: 470px;
+  height: 52px;
+  margin-bottom:10px ;
+}
+
+#form-container .ant-alert-message{
+  font-size: 18px;
+}

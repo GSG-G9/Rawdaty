@@ -29,8 +29,8 @@ latitude Decimal(8,6),
 longitude Decimal(9,6),
 min_price FLOAT,	
 max_price FLOAT,	
-periods	TEXT [][],	
-image_gallery TEXT[],	
+periods	TEXT,	
+image_gallery TEXT,	
 request_status VARCHAR(50),	
 is_enable VARCHAR(50)  DEFAULT 'false'
 );
