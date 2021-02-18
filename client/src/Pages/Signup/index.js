@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-
 import Axios from 'axios';
 import { Row, Col, Form, Typography, Result, Alert } from 'antd';
-import { SyncOutlined } from '@ant-design/icons';
 import MainInput from '../../Components/Common/MainInput';
 import MainButton from '../../Components/Common/MainButton';
 
@@ -12,7 +10,6 @@ import AuthContext from '../../Context/AuthContext';
 const { Title } = Typography;
 
 const Signup = () => {
-  const [loaded, setLoaded] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState();
   const [isOk, setIsOk] = useState(false);
@@ -23,14 +20,14 @@ const Signup = () => {
     try {
       setError();
       setSuccess(false);
-      setLoaded(true);
+
       await Axios.post(`/api/v1/signup`, {
         userName: username.trim(),
         email: email.trim(),
         password,
         confirmPassword: confirm,
       });
-      setLoaded(false);
+
       setSuccess(true);
       setIsOk(true);
       history.push('/');
@@ -41,7 +38,7 @@ const Signup = () => {
       } else {
         e = 'حصل خطأ غير متوقع حاول مجددا';
       }
-      setLoaded(false);
+
       setError(e);
     }
   };
@@ -169,13 +166,7 @@ const Signup = () => {
                   height="55px"
                   htmlType="submit"
                 >
-                  {loaded ? (
-                    <SyncOutlined spin />
-                  ) : (
-                    <Title level={5} className="signup-text">
-                      إنشاء حساب حديد
-                    </Title>
-                  )}
+                  إنشاء حساب جديد
                 </MainButton>
                 <div className="sign-up">
                   <NavLink className="sign-up-link" to="/login">
