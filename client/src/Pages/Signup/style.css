@@ -1,0 +1,48 @@
+.container{
+    display: flex;
+}
+
+.image-container .ant-image-img{
+    height: 90vh ;
+    width: 50vw ;
+}
+
+.form-container{
+  height:70vh;
+  width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;        
+    margin: auto ;
+}
+
+#signup{  
+  background-color: var( --main-color); 
+}
+
+.signup-text{
+  color :var(--main-white) !important;
+}
+
+@media only screen and (max-width: 720px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+    .image-container .ant-image-img{
+        height: 30vh;
+        width: 100vw;
+    }
+    .form-container{
+        height:500px;
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;        
+        margin: 100px auto ;
+        margin-bottom: 200px;
+        
+      }
+  }
