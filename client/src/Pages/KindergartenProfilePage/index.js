@@ -87,7 +87,9 @@ const KindergartenProfilePage = ({ match }) => {
       }
     } catch (err) {
       let e;
-      if (err.message === 'There is no kindergarten with this id') {
+      if (
+        err.response.data.message === 'There is no kindergarten with this id'
+      ) {
         e = 'لا يوجد روضة بهذا المعرف';
       } else {
         e = 'تعذر  ارسال التعليق  ';
@@ -185,10 +187,12 @@ const KindergartenProfilePage = ({ match }) => {
                   >
                     ماذا يقول الناس
                   </Title>
-                  <CommentContainer
-                    data={kindergartenComments}
-                    isAdmin={false}
-                  />
+                  {kindergartenComments && (
+                    <CommentContainer
+                      data={kindergartenComments}
+                      isAdmin={false}
+                    />
+                  )}
                 </div>
                 <Form onFinish={onFinish}>
                   <Form.Item name="userName">
