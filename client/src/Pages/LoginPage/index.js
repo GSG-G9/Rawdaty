@@ -79,7 +79,7 @@ const LoginPage = () => {
                       textLabel="البريد الإلكتروني"
                       placeholder="example@example.com"
                       width="470px"
-                      height="60px"
+                      height="50px"
                       id="input"
                     />
                   </Form.Item>
@@ -101,7 +101,7 @@ const LoginPage = () => {
                       textLabel="كلمة المرور"
                       placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
                       width="470px"
-                      height="60px"
+                      height="50px"
                       id="input"
                     />
                   </Form.Item>

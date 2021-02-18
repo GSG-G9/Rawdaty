@@ -57,7 +57,7 @@ const Signup = () => {
               )}
 
               <Form id="form-container" name="signup" onFinish={onFinish}>
-                <NavLink to="/" id="title">
+                <NavLink to="/" id="title" style={{ paddingTop: '10px' }}>
                   روضــتـــي
                 </NavLink>
                 <Title level={1} style={{ marginTop: 0, color: '#5A5A5A' }}>
@@ -82,7 +82,7 @@ const Signup = () => {
                     textLabel="اسم المستخدم"
                     placeholder="اسم المستخدم "
                     width="470px"
-                    height="60px"
+                    height="50px"
                     id="input"
                   />
                 </Form.Item>
@@ -105,7 +105,7 @@ const Signup = () => {
                     textLabel="البريد الإلكتروني"
                     placeholder="example@example.com"
                     width="470px"
-                    height="60px"
+                    height="50px"
                     id="input"
                   />
                 </Form.Item>
@@ -125,7 +125,7 @@ const Signup = () => {
                     textLabel="كلمة المرور"
                     placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
                     width="470px"
-                    height="60px"
+                    height="50px"
                     id="input"
                   />
                 </Form.Item>
@@ -156,7 +156,7 @@ const Signup = () => {
                     textLabel="تأكيد كلمة المرور"
                     placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
                     width="470px"
-                    height="60px"
+                    height="50px"
                     id="input"
                   />
                 </Form.Item>
@@ -164,6 +164,7 @@ const Signup = () => {
                   id="login-btn"
                   width="470px"
                   height="55px"
+                  marginBottom="18px"
                   htmlType="submit"
                 >
                   إنشاء حساب جديد
