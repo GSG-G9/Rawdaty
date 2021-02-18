@@ -173,7 +173,7 @@ const KindergartenForm = ({ onDone, onDiscard }) => {
             name="caverImage"
             rules={[{ required: true, message: 'الرجاء اضف صورة للروضة !' }]}
           >
-            <Upload listType="picture" maxCount={1}>
+            <Upload listType="picture" maxCount={1} className="main-upload">
               <MainButton
                 height="48px"
                 width="471px"
@@ -187,15 +187,20 @@ const KindergartenForm = ({ onDone, onDiscard }) => {
             </Upload>
           </Form.Item>
 
+          <h3 className="drop">تفاصيل المكان :</h3>
           <Form.Item
+            className="drop"
             name="locationId"
             rules={[{ required: true, message: 'الرجاء إدخل تفاصيل المكان !' }]}
           >
-            <h3>تفاصيل المكان :</h3>
-            <DropList options={options} onChange={onDorpListSelect} />
+            <DropList
+              label="رسوم الطفل :"
+              options={options}
+              onChange={onDorpListSelect}
+            />
           </Form.Item>
 
-          <Form.Item name="price">
+          <Form.Item name="price" className="slider-input ">
             <MainInput
               type="rangeSlider"
               textLabel="رسوم الطفل :"
@@ -206,7 +211,7 @@ const KindergartenForm = ({ onDone, onDiscard }) => {
             />
           </Form.Item>
 
-          <Form.Item name="period2">
+          <Form.Item name="period2" className="period2">
             {add ? (
               <MainInput height="48px" width="471px" type="date" />
             ) : (
@@ -226,7 +231,6 @@ const KindergartenForm = ({ onDone, onDiscard }) => {
       <Form.Item name="moreImage">
         <Upload listType="picture-card" onChange={onMoreImageUpload}>
           {fileList.length < 8 && '+ اضف مزيدا من الصور'}
-          {/* {'+ اضف مزيدا من الصور'} */}
         </Upload>
       </Form.Item>
 

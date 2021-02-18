@@ -20,28 +20,29 @@
   border-radius: var(--border-radius);
 }
 
-.row {
-  display: flex;
-  justify-content: space-around;
-}
-
-.column {
-  flex: 50%;
-  padding: 0 80px;
+.drop{
+    position: relative;
+    top: 150px;
 }
 
 .slider-input {
   position: relative;
-  top: 249px;
+  top: 150px;
 }
 
 .period2 {
   position: relative;
-  top: 328px;
+  top: 190px;
 }
+.main-upload{
+  position: absolute
+
+}
+
 /* ant-form-item-control-input */
 .main-upload .ant-row{
   height: 188px;
+
 }
 
 .main-upload .ant-form-item-control-input-content{
