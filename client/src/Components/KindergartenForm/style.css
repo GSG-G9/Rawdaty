@@ -13,7 +13,7 @@
   display: flex;
   align-content: space-between;
   justify-content: center;
-  margin: 0 15px;
+  margin: 0 5px;
 }
 
 .form-container .ant-btn {
@@ -51,9 +51,6 @@
   margin-top: 28px;
 }
 
-.imgs {
-  padding: 0px 250px;
-}
 
 .ant-upload-picture-card-wrapper {
   display: flex !important;

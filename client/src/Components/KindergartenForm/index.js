@@ -152,7 +152,7 @@ const KindergartenForm = ({ onDone, onDiscard }) => {
           >
             <MainInput
               type="text"
-              textLabel="رقم الحوال :"
+              textLabel="رقم الجوال :"
               height="48px"
               width="471px"
             />
