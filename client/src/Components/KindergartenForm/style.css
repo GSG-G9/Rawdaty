@@ -20,9 +20,9 @@
   border-radius: var(--border-radius);
 }
 
-.drop{
-    position: relative;
-    top: 150px;
+.drop {
+  position: relative;
+  top: 150px;
 }
 
 .slider-input {
@@ -34,22 +34,24 @@
   position: relative;
   top: 190px;
 }
-.main-upload{
-  position: absolute
+.main-upload {
+  position: absolute;
+}
 
+.drop-list {
+  width: 150px;
 }
 
 /* ant-form-item-control-input */
-.main-upload .ant-row{
+.main-upload .ant-row {
   height: 188px;
-
 }
 
-.main-upload .ant-form-item-control-input-content{
+.main-upload .ant-form-item-control-input-content {
   margin-top: 28px;
 }
 
-.imgs{
+.imgs {
   padding: 0px 250px;
 }
 
@@ -81,4 +83,3 @@
   height: 113px !important;
   border-radius: 5px !important;
 }
-
