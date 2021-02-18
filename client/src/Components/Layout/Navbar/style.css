@@ -2,13 +2,12 @@
   width: 100%;
   height: 65px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  border-bottom: 5px solid #739c98;
-  align-items: center;
+  flex-flow: row nowrap;
   justify-content: space-between;
+  align-items: center;
   padding: 0px 160px 0 55px;
   top: 0;
+  height: auto;
 }
 
 .navbar-logo-div {
