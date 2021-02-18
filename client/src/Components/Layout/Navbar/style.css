@@ -89,3 +89,11 @@
   height: 60px;
   min-width: 354px;
 }
+
+.ant-modal {
+  width: 1200px !important;
+}
+
+.ant-modal-footer{
+  display: none !important;
+}

@@ -11,6 +11,7 @@ import Search from '../../Search';
 import logoutIcon from '../../../assets/icons/logout.svg';
 import AuthContext from '../../../Context/AuthContext';
 import LogoutContext from '../../../Context/LogoutContext';
+import KindergartenForm from '../../KindergartenForm';
 
 import './style.css';
 
@@ -159,14 +160,14 @@ const NavBar = () => {
                   )}
                 </div>
                 <Modal
-                  title="Basic Modal"
+                  id="add-modal"
                   visible={isAddModalVisible}
-                  onOk={handleAddModalOk}
                   onCancel={handleAddModalCancel}
                 >
-                  <p>Some contents...</p>
-                  <p>Some contents...</p>
-                  <p>Some contents...</p>
+                  <KindergartenForm
+                    onDone={handleAddModalOk}
+                    onDiscard={handleAddModalCancel}
+                  />
                 </Modal>
               </>
             );

@@ -1,0 +1,88 @@
+.form-container {
+  display: flex;
+  align-content: space-between;
+  justify-content: center;
+}
+
+.title {
+  font-size: 25px !important;
+  text-align: center;
+}
+
+.btn-container {
+  display: flex;
+  align-content: space-between;
+  justify-content: center;
+  margin: 0 5px;
+}
+
+.form-container .ant-btn {
+  border-radius: var(--border-radius);
+}
+
+
+.drop-list {
+  width: 150px;
+}
+
+/* ant-form-item-control-input */
+.main-upload .ant-row {
+  height: 188px;
+}
+
+.ant-row {
+  margin-bottom: 15px !important;
+}
+
+.main-upload .ant-form-item-control-input-content {
+  margin-top: 28px;
+}
+
+
+.ant-upload-picture-card-wrapper {
+  display: flex !important;
+}
+
+.ant-upload-list-rtl {
+  direction: ltr !important;
+}
+
+.ant-upload-list-picture-card-container {
+  width: 113px !important;
+  height: 113px !important;
+}
+
+.ant-upload-list-picture .ant-upload-list-item,
+.ant-upload-list-picture-card .ant-upload-list-item {
+  padding: 0px !important;
+  border: 0px solid #d9d9d9 !important;
+}
+
+.ant-upload-list-item-info {
+  border-radius: 5px !important;
+}
+
+.ant-upload.ant-upload-select-picture-card {
+  width: 113px !important;
+  height: 113px !important;
+  border-radius: 5px !important;
+}
+
+@media only screen and (max-width: 1225px) {
+  .ant-row {
+    flex-flow: column wrap !important;
+    align-items: center !important;
+  }
+
+  .slider{
+    width: 470px;
+  }
+  
+  .input .slider-label{
+    min-width: 96px;
+  }
+}
+
+#description{
+  min-width: 471px;
+}

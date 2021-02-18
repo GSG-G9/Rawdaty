@@ -87,11 +87,11 @@
   height: 100px !important;
 }
 
-.ant-modal-content {
+.modal .ant-modal-content {
   height: 150px !important;
 }
 
-.ant-modal-body {
+.modal .ant-modal-body {
   display: flex;
   align-items: center;
   justify-content: center;

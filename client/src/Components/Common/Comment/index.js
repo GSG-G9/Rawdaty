@@ -1,7 +1,6 @@
 import React from 'react';
 import { Row, Col, Typography } from 'antd';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 
 import Rating from '../Rating';
 import MainButton from '../MainButton';
@@ -31,7 +30,7 @@ const Comment = ({
         <Row className="top-container">
           <Rating rateValue={rateValue} />
           <Title level={3} id="comment-date">
-            {moment(date).format('YYYY-MM-DD')}
+            {date}
           </Title>
           {isAdmin && (
             <MainButton
