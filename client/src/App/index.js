@@ -11,6 +11,8 @@ import { notification } from 'antd';
 
 import NavBar from '../Components/Layout/Navbar';
 import Footer from '../Components/Layout/Footer';
+import KindergartenProfilePage from '../Pages/KindergartenProfilePage';
+
 import SideBar from '../Components/Layout/SideBar';
 import Home from '../Pages/HomePage';
 import LoginPage from '../Pages/LoginPage';
@@ -84,7 +86,11 @@ const App = () => {
               <About />
             </Route>
 
-            <Route exact path="/kindergarten/:id" />
+            <Route
+              exact
+              path="/kindergarten/:kindergartenId"
+              render={(props) => <KindergartenProfilePage {...props} />}
+            />
 
             <Route exact path="/login">
               {!role ? <LoginPage /> : <Redirect to="/" />}
