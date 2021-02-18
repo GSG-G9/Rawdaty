@@ -9,8 +9,8 @@
   top: 0;
   height: auto;
 }
-.ant-dropdown-trigger {
-  min-width: 67px !important;
+.navbar .ant-dropdown-trigger {
+  min-width: 67px;
 }
 .navbar-logo-div {
   width: 42%;
