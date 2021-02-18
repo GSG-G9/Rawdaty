@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Typography, Form, Row, Col, Upload, notification } from 'antd';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { UploadOutlined } from '@ant-design/icons';
 
 import MainInput from '../Common/MainInput';
 import DropList from '../Common/DropList';
@@ -46,6 +45,7 @@ const KindergartenForm = ({ onDone, onDiscard }) => {
       period1,
       period2,
       phoneNumber,
+      coverImage,
     } = val;
 
     const periods = [];
@@ -66,8 +66,7 @@ const KindergartenForm = ({ onDone, onDiscard }) => {
       description,
       kindergartenName,
       phoneNumber,
-      coverImage:
-        'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/127563203_2816927261908481_825163598039189311_o.jpg?_nc_cat=100&ccb=2&_nc_sid=e3f864&_nc_ohc=EOam1iTQLIcAX8jrnEj&_nc_ht=scontent.fgza2-1.fna&oh=e1cef81bf1cebbd72a6c1f1af651e01f&oe=604638FB',
+      coverImage,
       locationId: selectValue,
       minPrice,
       maxPrice,
@@ -169,22 +168,17 @@ const KindergartenForm = ({ onDone, onDiscard }) => {
         </Col>
         <Col span={12}>
           <Form.Item
-            className="main-upload"
-            name="caverImage"
-            rules={[{ required: true, message: 'الرجاء اضف صورة للروضة !' }]}
+            name="coverImage"
+            rules={[
+              { required: true, message: 'الرجاء إدخال رابط صورة الغلاف !' },
+            ]}
           >
-            <Upload listType="picture" maxCount={1} className="main-upload">
-              <MainButton
-                height="48px"
-                width="471px"
-                border="1.6px solid #69938F"
-                backgroundColor="#FFF"
-                color="#000"
-              >
-                تحميل صورة
-                <UploadOutlined />
-              </MainButton>
-            </Upload>
+            <MainInput
+              type="text"
+              textLabel="رابط صورة الغلاف :"
+              height="48px"
+              width="471px"
+            />
           </Form.Item>
 
           <h3 className="drop">تفاصيل المكان :</h3>
